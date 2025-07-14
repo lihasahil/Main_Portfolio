@@ -32,7 +32,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
     <>
       {/* Top Navbar */}
       {!scrolled && (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300 border-y-2 border-dotted border-blue-500">
+        <header className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300 border-y-2 border-dotted border-green-600">
           <div className="max-w-screen-xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <a
               href="#hero"
@@ -91,22 +91,22 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
           </header>
 
           {/* Desktop Sidebar */}
-          <aside className="hidden lg:flex fixed top-1/2 left-4 transform -translate-y-1/2 z-50 bg-white rounded-2xl shadow-lg p-4 flex-col items-center space-y-6">
+          <aside className="hidden w-15 lg:flex fixed top-1/2 left-4 transform -translate-y-1/2 z-50 bg-white rounded-2xl shadow-lg p-4 flex-col items-center space-y-6">
             <a
               href="#hero"
               className="font-bold text-xl text-gray-900 no-underline"
             >
-              S
+              SS
             </a>
             <nav>
               <ul className="space-y-6">
-                {navLinks.map(({ link, name }) => (
-                  <li key={name} className="group flex justify-center">
+                {navLinks.map(({ link, icon }) => (
+                  <li key={link} className="group flex justify-center">
                     <a
                       href={link}
-                      className="text-xs text-center text-gray-900 hover:text-blue-600 transition-colors duration-300"
+                      className="text-lg text-center text-green-400 hover:text-blue-600 transition-colors duration-300"
                     >
-                      {name}
+                      {icon}
                       <span className="block underline w-0 group-hover:w-full transition-all duration-300 h-0.5 bg-blue-500" />
                     </a>
                   </li>

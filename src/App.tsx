@@ -6,13 +6,21 @@ import Footer from "./Sections/Footer";
 import NavBar from "./components/NavBar";
 import Hero from "./Sections/Hero";
 import ProjectSection from "./Sections/Projects";
+import {
+  FaBriefcase,
+  FaFolderOpen,
+  FaHome,
+  FaUserGraduate,
+} from "react-icons/fa";
+import { GiSkills } from "react-icons/gi";
 
 function App() {
   const navLinks = [
-    { link: "#about", name: "About" },
-    { link: "#experience", name: "Experience" },
-    { link: "#projects", name: "Projects" },
-    { link: "#skills", name: "Skills" },
+    { link: "#home", name: "Home", icon: <FaHome /> },
+    { link: "#experience", name: "Experience", icon: <FaBriefcase /> },
+    { link: "#education", name: "Education", icon: <FaUserGraduate /> },
+    { link: "#projects", name: "Projects", icon: <FaFolderOpen /> },
+    { link: "#skills", name: "Skills", icon: <GiSkills /> },
   ];
   return (
     <div className="max-w-screen-xl mx-auto px-4">

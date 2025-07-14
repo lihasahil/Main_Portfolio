@@ -1,7 +1,7 @@
 import { useState } from "react";
-import project1 from "../assets/project1.png";
-import project2 from "../assets/project2.png";
-import project3 from "../assets/project3.png";
+import project1 from "../assets/3d.png";
+import project2 from "../assets/social-book.png";
+import project3 from "../assets/food-del.png";
 import project4 from "../assets/project4.png";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
@@ -41,7 +41,8 @@ const projects: Project[] = [
     github: "https://github.com/lihasahil/social-book",
     live: "https://social-book-psi.vercel.app/",
     skills: ["Next.js", "Clerk", "ShadcnUI", "TailwindCSS", "PostgreSQL"],
-    description: "",
+    description:
+      "Social Book is a full-featured social media application built with Next.js, PostgreSQL, and Prisma, offering users a seamless and interactive experience. It allows users to create posts, like and comment on others' content, and follow other users to build their network. Authentication and user management are powered by Clerk, ensuring secure sign-in and account protection. The modern, responsive UI is crafted using ShadcnUI and TailwindCSS, providing a clean and intuitive user interface. Designed for scalability and real-time interaction, Social Book combines powerful backend logic with a polished frontend for an engaging social networking experience.",
   },
   {
     name: "FeastWave",
@@ -58,7 +59,10 @@ export default function ProjectSection() {
   const [selected, setSelected] = useState<number | null>(null);
 
   return (
-    <section className="p-8 mx-auto  text-black border-2 border-dotted border-blue-400 ">
+    <section
+      id="projects"
+      className="p-8 mx-auto  text-black border-2 border-dotted border-green-600 border-b-0 "
+    >
       <h2 className="text-center text-2xl font-bold my-8 text-design">
         Projects
       </h2>
@@ -89,14 +93,15 @@ export default function ProjectSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="flex flex-col md:flex-row gap-8 rounded-xl p-8 shadow-lg bg-gray-800"
+            className="flex flex-col md:flex-row gap-8 rounded-xl p-8 shadow-sm shadow-green-400"
           >
             {/* Image Section */}
             <div className="md:w-1/2">
               <img
                 src={projects[selected].image}
                 alt={projects[selected].name}
-                className="rounded-xl w-full h-80 object-cover mb-4 shadow-md"
+                className="rounded-xl w-full  h-[35rem] object-fit
+                 mb-4 shadow-md"
               />
             </div>
 

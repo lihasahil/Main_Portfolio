@@ -3,7 +3,10 @@ import Card from "../components/Card";
 import { FaBriefcase } from "react-icons/fa";
 const Experience = () => {
   return (
-    <section className="border-2 border-dotted border-blue-500 border-t-0 p-5">
+    <section
+      id="experience"
+      className="border-2 border-dotted border-green-600 border-t-0 border-b-0 p-5"
+    >
       <h1 className="text-center text-2xl font-bold my-8 text-design">
         EXPERIENCE
       </h1>

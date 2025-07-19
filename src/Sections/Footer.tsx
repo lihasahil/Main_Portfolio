@@ -25,7 +25,7 @@ export default function Footer() {
             <FaLinkedin />
           </a>
           <a
-            href="mailto:you@example.com"
+            href="mailto:sahilshrestha106@gmail.com"
             className="text-xl transition hover:text-green-400"
           >
             <FaInstagram />

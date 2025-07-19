@@ -16,7 +16,7 @@ const Education = () => {
           icon={<FaUserGraduate />}
           title="Himalaya College of Enginerring"
           subtitle={["Bachelors of Computer Engineering"]}
-          date="2025,June - Present"
+          date="April 2021 - April 2025"
           description="Collaborated on building healthcare web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js).Gained hands-on experience in full stack development, API integration, and RESTful service creation.Contributed to front-end UI components and back-end server logic under senior developer guidance.Strengthened skills in Git, responsive design, and debugging within an agile team environment."
           skills={["React", "Express", "NodeJs", "MongoDB"]}
         />
@@ -24,17 +24,31 @@ const Education = () => {
           icon={<FaUserGraduate />}
           title="V.S. Niketan Secondary School"
           subtitle={["Higher Secondary Education (10+2) "]}
-          date="2025,June - Present"
-          description="Collaborated on building healthcare web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js).Gained hands-on experience in full stack development, API integration, and RESTful service creation.Contributed to front-end UI components and back-end server logic under senior developer guidance.Strengthened skills in Git, responsive design, and debugging within an agile team environment."
-          skills={["React", "Express", "NodeJs", "MongoDB"]}
+          date="June 2018 - June 2020"
+          description="Completed Higher Secondary Education with a focus on Mathematics, Physics, and Computer Science. Developed a strong foundation in problem-solving and analytical thinking. Participated in science exhibitions, projects, and developed a keen interest in technology and engineering."
+          skills={[
+            "Physics",
+            "Chemistry",
+            "Mathematics",
+            "Computer Science",
+            "Compulsary English",
+            "Compulsary Maths",
+          ]}
         />
         <Card
           icon={<FaUserGraduate />}
           title="V.S. Niketan Secondary School"
           subtitle={["Secondary Education Examination"]}
-          date="2025,June - Present"
-          description="Collaborated on building healthcare web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js).Gained hands-on experience in full stack development, API integration, and RESTful service creation.Contributed to front-end UI components and back-end server logic under senior developer guidance.Strengthened skills in Git, responsive design, and debugging within an agile team environment."
-          skills={["React", "Express", "NodeJs", "MongoDB"]}
+          date=" April 2017 - April 2018"
+          description="Completed Education Examination with a strong focus on fundamental subjects such as Mathematics, Nepali, and English. Actively involved in extracurricular activities, sports, and leadership programs, which helped build a well-rounded skill set."
+          skills={[
+            "Science",
+            "English",
+            "Nepali",
+            "Social Studies",
+            "HPE",
+            "Accounts",
+          ]}
         />
       </div>
     </section>

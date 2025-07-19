@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { MdEmail } from "react-icons/md";
 
 interface NavLink {
   link: string;
@@ -9,9 +10,10 @@ interface NavLink {
 
 interface NavBarProps {
   navLinks: NavLink[];
+  onContactClick: () => void;
 }
 
-const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
+const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -23,7 +25,6 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent background scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
   }, [mobileMenuOpen]);
@@ -42,7 +43,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
             </a>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex">
+            <nav className="hidden lg:flex items-center">
               <ul className="flex space-x-6">
                 {navLinks.map(({ link, name }) => (
                   <li key={name} className="group">
@@ -56,6 +57,13 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
                   </li>
                 ))}
               </ul>
+              {/* Contact Button */}
+              <button
+                onClick={onContactClick}
+                className="ml-6 px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition"
+              >
+                Contact
+              </button>
             </nav>
 
             {/* Mobile Hamburger */}
@@ -113,6 +121,14 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
                 ))}
               </ul>
             </nav>
+            {/* Contact Button */}
+            <button
+              onClick={onContactClick}
+              className="mt-4 px-3 py-2 bg-green-600 text-white rounded-full text-sm hover:bg-blue-700 transition"
+              aria-label="Open contact form"
+            >
+              <MdEmail />
+            </button>
           </aside>
         </>
       )}
@@ -137,6 +153,18 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks }) => {
                   </a>
                 </li>
               ))}
+              {/* Contact Button for Mobile */}
+              <li>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onContactClick();
+                  }}
+                  className="inline-block mt-4 px-4 py-2 text-lg text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition"
+                >
+                  Contact
+                </button>
+              </li>
             </ul>
           </nav>
         </div>

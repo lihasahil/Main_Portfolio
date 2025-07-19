@@ -13,6 +13,8 @@ import {
   FaUserGraduate,
 } from "react-icons/fa";
 import { GiSkills } from "react-icons/gi";
+import { useState } from "react";
+import ContactFormPopup from "./components/ContactPop";
 
 function App() {
   const navLinks = [
@@ -22,9 +24,14 @@ function App() {
     { link: "#projects", name: "Projects", icon: <FaFolderOpen /> },
     { link: "#skills", name: "Skills", icon: <GiSkills /> },
   ];
+  const [showPopup, setShowPopup] = useState(false);
   return (
-    <div className="max-w-screen-xl mx-auto px-4">
-      <NavBar navLinks={navLinks} />
+    <div className="max-w-screen-xl mx-auto px-4 ">
+      <NavBar navLinks={navLinks} onContactClick={() => setShowPopup(true)} />
+      <ContactFormPopup
+        isOpen={showPopup}
+        onClose={() => setShowPopup(false)}
+      />
       <Hero />
       <Experience />
       <Education />

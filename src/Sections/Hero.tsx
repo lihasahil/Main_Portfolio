@@ -44,16 +44,28 @@ const Hero = () => {
 
           {/* Social Icons */}
           <div className="flex justify-center md:justify-start gap-4 mt-6 text-xl text-green-600">
-            <a href="#">
+            <a
+              href="https://github.com/lihasahil"
+              target="_blank"
+              title="Github Link"
+            >
               <FaGithub />
             </a>
-            <a href="#">
+            <a
+              href="https://www.linkedin.com/in/sahil-shrestha-b46887319/"
+              target="_blank"
+              title="Linked Link"
+            >
               <FaLinkedin />
             </a>
-            <a href="#">
+            <a
+              href="https://www.instagram.com/sahil.shresthaa/"
+              target="_blank"
+              title="Instagram Link"
+            >
               <FaInstagram />
             </a>
-            <a href="#">
+            <a href="/public/cv/Sahil-CV.pdf" download title="Download My CV">
               <IoDocumentText />
             </a>
           </div>

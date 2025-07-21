@@ -17,7 +17,7 @@ export default function Footer() {
             <FaGithub />
           </a>
           <a
-            href="https://linkedin.com/in/lihasahil"
+            href="https://www.linkedin.com/in/sahil-shrestha-b46887319/"
             target="_blank"
             rel="noreferrer"
             className="text-xl hover:text-green-400 transition"
@@ -25,7 +25,7 @@ export default function Footer() {
             <FaLinkedin />
           </a>
           <a
-            href="mailto:sahilshrestha106@gmail.com"
+            href="https://www.instagram.com/sahil.shresthaa/"
             className="text-xl transition hover:text-green-400"
           >
             <FaInstagram />

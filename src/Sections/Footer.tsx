@@ -1,5 +1,5 @@
-import React from "react";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+
 export default function Footer() {
   return (
     <section className="border-2 border-dotted border-green-600 text-gray-400 text-sm py-6 border-t-0">

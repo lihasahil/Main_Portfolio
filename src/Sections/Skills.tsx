@@ -1,4 +1,3 @@
-// src/components/Skills/Skills.tsx
 import React from "react";
 import Tilt from "react-parallax-tilt";
 import { SkillsInfo } from "../constant";

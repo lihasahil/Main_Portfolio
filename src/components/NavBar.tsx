@@ -37,7 +37,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
           <div className="max-w-screen-xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <a
               href="#hero"
-              className="font-bold text-lg sm:text-xl text-gray-900 no-underline"
+              className="font-bold text-lg ml-4 sm:text-xl text-gray-900 no-underline"
             >
               Sahil Shrestha
             </a>

@@ -13,8 +13,9 @@ import {
   FaUserGraduate,
 } from "react-icons/fa";
 import { GiSkills } from "react-icons/gi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContactFormPopup from "./components/ContactPop";
+import Loader from "./components/Loader/Loader";
 
 function App() {
   const navLinks = [
@@ -24,7 +25,18 @@ function App() {
     { link: "#projects", name: "Projects", icon: <FaFolderOpen /> },
     { link: "#skills", name: "Skills", icon: <GiSkills /> },
   ];
+  const [isLoading, setIsLoading] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // simulate loading for 1.5 seconds
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) return <Loader />;
+
   return (
     <div className="max-w-screen-xl mx-auto px-4 ">
       <NavBar navLinks={navLinks} onContactClick={() => setShowPopup(true)} />

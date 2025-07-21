@@ -1,4 +1,3 @@
-import React from "react";
 import Card from "../components/Card";
 import { FaBriefcase } from "react-icons/fa";
 const Experience = () => {

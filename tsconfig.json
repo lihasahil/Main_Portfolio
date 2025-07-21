@@ -1,12 +1,18 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx", // for React 17+ with new JSX transform
-    "module": "node16",
-    "target": "es6",
-    "lib": ["dom", "es6"],
-    "moduleResolution": "node16",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": true
-  }
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*", "vite.config.ts"],
+  "exclude": ["node_modules"]
 }

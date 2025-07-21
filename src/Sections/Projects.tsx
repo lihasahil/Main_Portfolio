@@ -75,7 +75,7 @@ export default function ProjectSection() {
             onClick={() => setSelected(index)}
             className={`px-4 py-2 rounded-full text-sm font-medium transition text-[#E8FFD7] ${
               selected === index
-                ? "bg-blue-600"
+                ? "bg-[#1b4552]"
                 : "bg-[#5E936C] hover:bg-[#93DA97]"
             }`}
           >
@@ -93,7 +93,7 @@ export default function ProjectSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="flex flex-col md:flex-row gap-8 rounded-xl p-8 shadow-sm shadow-green-400"
+            className="flex flex-col md:flex-row gap-8 rounded-xl p-8 shadow-sm shadow-[#328E6E]"
           >
             {/* Image Section */}
             <div className="md:w-1/2">

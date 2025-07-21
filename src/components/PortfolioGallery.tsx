@@ -6,26 +6,26 @@ export default function PortfolioGallery() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left: Main Image */}
-        <div className="rounded-xl overflow-hidden">
+        <div className="rounded-xl h-fit shadow-[#328E6E] shadow-sm">
           <img
-            src="https://tse2.mm.bing.net/th/id/OIP.Xul8xb_RKpJd0BhazsiY3QHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
+            src="/Sahil.jpg"
             alt="Main"
-            className="w-full h-auto object-cover aspect-square sm:aspect-[3/4]"
+            className="w-full h-auto rounded-xl object-cover aspect-square sm:aspect-[3/4] "
           />
         </div>
 
         {/* Right: Two stacked images */}
         <div className="flex flex-col gap-6">
-          <div className="rounded-xl overflow-hidden">
+          <div className="rounded-xl overflow-hidden shadow-[#328E6E] shadow-sm">
             <img
-              src="https://i.pinimg.com/736x/32/a3/c5/32a3c5156953b0ae032574b0ea335ac0.jpg"
+              src="/hero1.jpg"
               alt="Secondary 1"
-              className="w-full h-auto object-cover aspect-[16/9] sm:aspect-square"
+              className="w-full h-auto object-cover aspect-[16/9] sm:aspect-square "
             />
           </div>
-          <div className="rounded-xl overflow-hidden">
+          <div className="rounded-xl overflow-hidden shadow-[#328E6E] shadow-sm">
             <img
-              src="https://i.pinimg.com/originals/e1/4c/ed/e14cedcb37585dc0a66b558c6d18ed25.jpg"
+              src="/sahil-photo.jpg"
               alt="Secondary 2"
               className="w-full h-auto object-cover aspect-[16/9] sm:aspect-square"
             />

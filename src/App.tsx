@@ -16,6 +16,7 @@ import { GiSkills } from "react-icons/gi";
 import { useEffect, useState } from "react";
 import ContactFormPopup from "./components/ContactPop";
 import Loader from "./components/Loader/Loader";
+import { Helmet } from "react-helmet";
 
 function App() {
   const navLinks = [
@@ -39,6 +40,65 @@ function App() {
 
   return (
     <div className="max-w-screen-xl mx-auto px-4 ">
+      <Helmet>
+        {/* Basic Meta Tags */}
+        <title>Sahil Shrestha | Full Stack Developer</title>
+        <meta
+          name="description"
+          content="Portfolio of Sahil Shrestha, a passionate full-stack developer using React, Node.js, and TypeScript."
+        />
+        <meta
+          name="keywords"
+          content="Sahil Shrestha, Portfolio, React Developer, Node.js Developer, Full Stack Developer, Web Developer"
+        />
+        <meta name="author" content="Sahil Shrestha" />
+        <meta name="robots" content="index, follow" />
+
+        {/* Essential HTML Tags */}
+        <html lang="en" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* Open Graph (Facebook/LinkedIn) */}
+        <meta
+          property="og:title"
+          content="Sahil Shrestha | Full Stack Developer"
+        />
+        <meta
+          property="og:description"
+          content="Showcasing my work in React, Node.js, TypeScript, and full-stack development."
+        />
+        <meta
+          property="og:image"
+          content="https://www.sahilshrestha2003.com.np/preview.png"
+        />
+        <meta
+          property="og:url"
+          content="https://www.sahilshrestha2003.com.np"
+        />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sahil Shrestha | Portfolio" />
+        <meta
+          name="twitter:description"
+          content="Portfolio showcasing React, Node.js, and full-stack development projects."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.sahilshrestha2003.com.np/preview.png"
+        />
+        <meta name="twitter:site" content="@YourTwitterHandle" />
+        <meta name="twitter:creator" content="@YourTwitterHandle" />
+
+        {/* Canonical URL */}
+        <link rel="canonical" href="https://www.sahilshrestha2003.com.np" />
+
+        {/* Favicon (if available) */}
+        <link rel="icon" href="/favicon.ico" />
+      </Helmet>
+
       <NavBar navLinks={navLinks} onContactClick={() => setShowPopup(true)} />
       <ContactFormPopup
         isOpen={showPopup}

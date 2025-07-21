@@ -5,7 +5,7 @@ const Education = () => {
   return (
     <section
       id="education"
-      className="border-2 border-dotted border-green-600 border-b-0"
+      className="border-2 border-dotted border-green-600 border-b-0 p-2"
     >
       <h1 className="text-center text-2xl font-bold my-8 text-design">
         EDUCATION

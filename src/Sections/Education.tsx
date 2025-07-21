@@ -18,6 +18,7 @@ const Education = () => {
           date="April 2021 - April 2025"
           description="Collaborated on building healthcare web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js).Gained hands-on experience in full stack development, API integration, and RESTful service creation.Contributed to front-end UI components and back-end server logic under senior developer guidance.Strengthened skills in Git, responsive design, and debugging within an agile team environment."
           skills={["React", "Express", "NodeJs", "MongoDB"]}
+          score="Percentage: 72%"
         />
         <Card
           icon={<FaUserGraduate />}
@@ -33,12 +34,14 @@ const Education = () => {
             "Compulsary English",
             "Compulsary Maths",
           ]}
+          score="GPA: 3.27"
         />
         <Card
           icon={<FaUserGraduate />}
           title="V.S. Niketan Secondary School"
           subtitle={["Secondary Education Examination"]}
           date=" April 2017 - April 2018"
+          score="GPA: 3.65"
           description="Completed Education Examination with a strong focus on fundamental subjects such as Mathematics, Nepali, and English. Actively involved in extracurricular activities, sports, and leadership programs, which helped build a well-rounded skill set."
           skills={[
             "Science",

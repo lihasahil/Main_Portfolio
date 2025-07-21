@@ -37,7 +37,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
           <div className="max-w-screen-xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <a
               href="#hero"
-              className="font-bold text-lg ml-4 sm:text-xl text-gray-900 no-underline"
+              className="font-bold text-lg ml-4 sm:text-xl text-[#3E5F44] no-underline"
             >
               Sahil Shrestha
             </a>
@@ -49,10 +49,10 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
                   <li key={name} className="group">
                     <a
                       href={link}
-                      className="flex flex-col items-center text-gray-900 hover:text-blue-600 transition-colors duration-300"
+                      className="flex flex-col items-center text-[#3E5F44] hover:text-[#93DA97] transition-colors duration-300"
                     >
                       <span>{name}</span>
-                      <span className="underline w-0 group-hover:w-full transition-all duration-300 h-0.5 bg-blue-500" />
+                      <span className="underline w-0 group-hover:w-full transition-all duration-300 h-0.5 bg-[#93DA97]" />
                     </a>
                   </li>
                 ))}
@@ -60,7 +60,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
               {/* Contact Button */}
               <button
                 onClick={onContactClick}
-                className="ml-6 px-4 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition"
+                className="ml-6 px-4 py-2 text-sm font-semibold text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
               >
                 Contact
               </button>
@@ -85,16 +85,16 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
           <header className="lg:hidden fixed top-2 left-4 right-4 z-50 bg-white rounded-full shadow-lg p-3 flex justify-between items-center">
             <a
               href="#hero"
-              className="font-bold text-lg text-gray-900 no-underline"
+              className="font-bold text-lg text-[#3E5F44] no-underline"
             >
               SS
             </a>
             <button
-              className="p-2 rounded-md text-gray-900 hover:bg-gray-200 transition"
+              className="p-2 rounded-md text-[#3E5F44] hover:bg-gray-200 transition"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              <GiHamburgerMenu size={24} />
+              <GiHamburgerMenu size={24} className="text-[#3E5F44]" />
             </button>
           </header>
 
@@ -102,7 +102,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
           <aside className="hidden w-15 lg:flex fixed top-1/2 left-4 transform -translate-y-1/2 z-50 bg-white rounded-2xl shadow-lg p-4 flex-col items-center space-y-6">
             <a
               href="#hero"
-              className="font-bold text-xl text-gray-900 no-underline"
+              className="font-bold text-xl text-[#5E936C] no-underline"
             >
               SS
             </a>
@@ -112,10 +112,10 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
                   <li key={link} className="group flex justify-center">
                     <a
                       href={link}
-                      className="text-lg text-center text-green-400 hover:text-blue-600 transition-colors duration-300"
+                      className="text-lg text-center text-[#5E936C] hover:text-[#93DA97] transition-colors duration-300"
                     >
                       {icon}
-                      <span className="block underline w-0 group-hover:w-full transition-all duration-300 h-0.5 bg-blue-500" />
+                      <span className="block underline w-0 group-hover:w-full transition-all duration-300 h-0.5 bg-[#93DA97]" />
                     </a>
                   </li>
                 ))}
@@ -124,7 +124,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
             {/* Contact Button */}
             <button
               onClick={onContactClick}
-              className="mt-4 px-3 py-2 bg-green-600 text-white rounded-full text-sm hover:bg-blue-700 transition"
+              className="mt-4 px-3 py-2 bg-[#5E936C] text-white rounded-full text-sm hover:bg-[#93DA97] transition"
               aria-label="Open contact form"
             >
               <MdEmail />
@@ -146,7 +146,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
                 <li key={name}>
                   <a
                     href={link}
-                    className="text-xl text-gray-900 font-medium"
+                    className="text-xl text-[#5E936C] font-medium"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {name}
@@ -160,7 +160,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
                     setMobileMenuOpen(false);
                     onContactClick();
                   }}
-                  className="inline-block mt-4 px-4 py-2 text-lg text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition"
+                  className="inline-block mt-4 px-4 py-2 text-lg text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
                 >
                   Contact
                 </button>

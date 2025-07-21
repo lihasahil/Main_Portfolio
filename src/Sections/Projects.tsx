@@ -68,15 +68,15 @@ export default function ProjectSection() {
       </h2>
 
       {/* Buttons */}
-      <div className="flex flex-wrap gap-3 justify-center mb-6 bg-green-100 rounded-3xl p-2 w-fit mx-auto">
+      <div className="flex flex-wrap gap-3 justify-center mb-6 bg-[#E8FFD7] rounded-3xl p-2 w-fit mx-auto">
         {projects.map((project, index) => (
           <button
             key={index}
             onClick={() => setSelected(index)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+            className={`px-4 py-2 rounded-full text-sm font-medium transition text-[#E8FFD7] ${
               selected === index
                 ? "bg-blue-600"
-                : "bg-green-400 hover:bg-green-300"
+                : "bg-[#5E936C] hover:bg-[#93DA97]"
             }`}
           >
             {project.name}
@@ -107,10 +107,12 @@ export default function ProjectSection() {
 
             {/* Details Section */}
             <div className="md:w-1/2">
-              <h3 className="text-2xl text-amber-300 font-bold mb-4">
+              <h3 className="text-2xl text-[#006A71] font-bold mb-4">
                 {projects[selected].name}
               </h3>
-              <p>{projects[selected].description}</p>
+              <p className="text-[#3E5F44] text-justify">
+                {projects[selected].description}
+              </p>
 
               <div className="space-y-4 text-base">
                 <div className="flex gap-4 mt-4">
@@ -118,7 +120,7 @@ export default function ProjectSection() {
                     href={projects[selected].github}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex gap-2 justify-center items-center px-4 py-2  bg-blue-600 hover:bg-blue-700 text-white rounded-3xl font-medium transition"
+                    className="flex gap-2 justify-center items-center px-4 py-2  bg-[#000000] text-[#F6F6F6] hover:bg-[#F6F6F6] hover:text-[#000000] rounded-3xl font-medium transition"
                   >
                     <FaGithub /> GitHub
                   </a>
@@ -126,19 +128,19 @@ export default function ProjectSection() {
                     href={projects[selected].live}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex gap-2 justify-center items-center px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-3xl font-medium transition"
+                    className="flex gap-2 justify-center items-center px-4 py-2 bg-[#A2D5C6] text-[#F6F6F6] hover:bg-[#F6F6F6] hover:text-[#A2D5C6] rounded-3xl font-medium transition"
                   >
                     <FaExternalLinkAlt /> Live Demo
                   </a>
                 </div>
 
-                <div className="text-gray-300">
+                <div className="text-[#3E5F44]">
                   <span className="font-medium block mb-2">Skills:</span>
                   <div className="flex flex-wrap gap-3">
                     {projects[selected].skills.map((skill, index) => (
                       <div
                         key={index}
-                        className="px-4 py-2 rounded-full bg-green-400 text-white text-sm font-semibold shadow"
+                        className="px-4 py-2 rounded-full bg-[#5E936C] text-[#E8FFD7] text-sm font-semibold shadow"
                       >
                         {skill}
                       </div>

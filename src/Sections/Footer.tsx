@@ -12,7 +12,7 @@ export default function Footer() {
             href="https://github.com/lihasahil"
             target="_blank"
             rel="noreferrer"
-            className="text-xl hover:text-green-400 transition"
+            className="text-xl  hover:text-[#93DA97] transition"
           >
             <FaGithub />
           </a>
@@ -20,13 +20,13 @@ export default function Footer() {
             href="https://www.linkedin.com/in/sahil-shrestha-b46887319/"
             target="_blank"
             rel="noreferrer"
-            className="text-xl hover:text-green-400 transition"
+            className="text-xl hover:text-[#93DA97] transition"
           >
             <FaLinkedin />
           </a>
           <a
             href="https://www.instagram.com/sahil.shresthaa/"
-            className="text-xl transition hover:text-green-400"
+            className="text-xl transition hover:text-[#93DA97]"
           >
             <FaInstagram />
           </a>

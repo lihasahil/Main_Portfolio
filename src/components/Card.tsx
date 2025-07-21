@@ -25,28 +25,28 @@ const Card: React.FC<CardProps> = ({
   website,
 }) => {
   return (
-    <div className="mx-5 text-black p-6 sm:p-8 rounded-xl shadow-sm shadow-green-400">
+    <div className="mx-5 text-[#3E5F44] p-6 sm:p-8 rounded-xl shadow-sm shadow-[#328E6E]">
       {/* Header: Icon + Title */}
       <div className="flex items-start gap-4 mb-4">
         <div className="flex flex-col justify-center">
           <div className="flex gap-5 justify-center items-center">
-            <div className="rounded-full bg-green-50 p-5 text-2xl text-green-400">
+            <div className="rounded-full bg-[#E8FFD7] p-5 text-2xl text-[#93DA97]">
               {icon}
             </div>
 
             <h3 className="text-xl sm:text-2xl font-semibold">{title}</h3>
           </div>
 
-          <p className="text-sm text-purple-400">
+          <p className="text-sm">
             <TypewriterSkills skills={subtitle} className="text-sm" />
           </p>
-          <p>{date}</p>
-          <p>{score}</p>
+          <p className="text-[#D2D0A0] text-sm">{date}</p>
+          <p className="text-[#D2D0A0] text-xs">{score}</p>
         </div>
       </div>
 
       {/* Description */}
-      <p className="text-sm sm:text-base text-gray-300 mb-4 leading-relaxed">
+      <p className="text-sm sm:text-base text-[#3E5F44] mb-4 leading-relaxed">
         {description}
       </p>
 
@@ -55,7 +55,7 @@ const Card: React.FC<CardProps> = ({
         {skills.map((skill, index) => (
           <span
             key={index}
-            className="bg-[#5adbb5] text-white text-sm px-3 py-1 rounded-md"
+            className="bg-[#5E936C] text-[#E8FFD7] text-sm px-3 py-1 rounded-md"
           >
             {skill}
           </span>
@@ -66,7 +66,7 @@ const Card: React.FC<CardProps> = ({
       {projects && projects.length > 0 && (
         <div className="mb-2">
           <h4 className="font-semibold mb-1">Projects:</h4>
-          <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+          <ul className="list-disc list-inside text-[#3E5F44] text-sm space-y-1">
             {projects.map((proj, i) => (
               <li key={i}>{proj}</li>
             ))}

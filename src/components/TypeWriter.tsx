@@ -52,16 +52,18 @@ const TypewriterSkills: React.FC<TypewriterSkillsProps> = ({
   }, []);
 
   return (
-    <h2
-      className={`text-green-500  font-medium  md:text-left mt-2 ${
+    <span
+      className={`inline-block text-[#93DA97] font-medium md:text-left mt-4 ${
         className ?? "text-lg text-center"
       }`}
-      style={{ minHeight: "1.5em" }}
+      style={{ height: "1.5em", display: "inline-block" }}
     >
-      {skills.length > 0
-        ? `${skills[index].substring(0, subIndex)}${blink ? "|" : " "}`
-        : ""}
-    </h2>
+      {
+        skills.length > 0
+          ? `${skills[index].substring(0, subIndex)}${blink ? "|" : " "}`
+          : "\u00A0" /* non-breaking space to preserve height */
+      }
+    </span>
   );
 };
 

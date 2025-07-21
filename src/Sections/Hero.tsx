@@ -19,12 +19,12 @@ const Hero = () => {
       <div className="flex flex-col-reverse md:flex-row items-center gap-10">
         {/* Text Section */}
         <div className="w-full md:w-1/2">
-          <h1 className="text-design text-3xl sm:text-4xl font-extrabold text-center md:text-left">
+          <h1 className="text-design text-3xl sm:text-4xl font-extrabold text-center md:text-left ">
             SAHIL SHRESTHA
           </h1>
           <TypewriterSkills skills={skills} />
 
-          <p className="text-justify mt-4">
+          <p className="text-justify text-[#3E5F44] mt-4">
             I am a passionate Full Stack Web Developer from Nepal with a strong
             foundation in computer engineering and hands-on experience building
             modern, scalable web applications. Specializing in the MERN stack
@@ -33,7 +33,7 @@ const Hero = () => {
             user experiences.
           </p>
 
-          <p className="text-justify mt-4">
+          <p className="text-justify text-[#3E5F44] mt-4">
             With a deep interest in technology and problem-solving, I thrive on
             turning complex ideas into functional digital products. My academic
             background in computer engineering has equipped me with both
@@ -42,11 +42,12 @@ const Hero = () => {
           </p>
 
           {/* Social Icons */}
-          <div className="flex justify-center md:justify-start gap-4 mt-6 text-xl text-green-600">
+          <div className="flex justify-center md:justify-start gap-4 mt-6 text-xl">
             <a
               href="https://github.com/lihasahil"
               target="_blank"
               title="Github Link"
+              className="text-[#5E936C] hover:text-[#93DA97]"
             >
               <FaGithub />
             </a>
@@ -54,6 +55,7 @@ const Hero = () => {
               href="https://www.linkedin.com/in/sahil-shrestha-b46887319/"
               target="_blank"
               title="Linked Link"
+              className="text-[#5E936C] hover:text-[#93DA97]"
             >
               <FaLinkedin />
             </a>
@@ -61,10 +63,16 @@ const Hero = () => {
               href="https://www.instagram.com/sahil.shresthaa/"
               target="_blank"
               title="Instagram Link"
+              className="text-[#5E936C] hover:text-[#93DA97]"
             >
               <FaInstagram />
             </a>
-            <a href="/public/cv/Sahil-CV.pdf" download title="Download My CV">
+            <a
+              href="/public/cv/Sahil-CV.pdf"
+              download
+              title="Download My CV"
+              className="text-[#5E936C] hover:text-[#93DA97]"
+            >
               <IoDocumentText />
             </a>
           </div>

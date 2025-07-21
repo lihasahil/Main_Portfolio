@@ -16,7 +16,7 @@ import { GiSkills } from "react-icons/gi";
 import { useEffect, useState } from "react";
 import ContactFormPopup from "./components/ContactPop";
 import Loader from "./components/Loader/Loader";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 function App() {
   const navLinks = [

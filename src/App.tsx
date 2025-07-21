@@ -41,7 +41,6 @@ function App() {
   return (
     <div className="max-w-screen-xl mx-auto px-4 ">
       <Helmet>
-        {/* Basic Meta Tags */}
         <title>Sahil Shrestha | Full Stack Developer</title>
         <meta
           name="description"
@@ -54,11 +53,7 @@ function App() {
         <meta name="author" content="Sahil Shrestha" />
         <meta name="robots" content="index, follow" />
 
-        {/* Essential HTML Tags */}
-        <html lang="en" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        {/* Open Graph (Facebook/LinkedIn) */}
+        {/* Open Graph for social media */}
         <meta
           property="og:title"
           content="Sahil Shrestha | Full Stack Developer"
@@ -88,14 +83,9 @@ function App() {
           name="twitter:image"
           content="https://www.sahilshrestha2003.com.np/preview.png"
         />
-        <meta name="twitter:site" content="@YourTwitterHandle" />
-        <meta name="twitter:creator" content="@YourTwitterHandle" />
 
         {/* Canonical URL */}
         <link rel="canonical" href="https://www.sahilshrestha2003.com.np" />
-
-        {/* Favicon (if available) */}
-        <link rel="icon" href="/favicon.ico" />
       </Helmet>
 
       <NavBar navLinks={navLinks} onContactClick={() => setShowPopup(true)} />

@@ -18,7 +18,7 @@ export default function PortfolioGallery() {
         <div className="flex flex-col gap-6">
           <div className="rounded-xl overflow-hidden shadow-[#328E6E] shadow-sm">
             <img
-              src="/hero1.jpg"
+              src="/main.jpg"
               alt="Secondary 1"
               className="w-full h-auto object-cover aspect-[16/9] sm:aspect-square "
             />

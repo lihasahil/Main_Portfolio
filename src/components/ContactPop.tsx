@@ -1,5 +1,5 @@
-// ContactFormPopup.tsx
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 interface FormData {
   name: string;
@@ -21,6 +21,8 @@ export default function ContactFormPopup({
     email: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -29,13 +31,27 @@ export default function ContactFormPopup({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(
-      `Thanks for contacting us, ${formData.name}! We'll get back to you soon.`
-    );
-    setFormData({ name: "", email: "", message: "" });
-    onClose();
+    if (!formRef.current) return;
+    setLoading(true);
+
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+      );
+      alert(`Thanks for contacting us, ${formData.name}! We'll get back to you soon.`);
+      setFormData({ name: "", email: "", message: "" });
+      onClose();
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      alert("Oops! Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -93,7 +109,7 @@ export default function ContactFormPopup({
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6">
+        <form ref={formRef} onSubmit={handleSubmit} className="p-6">
           <div className="mb-5">
             <label
               htmlFor="name"
@@ -110,6 +126,7 @@ export default function ContactFormPopup({
               placeholder="Your name"
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+              disabled={loading}
             />
           </div>
 
@@ -129,6 +146,7 @@ export default function ContactFormPopup({
               placeholder="your.email@example.com"
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+              disabled={loading}
             />
           </div>
 
@@ -148,26 +166,34 @@ export default function ContactFormPopup({
               rows={5}
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+              disabled={loading}
             />
           </div>
 
           <button
             type="submit"
-            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-md transition duration-300 transform hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+            disabled={loading}
+            className={`w-full bg-emerald-600 text-white font-medium py-2 px-4 rounded-md transition duration-300 transform focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 ${
+              loading
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-emerald-700 hover:scale-[1.01]"
+            }`}
           >
-            Send Message
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 inline ml-2"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+            {loading ? "Sending..." : "Send Message"}
+            {!loading && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 inline ml-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            )}
           </button>
         </form>
       </div>

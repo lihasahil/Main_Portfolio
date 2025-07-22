@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import ContactFormPopup from "./components/ContactPop";
 import Loader from "./components/Loader/Loader";
 import { Helmet } from "react-helmet-async";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const navLinks = [
@@ -99,6 +100,7 @@ function App() {
       <ProjectSection />
       <Skills />
       <Footer />
+      <Analytics />
     </div>
   );
 }

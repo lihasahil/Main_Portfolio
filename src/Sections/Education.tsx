@@ -16,8 +16,13 @@ const Education = () => {
           title="Himalaya College of Enginerring"
           subtitle={["Bachelors of Computer Engineering"]}
           date="April 2021 - April 2025"
-          description="Collaborated on building healthcare web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js).Gained hands-on experience in full stack development, API integration, and RESTful service creation.Contributed to front-end UI components and back-end server logic under senior developer guidance.Strengthened skills in Git, responsive design, and debugging within an agile team environment."
-          skills={["React", "Express", "NodeJs", "MongoDB"]}
+          description="Completed a Bachelor’s degree in Computer Engineering, gaining in-depth knowledge of software development, computer architecture, networking, and embedded systems, along with practical experience in problem-solving and project implementation."
+          skills={[
+            "C",
+            "C++",
+            "Data structures and Algorithm",
+            "Web Development",
+          ]}
           score="Percentage: 72%"
         />
         <Card

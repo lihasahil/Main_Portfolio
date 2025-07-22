@@ -42,51 +42,65 @@ function App() {
   return (
     <div className="max-w-screen-xl mx-auto px-4 ">
       <Helmet>
-        <title>Sahil Shrestha | Full Stack Developer</title>
+        {/* Primary Meta Tags */}
+        <title>Sahil Shrestha | Full Stack Developer Portfolio</title>
         <meta
           name="description"
-          content="Portfolio of Sahil Shrestha, a passionate full-stack developer using React, Node.js, and TypeScript."
+          content="Full-stack developer specializing in React, Node.js & TypeScript. Explore my projects and web development expertise."
         />
         <meta
           name="keywords"
-          content="Sahil Shrestha, Portfolio, React Developer, Node.js Developer, Full Stack Developer, Web Developer"
+          content="Sahil Shrestha, Portfolio, React Developer, Node.js Developer, Full Stack Developer, Web Developer, TypeScript"
         />
         <meta name="author" content="Sahil Shrestha" />
         <meta name="robots" content="index, follow" />
 
-        {/* Open Graph for social media */}
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://www.sahilshrestha2003.com.np"
+        />
         <meta
           property="og:title"
-          content="Sahil Shrestha | Full Stack Developer"
+          content="Sahil Shrestha | Full Stack Developer Portfolio"
         />
         <meta
           property="og:description"
-          content="Showcasing my work in React, Node.js, TypeScript, and full-stack development."
+          content="Full-stack developer specializing in React, Node.js & TypeScript. Explore my projects and web development expertise."
         />
         <meta
           property="og:image"
           content="https://www.sahilshrestha2003.com.np/preview.png"
         />
+        <meta property="og:site_name" content="Sahil Shrestha Portfolio" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
         <meta
-          property="og:url"
+          name="twitter:url"
           content="https://www.sahilshrestha2003.com.np"
         />
-        <meta property="og:type" content="website" />
-
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Sahil Shrestha | Portfolio" />
+        <meta
+          name="twitter:title"
+          content="Sahil Shrestha | Full Stack Developer Portfolio"
+        />
         <meta
           name="twitter:description"
-          content="Portfolio showcasing React, Node.js, and full-stack development projects."
+          content="Full-stack developer specializing in React, Node.js & TypeScript. Explore my projects and web development expertise."
         />
         <meta
           name="twitter:image"
           content="https://www.sahilshrestha2003.com.np/preview.png"
         />
+        {/* Uncomment if you have a Twitter handle */}
+        {/* <meta name="twitter:creator" content="@YourHandle" /> */}
 
-        {/* Canonical URL */}
+        {/* Canonical */}
         <link rel="canonical" href="https://www.sahilshrestha2003.com.np" />
+
+        {/* Favicon - recommended if not already included */}
+        <link rel="icon" href="/fav.png" />
       </Helmet>
 
       <NavBar navLinks={navLinks} onContactClick={() => setShowPopup(true)} />

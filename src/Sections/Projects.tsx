@@ -3,6 +3,7 @@ import project1 from "../assets/3d.png";
 import project2 from "../assets/social-book.png";
 import project3 from "../assets/food-del.png";
 import project4 from "../assets/project4.png";
+import project5 from "../assets/Project5.png";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";
@@ -20,8 +21,8 @@ const projects: Project[] = [
   {
     name: "3D-Portfolio",
     image: project1,
-    github: "https://github.com/lihasahil/Final_Year_Project",
-    live: "https://yourportfolio.com",
+    github: "https://github.com/lihasahil/Sahil-portfolio",
+    live: "https://sahil-portfolio-eight-sand.vercel.app/",
     skills: ["React", "Tailwind", "GSAP", "ThreeJS"],
     description:
       "A personal 3D portfolio website developed to showcase my design and development skills using immersive visuals and modern frontend technologies. The site integrates real-time 3D rendering with a sleek UI/UX to present my work, experience, and contact details in a visually compelling format.",
@@ -52,6 +53,15 @@ const projects: Project[] = [
     skills: ["MongoDB", "Express", "React", "Stripe"],
     description:
       "Feast Wave is a full-stack food delivery application designed to provide users with a seamless ordering experience. Built using the MERN stack, the platform integrates a robust Stripe payment gateway for secure transactions and features an admin panel for efficient management of food items.",
+  },
+  {
+    name: "IdeaDoodle",
+    image: project5,
+    github: "https://github.com/lihasahil/Idea-doodle",
+    live: "https://idea-doodle.vercel.app/",
+    skills: ["NextJs", "Liveblocks", "Convex", "Clerk"],
+    description:
+      "Ideadoodle is a real-time collaborative whiteboard app for brainstorming, sketching, and organizing ideas with your team. Built with Convex, Next.js, Clerk, and Liveblocks, it makes collaboration fast, seamless, and fun.",
   },
 ];
 

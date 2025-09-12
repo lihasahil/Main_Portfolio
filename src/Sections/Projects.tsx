@@ -3,7 +3,7 @@ import project1 from "../assets/3d.png";
 import project2 from "../assets/social-book.png";
 import project3 from "../assets/food-del.png";
 import project4 from "../assets/project4.png";
-import project5 from "../assets/Project5.png";
+import project5 from "../assets/project5.png";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";

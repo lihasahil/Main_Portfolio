@@ -52,7 +52,7 @@ const Hero = () => {
               <FaGithub />
             </a>
             <a
-              href="https://www.linkedin.com/in/er-sahil-shrestha-b46887319/"
+              href="https://www.linkedin.com/in/sahil-shrestha-b46887319/"
               target="_blank"
               title="Linked Link"
               className="text-[#5E936C] hover:text-[#93DA97]"

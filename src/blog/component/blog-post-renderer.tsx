@@ -28,9 +28,9 @@ const BlogPostRenderer: React.FC = () => {
 
   return (
     <section
-      className="border-2 border-dotted mx-30 pt-20 border-green-600 border-t-0 p-2"
+      className="border-2 border-dotted mx-5 sm:mx-30 pt-20 border-green-600 border-t-0 p-2"
     >
-      <div className="max-w-3xl mx-auto p-6 flex flex-col space-y-6">
+      <div className="max-w-5xl mx-auto p-6 flex flex-col space-y-6">
         <h1 className="text-center text-2xl font-bold my-4 text-design">
           {post.title}
         </h1>

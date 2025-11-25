@@ -1,0 +1,190 @@
+[
+  {
+    "id": "react-optimization",
+    "title": "Mastering React Performance Optimization: A Complete Developer's Guide",
+    "date": "2025-11-10",
+    "tags": ["React", "Performance", "Optimization", "Frontend"],
+    "description": "An in-depth guide covering real-world strategies to optimize React applications—render performance, state structure, memoization, code-splitting, and more.",
+    "content": [
+      {
+        "type": "heading",
+        "text": "Introduction"
+      },
+      {
+        "type": "paragraph",
+        "text": "Performance optimization in React is not about writing 'fast code'—it's about avoiding unnecessary work. As your UI grows, React components may re-render more often than necessary, bundles may become heavy, and state might spread inefficiently. In this guide, we take a deep dive into techniques used by professionals to build scalable, optimized React apps."
+      },
+
+      {
+        "type": "heading",
+        "text": "1. Understanding What Causes React to Re-render"
+      },
+      {
+        "type": "paragraph",
+        "text": "A re-render happens whenever React detects a change in state or props. The secret to optimization is understanding this lifecycle. Before optimizing anything, always trace what is causing a component to re-render. React DevTools Profiler is an excellent tool for this."
+      },
+      {
+        "type": "list",
+        "items": [
+          "A parent re-render triggers child re-renders by default.",
+          "Inline functions and objects create new references every render.",
+          "Context updates affect all consumers, even if they don’t use the changed value.",
+          "React compares previous and current props to decide whether to re-render."
+        ]
+      },
+
+      {
+        "type": "heading",
+        "text": "2. Memoization with React.memo"
+      },
+      {
+        "type": "paragraph",
+        "text": "React.memo wraps a component and prevents it from re-rendering unless its props actually change. This is ideal for pure functional components and UI-heavy lists. React.memo improves performance, especially when child components are complex or expensive to render."
+      },
+      {
+        "type": "code",
+        "language": "tsx",
+        "text": "const PriceCard = React.memo(({ price }) => {\n  console.log(\"Rendered PriceCard\");\n  return <div>{price}</div>;\n});"
+      },
+      {
+        "type": "paragraph",
+        "text": "However, avoid overusing React.memo. Wrapping every component can increase memory usage and reduce performance if props change frequently. Memoization is beneficial only when it prevents meaningful work."
+      },
+
+      {
+        "type": "heading",
+        "text": "3. Stabilizing Functions with useCallback"
+      },
+      {
+        "type": "paragraph",
+        "text": "Every time a component re-renders, all inline functions are recreated. This often causes unwanted re-renders in child components, especially those memoized with React.memo. useCallback ensures the same function reference is preserved between renders."
+      },
+      {
+        "type": "code",
+        "language": "tsx",
+        "text": "const handleAdd = useCallback(() => {\n  setCount(c => c + 1);\n}, []);"
+      },
+      {
+        "type": "paragraph",
+        "text": "You should use useCallback when passing functions to child components or when the function creation itself is expensive."
+      },
+
+      {
+        "type": "heading",
+        "text": "4. Optimizing Expensive Calculations with useMemo"
+      },
+      {
+        "type": "paragraph",
+        "text": "If your component performs a heavy calculation (e.g., filtering large arrays, expensive loops, parsing data), it will run on every render by default. useMemo caches the result unless its dependencies change."
+      },
+      {
+        "type": "code",
+        "language": "tsx",
+        "text": "const filteredList = useMemo(() => {\n  return items.filter(item => item.active);\n}, [items]);"
+      },
+      {
+        "type": "paragraph",
+        "text": "Use useMemo sparingly—only when the calculation is noticeably expensive. Overusing it can reduce clarity and deliver no real performance gain."
+      },
+
+      {
+        "type": "heading",
+        "text": "5. Avoid Overuse of React Context"
+      },
+      {
+        "type": "paragraph",
+        "text": "React Context is helpful for global state, but it has a hidden cost: ANY update to a context value re-renders ALL consumers. This can be very expensive in large UIs."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Use context for rare updates (theme, language).",
+          "Avoid using it for frequently changing values (selected items, real-time data).",
+          "Split your context into multiple smaller contexts to reduce re-renders."
+        ]
+      },
+      {
+        "type": "paragraph",
+        "text": "If your state changes frequently, use state management libraries like Zustand, Jotai, or Redux Toolkit which avoid context re-render problems."
+      },
+
+      {
+        "type": "heading",
+        "text": "6. Code Splitting and Lazy Loading"
+      },
+      {
+        "type": "paragraph",
+        "text": "The bigger your bundle, the longer users wait to load your app. Code-splitting breaks your JavaScript into smaller pieces that load only when needed. This drastically reduces initial load time."
+      },
+      {
+        "type": "code",
+        "language": "tsx",
+        "text": "const SettingsPage = React.lazy(() => import('./Settings'));\n\n<Suspense fallback={<Spinner />}> \n  <SettingsPage />\n</Suspense>;"
+      },
+
+      {
+        "type": "heading",
+        "text": "7. Virtualize Long Lists"
+      },
+      {
+        "type": "paragraph",
+        "text": "Rendering hundreds or thousands of DOM elements kills performance. Virtualization libraries such as 'react-window' render only what’s visible on the screen. This results in dramatic performance improvement."
+      },
+      {
+        "type": "paragraph",
+        "text": "Virtualization is essential for chat apps, admin dashboards, tables, and large data sets."
+      },
+
+      {
+        "type": "heading",
+        "text": "8. Avoid Anonymous Functions in JSX (When Possible)"
+      },
+      {
+        "type": "paragraph",
+        "text": "Anonymous functions declared inside JSX (`onClick={() => ...}`) generate new references on every render. Although harmless in small apps, they cause problems in memoized components and deep prop chains."
+      },
+      {
+        "type": "code",
+        "language": "tsx",
+        "text": "Bad:\n<button onClick={() => setCount(count + 1)}>Add</button>\n\n✅ Good:\nconst handleAdd = () => setCount(count + 1);\n<button onClick={handleAdd}>Add</button>"
+      },
+
+      {
+        "type": "heading",
+        "text": "9. Use Production Builds"
+      },
+      {
+        "type": "paragraph",
+        "text": "React development mode includes many additional checks, warnings, and validations which slow performance. Always build your app for production using:"
+      },
+      {
+        "type": "code",
+        "language": "bash",
+        "text": "npm run build"
+      },
+
+      {
+        "type": "heading",
+        "text": "10. Common React Performance Myths"
+      },
+      {
+        "type": "list",
+        "items": [
+          "“React.memo makes everything faster” → Not always. Sometimes it adds overhead.",
+          "“Inline functions always cause re-renders” → Only when passed to memoized children.",
+          "“State should always be global” → Global state often causes more re-renders.",
+          "“useMemo is required for every calculation” → Only useful when the computation is expensive."
+        ]
+      },
+
+      {
+        "type": "heading",
+        "text": "Conclusion"
+      },
+      {
+        "type": "paragraph",
+        "text": "Optimizing React apps is all about understanding component re-renders, structuring state properly, and reducing unnecessary computations. Start by profiling your app, identify slow components, and apply targeted optimizations. You don’t need to over-engineer—focus on preventing redundant work and your React apps will remain fast, scalable, and smooth."
+      }
+    ]
+  }
+]

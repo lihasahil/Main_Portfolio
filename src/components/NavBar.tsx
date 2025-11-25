@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdEmail } from "react-icons/md";
+import { useNavigate } from "react-router";
 
 interface NavLink {
   link: string;
@@ -16,6 +17,7 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,31 +31,57 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "auto";
   }, [mobileMenuOpen]);
 
+  // Handle navigation with smooth scroll for hash links
+  const handleNavClick = (link: string) => {
+    if (link.startsWith("/")) {
+      // External route like /blog
+      navigate(link);
+    } else if (link.startsWith("#")) {
+      // Hash link - first navigate to home if not there
+      const currentPath = window.location.pathname;
+      
+      if (currentPath !== "/") {
+        navigate("/");
+        setTimeout(() => {
+          const element = document.querySelector(link);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      } else {
+        const element = document.querySelector(link);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
+
   return (
     <>
       {/* Top Navbar */}
       {!scrolled && (
         <header className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300 border-y-2 border-dotted border-green-600">
           <div className="max-w-screen-xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-            <a
-              href="#hero"
-              className="font-bold text-lg ml-4 sm:text-xl text-[#3E5F44] no-underline"
+            <button
+              onClick={() => handleNavClick("#hero")}
+              className="font-bold text-lg ml-4 sm:text-xl text-[#3E5F44] no-underline bg-none border-none cursor-pointer"
             >
               Sahil Shrestha
-            </a>
+            </button>
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center">
               <ul className="flex space-x-6">
                 {navLinks.map(({ link, name }) => (
                   <li key={name} className="group">
-                    <a
-                      href={link}
-                      className="flex flex-col items-center text-[#3E5F44] hover:text-[#93DA97] transition-colors duration-300"
+                    <button
+                      onClick={() => handleNavClick(link)}
+                      className="flex flex-col items-center text-[#3E5F44] hover:text-[#93DA97] transition-colors duration-300 bg-none border-none cursor-pointer"
                     >
                       <span>{name}</span>
                       <span className="underline w-0 group-hover:w-full transition-all duration-300 h-0.5 bg-[#93DA97]" />
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -83,12 +111,12 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
         <>
           {/* Mobile Top Bar */}
           <header className="lg:hidden fixed top-2 left-4 right-4 z-50 bg-white rounded-full shadow-lg p-3 flex justify-between items-center">
-            <a
-              href="#hero"
-              className="font-bold text-lg text-[#3E5F44] no-underline"
+            <button
+              onClick={() => handleNavClick("#hero")}
+              className="font-bold text-lg text-[#3E5F44] no-underline bg-none border-none cursor-pointer"
             >
               SS
-            </a>
+            </button>
             <button
               className="p-2 rounded-md text-[#3E5F44] hover:bg-gray-200 transition"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -100,23 +128,23 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
 
           {/* Desktop Sidebar */}
           <aside className="hidden w-15 lg:flex fixed top-1/2 left-4 transform -translate-y-1/2 z-50 bg-white rounded-2xl shadow-lg p-4 flex-col items-center space-y-6">
-            <a
-              href="#hero"
-              className="font-bold text-xl text-[#5E936C] no-underline"
+            <button
+              onClick={() => handleNavClick("#hero")}
+              className="font-bold text-xl text-[#5E936C] no-underline bg-none border-none cursor-pointer"
             >
               SS
-            </a>
+            </button>
             <nav>
               <ul className="space-y-6">
                 {navLinks.map(({ link, icon }) => (
                   <li key={link} className="group flex justify-center">
-                    <a
-                      href={link}
-                      className="text-lg text-center text-[#5E936C] hover:text-[#93DA97] transition-colors duration-300"
+                    <button
+                      onClick={() => handleNavClick(link)}
+                      className="text-lg text-center text-[#5E936C] hover:text-[#93DA97] transition-colors duration-300 bg-none border-none cursor-pointer"
                     >
                       {icon}
                       <span className="block underline w-0 group-hover:w-full transition-all duration-300 h-0.5 bg-[#93DA97]" />
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -144,13 +172,15 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
             <ul className="space-y-6 text-center">
               {navLinks.map(({ link, name }) => (
                 <li key={name}>
-                  <a
-                    href={link}
-                    className="text-xl text-[#5E936C] font-medium"
-                    onClick={() => setMobileMenuOpen(false)}
+                  <button
+                    onClick={() => {
+                      handleNavClick(link);
+                      setMobileMenuOpen(false);
+                    }}
+                    className="text-xl text-[#5E936C] font-medium bg-none border-none cursor-pointer"
                   >
                     {name}
-                  </a>
+                  </button>
                 </li>
               ))}
               {/* Contact Button for Mobile */}

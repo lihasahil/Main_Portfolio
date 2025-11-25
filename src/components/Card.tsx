@@ -4,13 +4,17 @@ import TypewriterSkills from "./TypeWriter";
 interface CardProps {
   icon: React.ReactNode;
   title: string;
-  subtitle: string[];
+  subtitle?: string[];
   date: string;
   score?: string;
   description: string;
   skills: string[];
   projects?: string[];
   website?: string;
+  button?: {
+    label: string;
+    onClick: () => void;
+  };
 }
 
 const Card: React.FC<CardProps> = ({
@@ -23,6 +27,7 @@ const Card: React.FC<CardProps> = ({
   skills,
   projects,
   website,
+  button,
 }) => {
   return (
     <div className="mx-5 text-[#3E5F44] p-6 sm:p-8 rounded-xl shadow-sm shadow-[#328E6E]">
@@ -74,7 +79,7 @@ const Card: React.FC<CardProps> = ({
         </div>
       )}
 
-      {/* Website Link (optional) */}
+      {/* Website Link */}
       {website && (
         <a
           href={website}
@@ -84,6 +89,16 @@ const Card: React.FC<CardProps> = ({
         >
           Visit Website
         </a>
+      )}
+
+      {/* Button (optional) */}
+      {button && (
+        <button
+          onClick={button.onClick}
+          className="mt-4 px-4 py-2 text-sm font-semibold text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
+        >
+          {button.label}
+        </button>
       )}
     </div>
   );

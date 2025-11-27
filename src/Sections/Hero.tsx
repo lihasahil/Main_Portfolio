@@ -68,7 +68,7 @@ const Hero = () => {
               <FaInstagram />
             </a>
             <a
-              href="/public/cv/Sahil-CV.pdf"
+              href="/cv/Sahil-CV.pdf"
               download
               title="Download My CV"
               className="text-[#5E936C] hover:text-[#93DA97]"

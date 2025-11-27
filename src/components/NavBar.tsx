@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { Theme, ThemeContext } from "../context/theme-context";
+import React, { useContext, useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdEmail } from "react-icons/md";
 import { useNavigate } from "react-router";
+import { FaComputer } from "react-icons/fa6";
 
 interface NavLink {
   link: string;
@@ -15,6 +18,8 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -39,7 +44,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
     } else if (link.startsWith("#")) {
       // Hash link - first navigate to home if not there
       const currentPath = window.location.pathname;
-      
+
       if (currentPath !== "/") {
         navigate("/");
         setTimeout(() => {
@@ -62,10 +67,10 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
       {/* Top Navbar */}
       {!scrolled && (
         <header className="fixed top-0 left-0 right-0 z-50 bg-transparent transition-all duration-300 border-y-2 border-dotted border-green-600">
-          <div className="max-w-screen-xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <button
               onClick={() => handleNavClick("#hero")}
-              className="font-bold text-lg ml-4 sm:text-xl text-[#3E5F44] no-underline bg-none border-none cursor-pointer"
+              className="font-bold text-lg ml-4 sm:text-xl text-text no-underline bg-none border-none cursor-pointer"
             >
               Sahil Shrestha
             </button>
@@ -77,7 +82,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
                   <li key={name} className="group">
                     <button
                       onClick={() => handleNavClick(link)}
-                      className="flex flex-col items-center text-[#3E5F44] hover:text-[#93DA97] transition-colors duration-300 bg-none border-none cursor-pointer"
+                      className="flex flex-col items-center text-text hover:text-[#93DA97] transition-colors duration-300 bg-none border-none cursor-pointer"
                     >
                       <span>{name}</span>
                       <span className="underline w-0 group-hover:w-full transition-all duration-300 h-0.5 bg-[#93DA97]" />
@@ -85,10 +90,27 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
                   </li>
                 ))}
               </ul>
+              <button
+                onClick={() => {
+                  const nextTheme: Theme =
+                    theme === "light"
+                      ? "dark"
+                      : theme === "dark"
+                      ? "system"
+                      : "light";
+                  setTheme(nextTheme);
+                }}
+                className="ml-4 px-3 py-2 cursor-pointer text-sm font-semibold text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
+                aria-label="Toggle theme"
+              >
+                {theme === "light" && <FaSun />}
+                {theme === "dark" && <FaMoon />}
+                {theme === "system" && <FaComputer />}
+              </button>
               {/* Contact Button */}
               <button
                 onClick={onContactClick}
-                className="ml-6 px-4 py-2 text-sm font-semibold text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
+                className="ml-6 px-4 py-2 text-sm  cursor-pointer font-semibold text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
               >
                 Contact
               </button>
@@ -110,24 +132,24 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
       {scrolled && (
         <>
           {/* Mobile Top Bar */}
-          <header className="lg:hidden fixed top-2 left-4 right-4 z-50 bg-white rounded-full shadow-lg p-3 flex justify-between items-center">
+          <header className="lg:hidden fixed top-2 left-4 right-4 z-50  rounded-full shadow-lg p-3 flex justify-between items-center">
             <button
               onClick={() => handleNavClick("#hero")}
-              className="font-bold text-lg text-[#3E5F44] no-underline bg-none border-none cursor-pointer"
+              className="font-bold text-lg text-text no-underline bg-none border-none cursor-pointer"
             >
               SS
             </button>
             <button
-              className="p-2 rounded-md text-[#3E5F44] hover:bg-gray-200 transition"
+              className="p-2 rounded-md text-text hover:bg-gray-200 transition"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              <GiHamburgerMenu size={24} className="text-[#3E5F44]" />
+              <GiHamburgerMenu size={24} className="text-text" />
             </button>
           </header>
 
           {/* Desktop Sidebar */}
-          <aside className="hidden w-15 lg:flex fixed top-1/2 left-4 transform -translate-y-1/2 z-50 bg-white rounded-2xl shadow-lg p-4 flex-col items-center space-y-6">
+          <aside className="hidden w-15 lg:flex fixed top-1/2 left-4 transform -translate-y-1/2 z-50  rounded-2xl shadow-lg p-4 flex-col items-center space-y-6">
             <button
               onClick={() => handleNavClick("#hero")}
               className="font-bold text-xl text-[#5E936C] no-underline bg-none border-none cursor-pointer"
@@ -149,10 +171,29 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
                 ))}
               </ul>
             </nav>
+
+            {/* Theme Toggle Button */}
+            <button
+              onClick={() => {
+                const nextTheme: Theme =
+                  theme === "light"
+                    ? "dark"
+                    : theme === "dark"
+                    ? "system"
+                    : "light";
+                setTheme(nextTheme);
+              }}
+              className="mt-4 px-3 py-2 cursor-pointer text-sm font-semibold text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" && <FaSun />}
+              {theme === "dark" && <FaMoon />}
+              {theme === "system" && <FaComputer />}
+            </button>
             {/* Contact Button */}
             <button
               onClick={onContactClick}
-              className="mt-4 px-3 py-2 bg-[#5E936C] text-white rounded-full text-sm hover:bg-[#93DA97] transition"
+              className="mt-4 px-3 py-2 bg-[#5E936C] cursor-pointer text-white rounded-full text-sm hover:bg-[#93DA97] transition"
               aria-label="Open contact form"
             >
               <MdEmail />
@@ -190,7 +231,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
                     setMobileMenuOpen(false);
                     onContactClick();
                   }}
-                  className="inline-block mt-4 px-4 py-2 text-lg text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
+                  className="inline-block cursor-pointer mt-4 px-4 py-2 text-lg text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
                 >
                   Contact
                 </button>

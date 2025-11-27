@@ -99,7 +99,7 @@ export default function ContactFormPopup({
         </button>
 
         {/* Header */}
-        <div className="p-6 bg-gradient-to-r from-emerald-50 to-green-50">
+        <div className="p-6 bg-linear-to-r from-emerald-50 to-green-50">
           <h2 className="text-2xl font-bold text-emerald-700 text-center">
             Get In Touch
           </h2>

@@ -24,7 +24,7 @@ const Hero = () => {
           </h1>
           <TypewriterSkills skills={skills} />
 
-          <p className="text-justify text-[#3E5F44] mt-4">
+          <p className="text-justify text-text mt-4">
             I am a passionate Full Stack Web Developer from Nepal with a strong
             foundation in computer engineering and hands-on experience building
             modern, scalable web applications. Specializing in the MERN stack
@@ -33,7 +33,7 @@ const Hero = () => {
             user experiences.
           </p>
 
-          <p className="text-justify text-[#3E5F44] mt-4">
+          <p className="text-justify text-text mt-4">
             With a deep interest in technology and problem-solving, I thrive on
             turning complex ideas into functional digital products. My academic
             background in computer engineering has equipped me with both

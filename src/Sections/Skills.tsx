@@ -25,7 +25,7 @@ const Skills: React.FC = () => (
           className="backdrop-blur-md px-6 sm:px-10 py-8 sm:py-6 mb-10 w-full sm:w-[48%] rounded-2xl 
           shadow-sm shadow-[#328E6E]"
         >
-          <h3 className="text-2xl sm:text-3xl font-semibold text-[#3E5F44] mb-4 text-center">
+          <h3 className="text-2xl sm:text-3xl font-semibold text-text mb-4 text-center">
             {category.title}
           </h3>
 
@@ -48,7 +48,7 @@ const Skills: React.FC = () => (
                     alt={`${skill.name} logo`}
                     className="w-6 h-6 sm:w-8 sm:h-8"
                   />
-                  <span className="text-xs sm:text-sm text-[#3E5F44]">
+                  <span className="text-xs sm:text-sm text-text">
                     {skill.name}
                   </span>
                 </div>

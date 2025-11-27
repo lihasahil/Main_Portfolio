@@ -30,7 +30,7 @@ const Card: React.FC<CardProps> = ({
   button,
 }) => {
   return (
-    <div className="mx-5 text-[#3E5F44] p-6 sm:p-8 rounded-xl shadow-sm shadow-[#328E6E]">
+    <div className="mx-5 text-text p-6 sm:p-8 rounded-xl shadow-sm shadow-[#328E6E]">
       {/* Header: Icon + Title */}
       <div className="flex items-start gap-4 mb-4">
         <div className="flex flex-col justify-center">
@@ -51,7 +51,7 @@ const Card: React.FC<CardProps> = ({
       </div>
 
       {/* Description */}
-      <p className="text-sm sm:text-base text-[#3E5F44] mb-4 leading-relaxed">
+      <p className="text-sm sm:text-base text-text mb-4 leading-relaxed">
         {description}
       </p>
 
@@ -71,7 +71,7 @@ const Card: React.FC<CardProps> = ({
       {projects && projects.length > 0 && (
         <div className="mb-2">
           <h4 className="font-semibold mb-1">Projects:</h4>
-          <ul className="list-disc list-inside text-[#3E5F44] text-sm space-y-1">
+          <ul className="list-disc list-inside text-text text-sm space-y-1">
             {projects.map((proj, i) => (
               <li key={i}>{proj}</li>
             ))}
@@ -95,7 +95,7 @@ const Card: React.FC<CardProps> = ({
       {button && (
         <button
           onClick={button.onClick}
-          className="mt-4 px-4 py-2 text-sm font-semibold text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
+          className="mt-4 px-4 py-2 text-sm font-semibold cursor-pointer text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
         >
           {button.label}
         </button>

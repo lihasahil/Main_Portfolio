@@ -34,3 +34,19 @@
   line-height: 1;
   animation: greenShadows 4s infinite linear;
 }
+
+:root {
+  --bg: #ffffff;
+  --text: #3E5F44;
+}
+
+html[data-theme="dark"] {
+  --bg: #000000;
+  --text: #ffffff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}

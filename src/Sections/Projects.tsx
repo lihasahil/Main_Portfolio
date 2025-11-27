@@ -71,19 +71,19 @@ export default function ProjectSection() {
   return (
     <section
       id="projects"
-      className="p-8 mx-auto  text-black border-2 border-dotted border-green-600 border-b-0 "
+      className="p-8 mx-auto  border-2 border-dotted border-green-600 border-b-0 "
     >
       <h2 className="text-center text-2xl font-bold my-8 text-design">
         Projects
       </h2>
 
       {/* Buttons */}
-      <div className="flex flex-wrap gap-3 justify-center mb-6 bg-[#E8FFD7] rounded-3xl p-2 w-fit mx-auto">
+      <div className="flex flex-wrap gap-3 justify-center mb-6 bg-[#E8FFD7] rounded-3xl cursor-pointer p-2 w-fit mx-auto">
         {projects.map((project, index) => (
           <button
             key={index}
             onClick={() => setSelected(index)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition text-[#E8FFD7] ${
+            className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer transition text-[#E8FFD7] ${
               selected === index
                 ? "bg-[#1b4552]"
                 : "bg-[#5E936C] hover:bg-[#93DA97]"
@@ -110,7 +110,7 @@ export default function ProjectSection() {
               <img
                 src={projects[selected].image}
                 alt={projects[selected].name}
-                className="rounded-xl w-full  h-[35rem] object-fit
+                className="rounded-xl w-full  h-140 object-fit
                  mb-4 shadow-md"
               />
             </div>
@@ -120,7 +120,7 @@ export default function ProjectSection() {
               <h3 className="text-2xl text-[#006A71] font-bold mb-4">
                 {projects[selected].name}
               </h3>
-              <p className="text-[#3E5F44] text-justify">
+              <p className="text-text text-justify">
                 {projects[selected].description}
               </p>
 
@@ -144,7 +144,7 @@ export default function ProjectSection() {
                   </a>
                 </div>
 
-                <div className="text-[#3E5F44]">
+                <div className="text-text">
                   <span className="font-medium block mb-2">Skills:</span>
                   <div className="flex flex-wrap gap-3">
                     {projects[selected].skills.map((skill, index) => (

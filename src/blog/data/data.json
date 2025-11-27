@@ -146,7 +146,7 @@
       {
         "type": "code",
         "language": "tsx",
-        "text": "Bad:\n<button onClick={() => setCount(count + 1)}>Add</button>\n\n✅ Good:\nconst handleAdd = () => setCount(count + 1);\n<button onClick={handleAdd}>Add</button>"
+        "text": "Bad:\n<button onClick={() => setCount(count + 1)}>Add</button>\n\n Good:\nconst handleAdd = () => setCount(count + 1);\n<button onClick={handleAdd}>Add</button>"
       },
 
       {

@@ -46,7 +46,7 @@ const BlogPostRenderer: React.FC = () => {
               );
             case "paragraph":
               return (
-                <p key={i} className="leading-relaxed text-gray-700 mb-4">
+                <p key={i} className="leading-relaxed text-text mb-4">
                   {block.text}
                 </p>
               );

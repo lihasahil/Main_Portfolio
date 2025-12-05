@@ -55,6 +55,8 @@ html[data-theme="dark"] .skill-inner-shadow {
   --bg: #ffffff;
   --bg-card: #f0f5f0;
   --text: #3e5f44;
+  --tool: #000000;
+  --tool-text: #ffffff;
   --skill-bg: rgba(0, 0, 0, 0.05);
   --skill-border: #16a34a;
 }
@@ -62,6 +64,8 @@ html[data-theme="dark"] .skill-inner-shadow {
 html[data-theme="dark"] {
   --bg: #000000;
   --bg-card: #1a1a1a;
+  --tool: #ffffff;
+  --tool-text: #3e5f44;
   --text: #ffffff;
   --skill-bg: rgba(255, 255, 255, 0.15);
   --skill-border: #16a34a;
@@ -88,5 +92,11 @@ body {
 @layer components {
   .bg-bg-card {
     @apply bg-[var(--bg-card)];
+  }
+  .bg-tool {
+    @apply bg-[var(--tool)];
+  }
+  .text-tool-text {
+    @apply text-[var(--tool-text)];
   }
 }

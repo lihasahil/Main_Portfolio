@@ -1,5 +1,9 @@
 import Card from "../components/Card";
 import { FaBriefcase } from "react-icons/fa";
+import ReactLogo from "../assets/tech_logo/reactjs.png";
+import ExpressLogo from "../assets/tech_logo/express.png";
+import NodeLogo from "../assets/tech_logo/nodejs.png";
+import MongoLogo from "../assets/tech_logo/mongodb.png";
 const Experience = () => {
   return (
     <section
@@ -15,7 +19,24 @@ const Experience = () => {
         subtitle={["Software Developer Intern"]}
         date="2025,June - Present"
         description="Collaborated on building healthcare web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js).Gained hands-on experience in full stack development, API integration, and RESTful service creation.Contributed to front-end UI components and back-end server logic under senior developer guidance.Strengthened skills in Git, responsive design, and debugging within an agile team environment."
-        skills={["React", "Express", "NodeJs", "MongoDB"]}
+        skills={[
+          { name: "React", icon: ReactLogo, link: "https://react.dev/" },
+          {
+            name: "Express",
+            icon: ExpressLogo,
+            link: "https://expressjs.com/",
+          },
+          {
+            name: "NodeJs",
+            icon: NodeLogo,
+            link: "https://nodejs.org/en/download",
+          },
+          {
+            name: "MongoDB",
+            icon: MongoLogo,
+            link: "https://www.mongodb.com/?msockid=0bbd28e608f06d592dba3bce09026ca9",
+          },
+        ]}
       />
     </section>
   );

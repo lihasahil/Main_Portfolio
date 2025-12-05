@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import blogData from "./data/data.json";
 import Card from "../components/Card";
 import { FaBlog } from "react-icons/fa";
@@ -6,6 +6,10 @@ import { useNavigate } from "react-router";
 
 const BlogList: React.FC = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "Blog | Sahil Shrestha";
+  }, []);
   return (
     <section
       id="blog"
@@ -20,7 +24,7 @@ const BlogList: React.FC = () => {
               title={post.title}
               date={post.date}
               description={post.description}
-              skills={post.tags || []}
+              skills={post.tags?.map((tag) => ({ name: tag })) || []}
               button={{
                 label: "Read More →",
                 onClick: () => navigate(`/blog/${post.id}`),

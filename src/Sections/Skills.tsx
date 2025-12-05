@@ -13,7 +13,7 @@ type SkillCategory = {
 };
 
 const Skills: React.FC = () => (
-  <section id="skills" className="border-2 border-dotted border-green-600">
+  <section id="skills" className="border-2 border-dotted  border-green-600">
     {/* Section Title */}
     <h2 className="text-center text-2xl font-bold my-8 text-design">SKILLS</h2>
 
@@ -22,8 +22,8 @@ const Skills: React.FC = () => (
       {(SkillsInfo as SkillCategory[]).map((category) => (
         <div
           key={category.title}
-          className="backdrop-blur-md px-6 sm:px-10 py-8 sm:py-6 mb-10 w-full sm:w-[48%] rounded-2xl 
-          shadow-sm shadow-[#328E6E]"
+          className="backdrop-blur-md px-6 sm:px-10 py-8  sm:py-6 mb-10 w-full sm:w-[48%] rounded-md border-green-600 border-2 border-dotted 
+          "
         >
           <h3 className="text-2xl sm:text-3xl font-semibold text-text mb-4 text-center">
             {category.title}
@@ -41,12 +41,12 @@ const Skills: React.FC = () => (
               {category.skills.map((skill) => (
                 <div
                   key={skill.name}
-                  className="flex items-center justify-center space-x-2 bg-transparent border-2 border-[#328E6E] rounded-3xl py-2 px-2 sm:py-2 sm:px-2 text-center"
+                  className="flex items-center justify-center space-x-2 skill-inner-shadow self-end bg-skill-bg  border border-dashed border-skill-border rounded-3xl py-2 px-2 sm:py-2 sm:px-2 text-center"
                 >
                   <img
                     src={skill.logo}
                     alt={`${skill.name} logo`}
-                    className="w-6 h-6 sm:w-8 sm:h-8"
+                    className="w-4 h-4 sm:w-6 sm:h-6"
                   />
                   <span className="text-xs sm:text-sm text-text">
                     {skill.name}

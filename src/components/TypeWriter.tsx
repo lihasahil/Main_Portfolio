@@ -17,16 +17,21 @@ const TypewriterSkills: React.FC<TypewriterSkillsProps> = ({
   useEffect(() => {
     if (!skills || skills.length === 0) return;
 
-    if (index === skills.length) {
-      setIndex(0);
-      return;
+    // Pause before starting next skill
+    if (subIndex === 0 && index > 0 && !reverse) {
+      const timeout = setTimeout(() => {
+        setSubIndex(1);
+      }, 500);
+      return () => clearTimeout(timeout);
     }
 
+    // When finished typing, start deleting
     if (subIndex === skills[index].length + 1 && !reverse) {
       const timeout = setTimeout(() => setReverse(true), 1000);
       return () => clearTimeout(timeout);
     }
 
+    // When finished deleting, move to next skill
     if (subIndex === 0 && reverse) {
       setReverse(false);
       setIndex((prev) => (prev + 1) % skills.length);
@@ -51,19 +56,27 @@ const TypewriterSkills: React.FC<TypewriterSkillsProps> = ({
     return () => clearInterval(blinkInterval);
   }, []);
 
+  const maxWidth =
+    skills && skills.length > 0 ? Math.max(...skills.map((s) => s.length)) : 0;
+
   return (
-    <span
-      className={`inline-block text-[#93DA97] font-medium md:text-left mt-4 ${
+    <div
+      className={`text-[#93DA97] font-medium md:text-left mt-4 font-mono ${
         className ?? "text-lg text-center"
       }`}
-      style={{ height: "1.5em", display: "inline-block" }}
+      style={{
+        height: "1.5em",
+        width: `${maxWidth * 0.65}em`,
+        display: "block",
+        overflow: "hidden",
+      }}
     >
-      {
-        skills && skills.length > 0
+      <span style={{ display: "block" }}>
+        {skills && skills.length > 0
           ? `${skills[index].substring(0, subIndex)}${blink ? "|" : " "}`
-          : "\u00A0" /* non-breaking space to preserve height */
-      }
-    </span>
+          : "\u00A0"}
+      </span>
+    </div>
   );
 };
 

@@ -43,38 +43,71 @@ const Hero = () => {
 
           {/* Social Icons */}
           <div className="flex justify-center md:justify-start gap-4 mt-6 text-xl">
-            <a
-              href="https://github.com/lihasahil"
-              target="_blank"
-              title="Github Link"
-              className="text-[#5E936C] hover:text-[#93DA97]"
-            >
-              <FaGithub />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/sahil-shrestha-b46887319/"
-              target="_blank"
-              title="Linked Link"
-              className="text-[#5E936C] hover:text-[#93DA97]"
-            >
-              <FaLinkedin />
-            </a>
-            <a
-              href="https://www.instagram.com/sahil.shresthaa/"
-              target="_blank"
-              title="Instagram Link"
-              className="text-[#5E936C] hover:text-[#93DA97]"
-            >
-              <FaInstagram />
-            </a>
-            <a
-              href="/cv/Sahil-CV.pdf"
-              download
-              title="Download My CV"
-              className="text-[#5E936C] hover:text-[#93DA97]"
-            >
-              <IoDocumentText />
-            </a>
+            <div className="flex gap-4">
+              {/* Github */}
+              <a
+                href="https://github.com/lihasahil"
+                target="_blank"
+                className="relative group text-[#5E936C] hover:text-[#93DA97]"
+              >
+                <FaGithub />
+                <span
+                  className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 
+                         px-2 py-1 bg-tool text-tool-text text-sm rounded opacity-0 
+                         group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                >
+                  Github
+                </span>
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/sahil-shrestha-b46887319/"
+                target="_blank"
+                className="relative group text-[#5E936C] hover:text-[#93DA97]"
+              >
+                <FaLinkedin />
+                <span
+                  className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 
+                         px-2 py-1 bg-tool text-tool-text text-sm rounded opacity-0 
+                         group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                >
+                  LinkedIn
+                </span>
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/sahil.shresthaa/"
+                target="_blank"
+                className="relative group text-[#5E936C] hover:text-[#93DA97]"
+              >
+                <FaInstagram />
+                <span
+                  className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 
+                         px-2 py-1 bg-tool text-tool-text text-sm rounded opacity-0 
+                         group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                >
+                  Instagram
+                </span>
+              </a>
+
+              {/* CV Download */}
+              <a
+                href="/cv/Sahil-CV.pdf"
+                download
+                className="relative group text-[#5E936C] hover:text-[#93DA97]"
+              >
+                <IoDocumentText />
+                <span
+                  className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 
+                         px-2 py-1 bg-tool text-tool-text text-sm rounded opacity-0 
+                         group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                >
+                  Download My CV
+                </span>
+              </a>
+            </div>
           </div>
         </div>
 

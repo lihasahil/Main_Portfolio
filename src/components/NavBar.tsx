@@ -4,7 +4,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdEmail } from "react-icons/md";
 import { useNavigate } from "react-router";
-import { FaComputer } from "react-icons/fa6";
 
 interface NavLink {
   link: string;
@@ -92,12 +91,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
               </ul>
               <button
                 onClick={() => {
-                  const nextTheme: Theme =
-                    theme === "light"
-                      ? "dark"
-                      : theme === "dark"
-                      ? "system"
-                      : "light";
+                  const nextTheme: Theme = theme === "light" ? "dark" : "light";
                   setTheme(nextTheme);
                 }}
                 className="ml-4 px-3 py-2 cursor-pointer text-sm font-semibold text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
@@ -105,7 +99,6 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
               >
                 {theme === "light" && <FaSun />}
                 {theme === "dark" && <FaMoon />}
-                {theme === "system" && <FaComputer />}
               </button>
               {/* Contact Button */}
               <button
@@ -116,14 +109,27 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
               </button>
             </nav>
 
-            {/* Mobile Hamburger */}
-            <button
-              className="lg:hidden p-2 rounded-md text-gray-900 hover:bg-gray-100 transition"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              <GiHamburgerMenu size={24} />
-            </button>
+            {/* Mobile Hamburger and Theme Changer */}
+            <div className="flex justify-between items-center sm:hidden">
+              <button
+                onClick={() => {
+                  const nextTheme: Theme = theme === "light" ? "dark" : "light";
+                  setTheme(nextTheme);
+                }}
+                className=" px-3 py-2 cursor-pointer text-sm font-semibold text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
+                aria-label="Toggle theme"
+              >
+                {theme === "light" && <FaSun />}
+                {theme === "dark" && <FaMoon />}
+              </button>
+              <button
+                className="lg:hidden p-2 rounded-md text-gray-900 hover:bg-gray-100 transition"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                <GiHamburgerMenu size={24} />
+              </button>
+            </div>
           </div>
         </header>
       )}
@@ -175,12 +181,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
             {/* Theme Toggle Button */}
             <button
               onClick={() => {
-                const nextTheme: Theme =
-                  theme === "light"
-                    ? "dark"
-                    : theme === "dark"
-                    ? "system"
-                    : "light";
+                const nextTheme: Theme = theme === "light" ? "dark" : "light";
                 setTheme(nextTheme);
               }}
               className="mt-4 px-3 py-2 cursor-pointer text-sm font-semibold text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
@@ -188,7 +189,6 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
             >
               {theme === "light" && <FaSun />}
               {theme === "dark" && <FaMoon />}
-              {theme === "system" && <FaComputer />}
             </button>
             {/* Contact Button */}
             <button

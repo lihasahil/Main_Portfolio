@@ -25,7 +25,6 @@ import mcLogo from "./assets/tech_logo/mc.png";
 import vercelLogo from "./assets/tech_logo/vercel.png";
 import postgreLogo from "./assets/tech_logo/postgre.png";
 
-
 export type Skill = {
   name: string;
   logo: string; // assuming logo is an imported image URL
@@ -38,8 +37,9 @@ export type SkillCategory = {
 
 export const SkillsInfo: SkillCategory[] = [
   {
-    title: "Frontend",
+    title: "Development",
     skills: [
+      // Frontend
       { name: "HTML", logo: htmlLogo },
       { name: "CSS", logo: cssLogo },
       { name: "SASS", logo: sassLogo },
@@ -51,29 +51,22 @@ export const SkillsInfo: SkillCategory[] = [
       { name: "GSAP", logo: gsapLogo },
       { name: "Material UI", logo: materialuiLogo },
       { name: "Bootstrap", logo: bootstrapLogo },
-    ],
-  },
-  {
-    title: "Backend",
-    skills: [
+
+      // Backend
       { name: "Node JS", logo: nodejsLogo },
       { name: "Express JS", logo: expressjsLogo },
       { name: "MySQL", logo: mysqlLogo },
       { name: "MongoDB", logo: mongodbLogo },
       { name: "PostgreSQL", logo: postgreLogo },
-    ],
-  },
-  {
-    title: "Languages",
-    skills: [
+
+      // Languages
       { name: "C", logo: cLogo },
       { name: "C++", logo: cppLogo },
-      { name: "JavaScript", logo: javascriptLogo },
       { name: "TypeScript", logo: typescriptLogo },
     ],
   },
   {
-    title: "Tools",
+    title: "Tools & Platforms",
     skills: [
       { name: "Git", logo: gitLogo },
       { name: "GitHub", logo: githubLogo },

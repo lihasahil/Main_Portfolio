@@ -1,6 +1,12 @@
 import React from "react";
 import TypewriterSkills from "./TypeWriter";
 
+interface Skill {
+  name: string;
+  icon?: string; // optional icon image
+  link?: string; // optional link
+}
+
 interface CardProps {
   icon: React.ReactNode;
   title: string;
@@ -8,7 +14,7 @@ interface CardProps {
   date: string;
   score?: string;
   description: string;
-  skills: string[];
+  skills: Skill[];
   projects?: string[];
   website?: string;
   button?: {
@@ -30,23 +36,25 @@ const Card: React.FC<CardProps> = ({
   button,
 }) => {
   return (
-    <div className="mx-5 text-text p-6 sm:p-8 rounded-xl shadow-sm shadow-[#328E6E]">
+    <div className="mx-5 text-text p-6 sm:p-8 rounded-md border-dotted border-2 border-green-600 ">
       {/* Header: Icon + Title */}
-      <div className="flex items-start gap-4 mb-4">
+      <div className="flex items-start gap-2 mb-4">
         <div className="flex flex-col justify-center">
-          <div className="flex gap-5 justify-center items-center">
-            <div className="rounded-full bg-[#E8FFD7] p-5 text-2xl text-[#93DA97]">
+          <div className="flex gap-2 justify-center items-center">
+            <div className="rounded-full bg-[#E8FFD7] p-2 text-base text-[#93DA97]">
               {icon}
             </div>
-
             <h3 className="text-xl sm:text-2xl font-semibold">{title}</h3>
           </div>
 
-          <p className="text-sm">
-            <TypewriterSkills skills={subtitle} className="text-sm" />
-          </p>
+          {subtitle && (
+            <p className="text-sm">
+              <TypewriterSkills skills={subtitle} className="text-sm" />
+            </p>
+          )}
+
           <p className="text-[#D2D0A0] text-sm">{date}</p>
-          <p className="text-[#D2D0A0] text-xs">{score}</p>
+          {score && <p className="text-[#D2D0A0] text-xs">{score}</p>}
         </div>
       </div>
 
@@ -56,16 +64,36 @@ const Card: React.FC<CardProps> = ({
       </p>
 
       {/* Skills */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {skills.map((skill, index) => (
-          <span
-            key={index}
-            className="bg-[#5E936C] text-[#E8FFD7] text-sm px-3 py-1 rounded-md"
-          >
-            {skill}
-          </span>
-        ))}
-      </div>
+      {skills && skills.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {skills.map((skill, index) =>
+            skill.link ? (
+              <a
+                key={index}
+                href={skill.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm bg-skill-bg cursor-pointer border border-dashed border-skill-border py-1 px-2 rounded-md skill-inner-shadow self-end text-text"
+              >
+                {skill.icon && (
+                  <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
+                )}
+                <span>{skill.name}</span>
+              </a>
+            ) : (
+              <div
+                key={index}
+                className="inline-flex items-center gap-2 text-sm bg-skill-bg cursor-pointer border border-dashed  border-skill-border py-1 px-2 rounded-md skill-inner-shadow self-end text-text"
+              >
+                {skill.icon && (
+                  <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
+                )}
+                <span>{skill.name}</span>
+              </div>
+            )
+          )}
+        </div>
+      )}
 
       {/* Projects (optional) */}
       {projects && projects.length > 0 && (
@@ -95,7 +123,7 @@ const Card: React.FC<CardProps> = ({
       {button && (
         <button
           onClick={button.onClick}
-          className="mt-4 px-4 py-2 text-sm font-semibold cursor-pointer text-white bg-[#5E936C] hover:bg-[#93DA97] rounded-lg transition"
+          className="mt-4 px-5 py-2.5 text-sm font-semibold cursor-pointer text-white bg-[#5E936C] rounded-full shadow-md hover:bg-[#93DA97] hover:shadow-lg transition-all duration-200 active:scale-95"
         >
           {button.label}
         </button>

@@ -6,13 +6,8 @@ import Footer from "./Sections/Footer";
 import NavBar from "./components/NavBar";
 import Hero from "./Sections/Hero";
 import ProjectSection from "./Sections/Projects";
-import {
-  FaBriefcase,
-  FaFolderOpen,
-  FaHome,
-  FaUserGraduate,
-} from "react-icons/fa";
-import { GiSkills } from "react-icons/gi";
+import { FaFolderOpen, FaHome } from "react-icons/fa";
+
 import { useEffect, useState } from "react";
 import ContactFormPopup from "./components/ContactPop";
 import Loader from "./components/Loader/Loader";
@@ -21,15 +16,16 @@ import { Analytics } from "@vercel/analytics/react";
 import { Route, Routes } from "react-router";
 import BlogList from "./blog";
 import BlogPostRenderer from "./blog/component/blog-post-renderer";
+import OnekoCat from "./components/OnekoCat";
+import { FaPenClip } from "react-icons/fa6";
 
 function App() {
   const navLinks = [
     { link: "#home", name: "Home", icon: <FaHome /> },
-    { link: "#experience", name: "Experience", icon: <FaBriefcase /> },
-    { link: "#education", name: "Education", icon: <FaUserGraduate /> },
+
     { link: "#projects", name: "Projects", icon: <FaFolderOpen /> },
-    { link: "#skills", name: "Skills", icon: <GiSkills /> },
-    { link: "/blog", name: "Blog", icon: <FaFolderOpen /> },
+
+    { link: "/blog", name: "Blog", icon: <FaPenClip /> },
   ];
   const [isLoading, setIsLoading] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
@@ -45,6 +41,7 @@ function App() {
 
   return (
     <>
+      <OnekoCat />
       <NavBar navLinks={navLinks} onContactClick={() => setShowPopup(true)} />
       <ContactFormPopup
         isOpen={showPopup}
@@ -54,7 +51,7 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="max-w-screen-xl mx-auto px-4">
+            <div className="max-w-7xl mx-auto px-4">
               <Helmet>
                 {/* Primary Meta Tags */}
                 <title>Sahil Shrestha | Full Stack Developer Portfolio</title>

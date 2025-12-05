@@ -103,7 +103,7 @@ export default function ProjectSection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="flex flex-col md:flex-row gap-8 rounded-xl p-8 shadow-sm shadow-[#328E6E]"
+            className="flex flex-col md:flex-row gap-8 rounded-md  p-8 border-2 border-dotted border-green-600"
           >
             {/* Image Section */}
             <div className="md:w-1/2">

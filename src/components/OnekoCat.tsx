@@ -8,7 +8,7 @@ export default function OnekoCat() {
     // list of your GIFs
     const catSprites = [
       "/oneko/oneko-dog.gif",
-      "/oneko/oneko-mia.gif",
+      "/oneko/oneko-maia.gif",
       "/oneko/oneko-tora.gif",
       "/oneko/oneko-vaporwave.gif",
       "/oneko/oneko.gif",

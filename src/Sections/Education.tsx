@@ -10,7 +10,7 @@ const Education = () => {
       <h1 className="text-center text-2xl font-bold my-8 text-design">
         EDUCATION
       </h1>
-      <div className="flex flex-col space-y-8 pb-8 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-8 pb-8">
         <Card
           icon={<FaUserGraduate />}
           title="Himalaya College of Enginerring"
@@ -41,22 +41,24 @@ const Education = () => {
           ]}
           score="GPA: 3.27"
         />
-        <Card
-          icon={<FaUserGraduate />}
-          title="V.S. Niketan Secondary School"
-          subtitle={["Secondary Education Examination"]}
-          date=" April 2017 - April 2018"
-          score="GPA: 3.65"
-          description="Completed Education Examination with a strong focus on fundamental subjects such as Mathematics, Nepali, and English. Actively involved in extracurricular activities, sports, and leadership programs, which helped build a well-rounded skill set."
-          skills={[
-            { name: "Science" },
-            { name: "English" },
-            { name: "Nepali" },
-            { name: "Social Studies" },
-            { name: "HPE" },
-            { name: "Accounts" },
-          ]}
-        />
+        <div className="sm:col-span-2">
+          <Card
+            icon={<FaUserGraduate />}
+            title="V.S. Niketan Secondary School"
+            subtitle={["Secondary Education Examination"]}
+            date="April 2017 - April 2018"
+            score="GPA: 3.65"
+            description="Completed Education Examination with a strong focus on fundamental subjects such as Mathematics, Nepali, and English. Actively involved in extracurricular activities, sports, and leadership programs, which helped build a well-rounded skill set."
+            skills={[
+              { name: "Science" },
+              { name: "English" },
+              { name: "Nepali" },
+              { name: "Social Studies" },
+              { name: "HPE" },
+              { name: "Accounts" },
+            ]}
+          />
+        </div>
       </div>
     </section>
   );

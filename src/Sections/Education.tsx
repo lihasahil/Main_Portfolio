@@ -12,7 +12,7 @@ const Education = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-8 pb-8">
         <Card
           icons="/icons/hcoe.png"
-          title="Himalaya College of Enginerring"
+          title="Himalaya College of Engineering"
           subtitle={["Bachelors of Computer Engineering"]}
           date="April 2021 - April 2025"
           description="Completed a Bachelor’s degree in Computer Engineering, gaining in-depth knowledge of software development, computer architecture, networking, and embedded systems, along with practical experience in problem-solving and project implementation."

@@ -186,10 +186,10 @@ export default function ProjectSection() {
           </AnimatePresence>
 
           {/* Navigation */}
-          <div className="flex items-center justify-between mt-5">
+          <div className="flex items-center justify-between mt-5 ">
             <button
               onClick={prevProject}
-              className="p-3 rounded-full bg-[#5E936C] text-white hover:bg-[#1b4552] transition-colors shadow-md hover:shadow-lg"
+              className="p-3 rounded-full bg-[#5E936C] cursor-pointer text-white hover:bg-[#5E936C]/50 transition-colors "
             >
               <BiChevronLeft size={15} />
             </button>
@@ -211,7 +211,7 @@ export default function ProjectSection() {
 
             <button
               onClick={nextProject}
-              className="p-3 rounded-full bg-[#5E936C] text-white hover:bg-[#1b4552] transition-colors shadow-md hover:shadow-lg"
+              className="p-3 rounded-full bg-[#5E936C] text-white cursor-pointer hover:bg-[#5E936C]/50 transition-colors"
             >
               <BiChevronRight size={15} />
             </button>

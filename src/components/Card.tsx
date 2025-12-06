@@ -1,21 +1,22 @@
 import React from "react";
 import TypewriterSkills from "./TypeWriter";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 interface Skill {
   name: string;
-  icon?: string; // optional icon image
-  link?: string; // optional link
+  icon?: string;
+  link?: string;
 }
 
 interface CardProps {
-  icon: React.ReactNode;
+  icons: string;
   title: string;
   subtitle?: string[];
   date: string;
   score?: string;
   description: string;
   skills: Skill[];
-  projects?: string[];
+  projects?: { name: string; link: string }[];
   website?: string;
   button?: {
     label: string;
@@ -24,7 +25,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({
-  icon,
+  icons,
   title,
   subtitle,
   date,
@@ -40,12 +41,29 @@ const Card: React.FC<CardProps> = ({
       {/* Header: Icon + Title */}
       <div className="flex items-start gap-2 mb-4">
         <div className="flex flex-col justify-center">
-          <div className="flex gap-2 justify-center items-center">
-            <div className="rounded-full bg-[#E8FFD7] p-2 text-base text-[#93DA97]">
-              {icon}
+          {title === "Upchaar Nepal" ? (
+            <div className="flex gap-2 -ml-10 justify-center items-center">
+              <div className="rounded-full text-base text-[#93DA97] w-10 h-10 flex items-center justify-center">
+                <img
+                  src={icons}
+                  alt=""
+                  className="rounded-full object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-semibold">{title}</h3>
             </div>
-            <h3 className="text-xl sm:text-2xl font-semibold">{title}</h3>
-          </div>
+          ) : (
+            <div className="flex gap-2 justify-center items-center">
+              <div className="rounded-full text-base text-[#93DA97] w-10 h-10 flex items-center justify-center">
+                <img
+                  src={icons}
+                  alt=""
+                  className="rounded-full object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-semibold">{title}</h3>
+            </div>
+          )}
 
           {subtitle && (
             <p className="text-sm">
@@ -53,15 +71,36 @@ const Card: React.FC<CardProps> = ({
             </p>
           )}
 
-          <p className="text-[#D2D0A0] text-sm">{date}</p>
-          {score && <p className="text-[#D2D0A0] text-xs">{score}</p>}
+          <p className="text-[#D2D0A0] text-xs">
+            {date}{" "}
+            {score && <span className="text-[#D2D0A0] text-xs">({score})</span>}
+          </p>
         </div>
       </div>
 
       {/* Description */}
-      <p className="text-sm sm:text-base text-text mb-4 leading-relaxed">
-        {description}
-      </p>
+      <p className="text-sm text-text mb-4 leading-relaxed">{description}</p>
+
+      {/* Projects (optional) */}
+      {projects && projects.length > 0 && (
+        <div className="mb-4 text-sm mx-10">
+          <h4 className="font-semibold mb-1">Projects I worked on:</h4>
+          <ul className="list-disc list-inside text-text space-y-1">
+            {projects.map((proj, i) => (
+              <li key={i}>
+                <a
+                  href={proj.link}
+                  target="_blank"
+                  className=" hover:underline"
+                >
+                  {proj.name}
+                  <FaExternalLinkAlt className="inline ml-4 w-3 h-3 text-text" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       {/* Skills */}
       {skills && skills.length > 0 && (
@@ -73,7 +112,7 @@ const Card: React.FC<CardProps> = ({
                 href={skill.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm bg-skill-bg cursor-pointer border border-dashed border-skill-border py-1 px-2 rounded-md skill-inner-shadow self-end text-text"
+                className="inline-flex items-center gap-2 text-xs bg-skill-bg cursor-pointer border border-dashed border-skill-border py-1 px-2 rounded-md skill-inner-shadow self-end text-text"
               >
                 {skill.icon && (
                   <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
@@ -83,7 +122,7 @@ const Card: React.FC<CardProps> = ({
             ) : (
               <div
                 key={index}
-                className="inline-flex items-center gap-2 text-sm bg-skill-bg cursor-pointer border border-dashed  border-skill-border py-1 px-2 rounded-md skill-inner-shadow self-end text-text"
+                className="inline-flex items-center gap-2 text-xs bg-skill-bg cursor-pointer border border-dashed  border-skill-border py-1 px-2 rounded-md skill-inner-shadow self-end text-text"
               >
                 {skill.icon && (
                   <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
@@ -92,18 +131,6 @@ const Card: React.FC<CardProps> = ({
               </div>
             )
           )}
-        </div>
-      )}
-
-      {/* Projects (optional) */}
-      {projects && projects.length > 0 && (
-        <div className="mb-2">
-          <h4 className="font-semibold mb-1">Projects:</h4>
-          <ul className="list-disc list-inside text-text text-sm space-y-1">
-            {projects.map((proj, i) => (
-              <li key={i}>{proj}</li>
-            ))}
-          </ul>
         </div>
       )}
 

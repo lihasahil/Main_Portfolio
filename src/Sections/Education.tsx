@@ -1,5 +1,4 @@
 import Card from "../components/Card";
-import { FaUserGraduate } from "react-icons/fa";
 
 const Education = () => {
   return (
@@ -12,7 +11,7 @@ const Education = () => {
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-8 pb-8">
         <Card
-          icon={<FaUserGraduate />}
+          icons="/icons/hcoe.png"
           title="Himalaya College of Enginerring"
           subtitle={["Bachelors of Computer Engineering"]}
           date="April 2021 - April 2025"
@@ -26,7 +25,7 @@ const Education = () => {
           score="Percentage: 72%"
         />
         <Card
-          icon={<FaUserGraduate />}
+          icons="/icons/unnamed.png"
           title="V.S. Niketan Secondary School"
           subtitle={["Higher Secondary Education (10+2) "]}
           date="June 2018 - June 2020"
@@ -43,7 +42,7 @@ const Education = () => {
         />
         <div className="sm:col-span-2">
           <Card
-            icon={<FaUserGraduate />}
+            icons="/icons/unnamed.png"
             title="V.S. Niketan Secondary School"
             subtitle={["Secondary Education Examination"]}
             date="April 2017 - April 2018"

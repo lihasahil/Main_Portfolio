@@ -25,7 +25,7 @@ const Skills: React.FC = () => (
           className="backdrop-blur-md px-6 sm:px-10 py-8  sm:py-6 mb-5 w-full sm:w-[48%] rounded-md border-green-600 border-2 border-dotted 
           "
         >
-          <h3 className="text-2xl sm:text-3xl font-semibold text-text mb-4 text-center">
+          <h3 className="text-xl font-semibold text-text mb-4 text-center">
             {category.title}
           </h3>
 

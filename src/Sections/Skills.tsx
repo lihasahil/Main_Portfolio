@@ -15,14 +15,14 @@ type SkillCategory = {
 const Skills: React.FC = () => (
   <section id="skills" className="border-2 border-dotted  border-green-600">
     {/* Section Title */}
-    <h2 className="text-center text-2xl font-bold my-8 text-design">SKILLS</h2>
+    <h2 className="text-center text-2xl font-bold mt-8 mb-4 text-design">SKILLS</h2>
 
     {/* Skill Categories */}
-    <div className=" m-8 flex flex-wrap gap-1 lg:gap-5 py-10 justify-between">
+    <div className="mx-8 flex flex-wrap gap-1 lg:gap-5 py-5 justify-between">
       {(SkillsInfo as SkillCategory[]).map((category) => (
         <div
           key={category.title}
-          className="backdrop-blur-md px-6 sm:px-10 py-8  sm:py-6 mb-10 w-full sm:w-[48%] rounded-md border-green-600 border-2 border-dotted 
+          className="backdrop-blur-md px-6 sm:px-10 py-8  sm:py-6 mb-5 w-full sm:w-[48%] rounded-md border-green-600 border-2 border-dotted 
           "
         >
           <h3 className="text-2xl sm:text-3xl font-semibold text-text mb-4 text-center">

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import project1 from "../assets/3d.png";
 import project2 from "../assets/social-book.png";
 import project3 from "../assets/food-del.png";
 import project4 from "../assets/project4.png";
@@ -7,7 +6,29 @@ import project5 from "../assets/project5.png";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
+// ----------------------------
+// Skill Icons Mapping
+// ----------------------------
+const skillIcons: Record<string, string> = {
+  React: "/icons/reactjs.png",
+  TailwindCSS: "/icons/tailwindcss.png",
+  "Framer Motion": "/icons/framer.svg",
+  NextJs: "/icons/nextjs.png",
+  Clerk: "/icons/clerk.png",
+  ShadcnUI: "/icons/shadcn.png",
+  PostgreSQL: "/icons/postgre.png",
+  MongoDB: "/icons/mongodb.png",
+  Express: "/icons/express.png",
+  Stripe: "/icons/stripe.png",
+  Liveblocks: "/icons/liveblocks.png",
+  Convex: "/icons/convex.png",
+};
+
+// ----------------------------
+// Project Interface + Data
+// ----------------------------
 interface Project {
   name: string;
   image: string;
@@ -19,31 +40,22 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "3D-Portfolio",
-    image: project1,
-    github: "https://github.com/lihasahil/Sahil-portfolio",
-    live: "https://sahil-portfolio-eight-sand.vercel.app/",
-    skills: ["React", "Tailwind", "GSAP", "ThreeJS"],
-    description:
-      "A personal 3D portfolio website developed to showcase my design and development skills using immersive visuals and modern frontend technologies. The site integrates real-time 3D rendering with a sleek UI/UX to present my work, experience, and contact details in a visually compelling format.",
-  },
-  {
     name: "FindMe",
     image: project4,
     github: "https://github.com/lihasahil/Final_Year_Project",
     live: "https://yourportfolio.com",
-    skills: ["React", "Tailwind", "Framer Motion"],
+    skills: ["React", "TailwindCSS", "Framer Motion"],
     description:
-      "Find Me is an academic project developed to assist in locating missing persons by leveraging gait pattern analysis and face pattern recognition. The system combines cutting-edge biometric technologies with a secure and scalable web application to enhance accuracy in identifying individuals from video footage or images.",
+      "An academic project that identifies missing persons using gait and facial recognition, supported by a secure React-based web interface.",
   },
   {
     name: "Social Book",
     image: project2,
     github: "https://github.com/lihasahil/social-book",
     live: "https://social-book-psi.vercel.app/",
-    skills: ["Next.js", "Clerk", "ShadcnUI", "TailwindCSS", "PostgreSQL"],
+    skills: ["NextJs", "Clerk", "ShadcnUI", "TailwindCSS", "PostgreSQL"],
     description:
-      "Social Book is a full-featured social media application built with Next.js, PostgreSQL, and Prisma, offering users a seamless and interactive experience. It allows users to create posts, like and comment on others' content, and follow other users to build their network. Authentication and user management are powered by Clerk, ensuring secure sign-in and account protection. The modern, responsive UI is crafted using ShadcnUI and TailwindCSS, providing a clean and intuitive user interface. Designed for scalability and real-time interaction, Social Book combines powerful backend logic with a polished frontend for an engaging social networking experience.",
+      "A full-stack social media app where users can post, interact, and follow others. Built with Next.js, PostgreSQL, Clerk, and ShadcnUI.",
   },
   {
     name: "FeastWave",
@@ -52,116 +64,160 @@ const projects: Project[] = [
     live: "https://food-delivery-frontend-h3hs.onrender.com/",
     skills: ["MongoDB", "Express", "React", "Stripe"],
     description:
-      "Feast Wave is a full-stack food delivery application designed to provide users with a seamless ordering experience. Built using the MERN stack, the platform integrates a robust Stripe payment gateway for secure transactions and features an admin panel for efficient management of food items.",
+      "A MERN-based food delivery platform with Stripe payments and an admin panel for managing menu items.",
   },
   {
     name: "IdeaDoodle",
     image: project5,
-    github: "https://github.com/lihasahil/Idea-doodle",
+    github: "httpsgithub.com/lihasahil/Idea-doodle",
     live: "https://idea-doodle.vercel.app/",
     skills: ["NextJs", "Liveblocks", "Convex", "Clerk"],
     description:
-      "Ideadoodle is a real-time collaborative whiteboard app for brainstorming, sketching, and organizing ideas with your team. Built with Convex, Next.js, Clerk, and Liveblocks, it makes collaboration fast, seamless, and fun.",
+      "A real-time collaborative whiteboard for brainstorming, built with Next.js, Convex, Clerk, and Liveblocks.",
   },
 ];
 
+// ----------------------------
+// Component
+// ----------------------------
 export default function ProjectSection() {
-  const [selected, setSelected] = useState<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextProject = () => {
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevProject = () => {
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  const goToProject = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  const currentProject = projects[currentIndex];
 
   return (
     <section
       id="projects"
-      className="p-8 mx-auto  border-2 border-dotted border-green-600 border-b-0 "
+      className="p-8 mx-auto border-2 border-dotted border-green-600 border-b-0"
     >
-      <h2 className="text-center text-2xl font-bold my-8 text-design">
-        Projects
-      </h2>
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-center text-2xl font-bold mb-8 text-design">
+          PROJECTS
+        </h1>
 
-      {/* Buttons */}
-      <div className="flex flex-wrap gap-3 justify-center mb-6 bg-[#E8FFD7] rounded-3xl cursor-pointer p-2 w-fit mx-auto">
-        {projects.map((project, index) => (
-          <button
-            key={index}
-            onClick={() => setSelected(index)}
-            className={`px-4 py-2 rounded-full text-sm font-medium cursor-pointer transition text-[#E8FFD7] ${
-              selected === index
-                ? "bg-[#1b4552]"
-                : "bg-[#5E936C] hover:bg-[#93DA97]"
-            }`}
-          >
-            {project.name}
-          </button>
-        ))}
-      </div>
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 border-2 border-green-600 rounded-md border-dotted p-4 min-h-96 items-center"
+            >
+              {/* Image Section */}
+              <div className="relative overflow-hidden rounded-xl shadow-lg">
+                <img
+                  src={currentProject.image}
+                  alt={currentProject.name}
+                  className="w-full h-96 object-contain"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-[#1b4552]/40 to-transparent" />
+              </div>
 
-      {/* Project Display */}
-      <AnimatePresence mode="wait">
-        {selected !== null && (
-          <motion.div
-            key={selected} // important to trigger exit/enter animation
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="flex flex-col md:flex-row gap-8 rounded-md  p-8 border-2 border-dotted border-green-600"
-          >
-            {/* Image Section */}
-            <div className="md:w-1/2">
-              <img
-                src={projects[selected].image}
-                alt={projects[selected].name}
-                className="rounded-xl w-full  h-140 object-fit
-                 mb-4 shadow-md"
-              />
-            </div>
-
-            {/* Details Section */}
-            <div className="md:w-1/2">
-              <h3 className="text-2xl text-[#006A71] font-bold mb-4">
-                {projects[selected].name}
-              </h3>
-              <p className="text-text text-justify">
-                {projects[selected].description}
-              </p>
-
-              <div className="space-y-4 text-base">
-                <div className="flex gap-4 mt-4">
-                  <a
-                    href={projects[selected].github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex gap-2 justify-center items-center px-4 py-2  bg-[#000000] text-[#F6F6F6] hover:bg-[#F6F6F6] hover:text-[#000000] rounded-3xl font-medium transition"
-                  >
-                    <FaGithub /> GitHub
-                  </a>
-                  <a
-                    href={projects[selected].live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex gap-2 justify-center items-center px-4 py-2 bg-[#A2D5C6] text-[#F6F6F6] hover:bg-[#F6F6F6] hover:text-[#A2D5C6] rounded-3xl font-medium transition"
-                  >
-                    <FaExternalLinkAlt /> Live Demo
-                  </a>
+              {/* Details Section */}
+              <div className="space-y-6">
+                {/* Title + Description */}
+                <div>
+                  <h3 className="text-3xl font-bold text-[#1b4552] mb-3">
+                    {currentProject.name}
+                  </h3>
+                  <p className="text-base text-gray-700 leading-relaxed">
+                    {currentProject.description}
+                  </p>
                 </div>
 
-                <div className="text-text">
-                  <span className="font-medium block mb-2">Skills:</span>
-                  <div className="flex flex-wrap gap-3">
-                    {projects[selected].skills.map((skill, index) => (
+                {/* Skills with Icons */}
+                <div>
+                  <p className="font-semibold text-[#1b4552] mb-3">
+                    Technologies:
+                  </p>
+
+                  <div className="flex flex-wrap gap-2">
+                    {currentProject.skills.map((skill, i) => (
                       <div
-                        key={index}
-                        className="px-4 py-2 rounded-full bg-[#5E936C] text-[#E8FFD7] text-sm font-semibold shadow"
+                        key={i}
+                        className="inline-flex items-center gap-2 text-sm bg-skill-bg cursor-pointer border border-dashed border-skill-border py-1 px-2 rounded-md skill-inner-shadow self-end text-text"
                       >
+                        {skillIcons[skill] && (
+                          <img
+                            src={skillIcons[skill]}
+                            alt={`${skill} logo`}
+                            className="w-4 h-4 object-contain"
+                          />
+                        )}
                         {skill}
                       </div>
                     ))}
                   </div>
                 </div>
+
+                {/* Links */}
+                <div className="flex gap-4 pt-4">
+                  <button
+                    onClick={() => window.open(currentProject.github, "_blank")}
+                    className="flex items-center gap-2 px-3 py-1.5 border border-[#1b4552] text-[#1b4552] hover:bg-[#1b4552] hover:text-white rounded-md transition-colors font-medium"
+                  >
+                    <FaGithub />
+                    GitHub
+                  </button>
+                  <button
+                    onClick={() => window.open(currentProject.live, "_blank")}
+                    className="flex items-center gap-2 px-3 py-1.5 border border-[#5E936C] text-[#5E936C] hover:bg-[#5E936C] hover:text-white rounded-md transition-colors font-medium"
+                  >
+                    <FaExternalLinkAlt />
+                    Live Demo
+                  </button>
+                </div>
               </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Navigation */}
+          <div className="flex items-center justify-between mt-5">
+            <button
+              onClick={prevProject}
+              className="p-3 rounded-full bg-[#5E936C] text-white hover:bg-[#1b4552] transition-colors shadow-md hover:shadow-lg"
+            >
+              <BiChevronLeft size={15} />
+            </button>
+
+            {/* Dots */}
+            <div className="flex gap-2">
+              {projects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToProject(index)}
+                  className={`h-1.5 rounded-full transition-all ${
+                    index === currentIndex
+                      ? "w-4 bg-[#1b4552]"
+                      : "w-1.5 bg-[#A2D5C6] hover:bg-[#5E936C]"
+                  }`}
+                />
+              ))}
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+            <button
+              onClick={nextProject}
+              className="p-3 rounded-full bg-[#5E936C] text-white hover:bg-[#1b4552] transition-colors shadow-md hover:shadow-lg"
+            >
+              <BiChevronRight size={15} />
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

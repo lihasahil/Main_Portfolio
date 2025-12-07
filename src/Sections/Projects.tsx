@@ -100,7 +100,7 @@ export default function ProjectSection() {
   return (
     <section
       id="projects"
-      className="p-8 mx-auto border-2 border-dotted border-green-600 border-b-0"
+      className="p-5 mx-auto border-2 border-dotted border-green-600 border-b-0"
     >
       <div className="max-w-7xl mx-auto">
         <h1 className="text-center text-2xl font-bold mb-8 text-design">

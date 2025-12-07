@@ -15,7 +15,7 @@ interface CardProps {
   date: string;
   score?: string;
   description: string;
-  skills: Skill[];
+  skills?: Skill[];
   projects?: { name: string; link: string }[];
   website?: string;
   button?: {
@@ -37,7 +37,7 @@ const Card: React.FC<CardProps> = ({
   button,
 }) => {
   return (
-    <div className="mx-5 text-text p-6 sm:p-8 rounded-md border-dotted border-2 border-green-600 ">
+    <div className="mx-3 text-text p-6 rounded-md border-dotted border-2 border-green-600 ">
       {/* Header: Icon + Title */}
       <div className="flex items-start gap-2 mb-4">
         <div className="flex flex-col justify-center">

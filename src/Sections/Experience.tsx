@@ -7,7 +7,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="border-2 border-dotted border-green-600 border-t-0 border-b-0 p-2 pb-8"
+      className="border-2 border-dotted border-green-600 border-t-0 border-b-0 p-2 pb-5"
     >
       <h1 className="text-center text-2xl font-bold my-8 text-design">
         EXPERIENCE

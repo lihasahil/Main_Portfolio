@@ -14,7 +14,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="px-4 pt-20 py-8 mx-auto max-w-7xl border-2 border-t-0 border-dotted border-green-600"
+      className="px-4 pt-20 pb-5 mx-auto max-w-7xl border-2 border-t-0 border-dotted border-green-600"
     >
       <div className="flex flex-col-reverse md:flex-row items-center gap-10">
         {/* Text Section */}

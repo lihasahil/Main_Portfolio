@@ -15,14 +15,16 @@ type SkillCategory = {
 const Skills: React.FC = () => (
   <section id="skills" className="border-2 border-dotted  border-green-600">
     {/* Section Title */}
-    <h2 className="text-center text-2xl font-bold mt-8 mb-4 text-design">SKILLS</h2>
+    <h2 className="text-center text-2xl font-bold mt-8 mb-4 text-design">
+      SKILLS
+    </h2>
 
     {/* Skill Categories */}
-    <div className="mx-8 flex flex-wrap gap-1 lg:gap-5 py-5 justify-between">
+    <div className="mx-5 flex flex-col gap-1 lg:gap-5 py-5 justify-between">
       {(SkillsInfo as SkillCategory[]).map((category) => (
         <div
           key={category.title}
-          className="backdrop-blur-md px-6 sm:px-10 py-8  sm:py-6 mb-5 w-full sm:w-[48%] rounded-md border-green-600 border-2 border-dotted 
+          className="backdrop-blur-md px-6 sm:px-10 py-8  sm:py-6w-full  rounded-md border-green-600 border-2 border-dotted 
           "
         >
           <h3 className="text-xl font-semibold text-text mb-4 text-center">
@@ -37,11 +39,11 @@ const Skills: React.FC = () => (
             transitionSpeed={1000}
             gyroscope={true}
           >
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 w-full">
               {category.skills.map((skill) => (
                 <div
                   key={skill.name}
-                  className="flex items-center justify-center space-x-2 skill-inner-shadow self-end bg-skill-bg  border border-dashed border-skill-border rounded-3xl py-2 px-2 sm:py-2 sm:px-2 text-center"
+                  className="flex items-center justify-center space-x-2 skill-inner-shadow self-end bg-skill-bg  border border-dashed border-skill-border rounded-3xl py-2 px-2 text-center"
                 >
                   <img
                     src={skill.logo}

@@ -43,7 +43,7 @@ export const SkillsInfo: SkillCategory[] = [
       { name: "React JS", logo: reactjsLogo },
       { name: "Redux", logo: reduxLogo },
       { name: "Next JS", logo: nextjsLogo },
-      { name: "Tailwind CSS", logo: tailwindcssLogo },
+      { name: "Tailwind", logo: tailwindcssLogo },
       { name: "GSAP", logo: gsapLogo },
       { name: "Shadcn UI", logo: shadcnui },
       { name: "Bootstrap", logo: bootstrapLogo },

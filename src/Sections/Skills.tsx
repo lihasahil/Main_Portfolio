@@ -24,7 +24,7 @@ const Skills: React.FC = () => (
       {(SkillsInfo as SkillCategory[]).map((category) => (
         <div
           key={category.title}
-          className="backdrop-blur-md px-6 sm:px-10 py-8  sm:py-6w-full  rounded-md border-green-600 border-2 border-dotted 
+          className="backdrop-blur-md px-6 sm:px-10 py-8 mb-2  sm:py-6w-full  rounded-md border-green-600 border-2 border-dotted 
           "
         >
           <h3 className="text-xl font-semibold text-text mb-4 text-center">

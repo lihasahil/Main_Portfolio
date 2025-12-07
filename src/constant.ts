@@ -40,17 +40,17 @@ export const SkillsInfo: SkillCategory[] = [
       { name: "HTML", logo: htmlLogo },
       { name: "CSS", logo: cssLogo },
       { name: "JavaScript", logo: javascriptLogo },
-      { name: "React JS", logo: reactjsLogo },
+      { name: "ReactJS", logo: reactjsLogo },
       { name: "Redux", logo: reduxLogo },
-      { name: "Next JS", logo: nextjsLogo },
+      { name: "NextJS", logo: nextjsLogo },
       { name: "Tailwind", logo: tailwindcssLogo },
       { name: "GSAP", logo: gsapLogo },
-      { name: "Shadcn UI", logo: shadcnui },
+      { name: "ShadcnUI", logo: shadcnui },
       { name: "Bootstrap", logo: bootstrapLogo },
 
       // Backend
-      { name: "Node JS", logo: nodejsLogo },
-      { name: "Express JS", logo: expressjsLogo },
+      { name: "NodeJS", logo: nodejsLogo },
+      { name: "ExpressJS", logo: expressjsLogo },
       { name: "MongoDB", logo: mongodbLogo },
       { name: "PostgreSQL", logo: postgreLogo },
 

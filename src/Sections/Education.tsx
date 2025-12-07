@@ -9,8 +9,8 @@ const Education = () => {
       <h1 className="text-center text-2xl font-bold my-8 text-design">
         EDUCATION
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-3  gap-y-4 pb-4">
-        {/* First card stays in grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
+        {/* First card */}
         <Card
           icons="/icons/hcoe.png"
           title="Himalaya College of Engineering"
@@ -26,7 +26,8 @@ const Education = () => {
           score="Percentage: 72%"
         />
 
-        <div className="flex flex-col gap-4 sm:col-span-2">
+        {/* Second and third cards */}
+        <div className="flex flex-col gap-4 md:col-span-1 lg:col-span-2">
           <Card
             icons="/icons/unnamed.png"
             title="V.S. Niketan Secondary School"

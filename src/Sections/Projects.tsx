@@ -3,6 +3,7 @@ import project2 from "../assets/social-book.png";
 import project3 from "../assets/food-del.png";
 import project4 from "../assets/project4.png";
 import project5 from "../assets/project5.png";
+import guffgaff from "../assets/guffgaff.png";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 import { FaExternalLinkAlt } from "react-icons/fa";
@@ -20,10 +21,12 @@ const skillIcons: Record<string, string> = {
   ShadcnUI: "/icons/shadcn.png",
   PostgreSQL: "/icons/postgre.png",
   MongoDB: "/icons/mongodb.png",
-  Express: "/icons/express.png",
+  ExpressJS: "/icons/express.png",
   Stripe: "/icons/stripe.png",
   Liveblocks: "/icons/liveblocks.png",
   Convex: "/icons/convex.png",
+  "Socket.io": "/icons/socket.png",
+  NodeJs: "/icons/nodejs.png",
 };
 
 // ----------------------------
@@ -40,15 +43,6 @@ interface Project {
 
 const projects: Project[] = [
   {
-    name: "FindMe",
-    image: project4,
-    github: "https://github.com/lihasahil/Final_Year_Project",
-    live: "https://yourportfolio.com",
-    skills: ["React", "TailwindCSS", "Framer Motion"],
-    description:
-      "An academic project that identifies missing persons using gait and facial recognition, supported by a secure React-based web interface.",
-  },
-  {
     name: "Social Book",
     image: project2,
     github: "https://github.com/lihasahil/social-book",
@@ -62,7 +56,7 @@ const projects: Project[] = [
     image: project3,
     github: "https://github.com/lihasahil/Food_Delivery_App",
     live: "https://food-delivery-frontend-h3hs.onrender.com/",
-    skills: ["MongoDB", "Express", "React", "Stripe"],
+    skills: ["MongoDB", "ExpressJS", "React", "Stripe"],
     description:
       "A MERN-based food delivery platform with Stripe payments and an admin panel for managing menu items.",
   },
@@ -74,6 +68,24 @@ const projects: Project[] = [
     skills: ["NextJs", "Liveblocks", "Convex", "Clerk"],
     description:
       "A real-time collaborative whiteboard for brainstorming, built with Next.js, Convex, Clerk, and Liveblocks.",
+  },
+  {
+    name: "GuffGaff",
+    image: guffgaff,
+    github: "https://github.com/lihasahil/GuffGaff",
+    live: "https://guff-gaff-umber.vercel.app",
+    skills: ["React", "MongoDB", "NodeJS", "ExpressJS", "Socket.io"],
+    description:
+      "A real-time web application built with the MERN stack and Socket.io to enable instant, bidirectional communication between users.",
+  },
+  {
+    name: "FindMe",
+    image: project4,
+    github: "https://github.com/lihasahil/Final_Year_Project",
+    live: "https://yourportfolio.com",
+    skills: ["React", "TailwindCSS", "Framer Motion", "MongoDB", "ExpressJS"],
+    description:
+      "An academic project that identifies missing persons using gait and facial recognition, supported by a secure React-based web interface.",
   },
 ];
 

@@ -5,8 +5,7 @@ import project4 from "../assets/project4.png";
 import project5 from "../assets/project5.png";
 import guffgaff from "../assets/guffgaff.png";
 import { AnimatePresence, motion } from "framer-motion";
-import { FaGithub } from "react-icons/fa";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaGlobe } from "react-icons/fa";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 
 // ----------------------------
@@ -107,126 +106,200 @@ export default function ProjectSection() {
     setCurrentIndex(index);
   };
 
+  // Get 3 projects: previous, current, next
+  const getPrevIndex = (idx: number) =>
+    (idx - 1 + projects.length) % projects.length;
+  const getNextIndex = (idx: number) => (idx + 1) % projects.length;
+
+  const prevProject3 = projects[getPrevIndex(currentIndex)];
   const currentProject = projects[currentIndex];
+  const nextProject3 = projects[getNextIndex(currentIndex)];
 
   return (
     <section
       id="projects"
-      className="p-5 mx-auto border-2 border-dotted border-green-600 border-b-0"
+      className="py-12 sm:py-14 px-4 sm:px-6  mx-auto border-2 border-dotted border-green-600 border-b-0"
     >
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-center text-2xl font-bold mb-8 text-design">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="text-center text-2xl  font-bold mb-8 text-design">
           PROJECTS
         </h1>
 
         <div className="relative">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-8 border-2 border-green-600 rounded-md border-dotted p-4 min-h-96 items-center"
-            >
-              {/* Image Section */}
-              <div className="relative overflow-hidden rounded-xl shadow-lg">
-                <img
-                  src={currentProject.image}
-                  alt={currentProject.name}
-                  className="w-full h-96 object-contain"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-[#1b4552]/40 to-transparent" />
-              </div>
-
-              {/* Details Section */}
-              <div className="space-y-6">
-                {/* Title + Description */}
-                <div>
-                  <h3 className="text-3xl font-bold text-[#1b4552] mb-3">
-                    {currentProject.name}
-                  </h3>
-                  <p className="text-base text-gray-700 leading-relaxed">
-                    {currentProject.description}
-                  </p>
-                </div>
-
-                {/* Skills with Icons */}
-                <div>
-                  <p className="font-semibold text-[#1b4552] mb-3">
-                    Technologies:
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {currentProject.skills.map((skill, i) => (
-                      <div
-                        key={i}
-                        className="inline-flex items-center gap-2 text-sm bg-skill-bg cursor-pointer border border-dashed border-skill-border py-1 px-2 rounded-md skill-inner-shadow self-end text-text"
-                      >
-                        {skillIcons[skill] && (
-                          <img
-                            src={skillIcons[skill]}
-                            alt={`${skill} logo`}
-                            className="w-4 h-4 object-contain"
-                          />
-                        )}
-                        {skill}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Links */}
-                <div className="flex gap-4 pt-4">
-                  <button
-                    onClick={() => window.open(currentProject.github, "_blank")}
-                    className="flex items-center gap-2 px-3 py-1.5 border border-[#1b4552] text-[#1b4552] hover:bg-[#1b4552] hover:text-white rounded-md transition-colors font-medium"
-                  >
-                    <FaGithub />
-                    GitHub
-                  </button>
-                  <button
-                    onClick={() => window.open(currentProject.live, "_blank")}
-                    className="flex items-center gap-2 px-3 py-1.5 border border-[#5E936C] text-[#5E936C] hover:bg-[#5E936C] hover:text-white rounded-md transition-colors font-medium"
-                  >
-                    <FaExternalLinkAlt />
-                    Live Demo
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-between mt-5 ">
+          {/* Carousel Container */}
+          <div className="flex items-center justify-center gap-3 sm:gap-4">
+            {/* Left Button */}
             <button
               onClick={prevProject}
-              className="p-3 rounded-full bg-[#5E936C] cursor-pointer text-white hover:bg-[#5E936C]/50 transition-colors "
+              className="p-2 sm:p-3 rounded-full bg-[#5A9F68] cursor-pointer text-white hover:bg-green-700 transition-colors shrink-0"
             >
-              <BiChevronLeft size={15} />
+              <BiChevronLeft size={20} />
             </button>
 
-            {/* Dots */}
-            <div className="flex gap-2">
-              {projects.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToProject(index)}
-                  className={`h-1.5 rounded-full transition-all ${
-                    index === currentIndex
-                      ? "w-4 bg-[#1b4552]"
-                      : "w-1.5 bg-[#A2D5C6] hover:bg-[#5E936C]"
-                  }`}
-                />
-              ))}
+            {/* Projects Carousel */}
+            <div className="overflow-hidden flex-1">
+              <div className="flex gap-4 sm:gap-6 justify-center">
+                {/* Left Project (Dimmed) */}
+                <motion.div
+                  layoutId="left"
+                  className="w-full sm:w-60 md:w-72 shrink-0 opacity-50 scale-90 transition-all duration-300"
+                >
+                  <div className=" border-2 border-green-600 border-dotted rounded-lg overflow-hidden shadow-md">
+                    <div className="relative overflow-hidden h-32 sm:h-40">
+                      <img
+                        src={prevProject3.image}
+                        alt={prevProject3.name}
+                        className="w-full h-full object-cover p-1"
+                      />
+                    </div>
+                    <div className="p-3 sm:p-4">
+                      <h3 className="text-sm sm:text-base font-bold text-gray-800 truncate">
+                        {prevProject3.name}
+                      </h3>
+                      <p className="text-xs text-gray-600 mt-1">
+                        {prevProject3.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Center Project  */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentIndex}
+                    layoutId="center"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                    className="w-full sm:w-72 md:w-80 shrink-0 scale-100"
+                  >
+                    <div className=" border-2 border-green-600 border-dotted rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                      {/* Image */}
+                      <div className="relative overflow-hidden h-40 sm:h-48">
+                        <img
+                          src={currentProject.image}
+                          alt={currentProject.name}
+                          className="w-full h-full object-cover p-1"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent" />
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-4 sm:p-5 space-y-3 sm:space-y-4">
+                        {/* Title */}
+                        <div>
+                          <h3 className="text-lg sm:text-xl font-bold text-green-600 mb-1">
+                            {currentProject.name}
+                          </h3>
+                          <p className="text-xs sm:text-sm text-gray-600">
+                            {currentProject.description}
+                          </p>
+                        </div>
+
+                        {/* Skills */}
+                        <div>
+                          <p className="text-xs font-semibold text-gray-700 mb-2">
+                            Technologies:
+                          </p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {currentProject.skills
+                              .slice(0, 4)
+                              .map((skill, i) => (
+                                <div
+                                  key={i}
+                                  className="inline-flex items-center gap-2 text-xs bg-skill-bg cursor-pointer border border-dashed border-skill-border py-1 px-2 rounded-md skill-inner-shadow self-end text-text"
+                                >
+                                  {skillIcons[skill] && (
+                                    <img
+                                      src={skillIcons[skill]}
+                                      alt={`${skill} logo`}
+                                      className="w-3 h-3 object-contain"
+                                    />
+                                  )}
+                                  <span className="hidden sm:inline">
+                                    {skill}
+                                  </span>
+                                </div>
+                              ))}
+                          </div>
+                        </div>
+
+                        {/* Links */}
+                        <div className="flex gap-2 pt-2">
+                          <button
+                            onClick={() =>
+                              window.open(currentProject.github, "_blank")
+                            }
+                            className=" flex-1 flex items-center justify-center gap-1.5 px-2 py-2 text-xs sm:text-sm rounded cursor-pointer font-medium text-text border border-text relative"
+                          >
+                            <FaGithub size={14} />
+                            <span className="hidden sm:inline">GitHub</span>
+                          </button>
+
+                          <button
+                            onClick={() =>
+                              window.open(currentProject.live, "_blank")
+                            }
+                            className=" flex-1 flex items-center justify-center gap-1.5 px-2 py-2 text-xs sm:text-sm rounded cursor-pointer font-medium text-green-400 border border-green-400 relative"
+                          >
+                            <FaGlobe size={14} />
+                            <span className="hidden sm:inline">Live</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Right Project (Dimmed) */}
+                <motion.div
+                  layoutId="right"
+                  className="w-full sm:w-60 md:w-72 shrink-0 opacity-50 scale-90 transition-all duration-300"
+                >
+                  <div className=" border-2 border-green-600 border-dotted rounded-lg overflow-hidden shadow-md">
+                    <div className="relative overflow-hidden h-32 sm:h-40">
+                      <img
+                        src={nextProject3.image}
+                        alt={nextProject3.name}
+                        className="w-full h-full object-cover p-1"
+                      />
+                    </div>
+                    <div className="p-3 sm:p-4">
+                      <h3 className="text-sm sm:text-base font-bold text-gray-800 truncate">
+                        {nextProject3.name}
+                      </h3>
+                      <p className="text-xs text-gray-600 mt-1">
+                        {nextProject3.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
             </div>
 
+            {/* Right Button */}
             <button
               onClick={nextProject}
-              className="p-3 rounded-full bg-[#5E936C] text-white cursor-pointer hover:bg-[#5E936C]/50 transition-colors"
+              className="p-2 sm:p-3 rounded-full bg-[#5A9F68] text-white cursor-pointer hover:bg-green-700 transition-colors shrink-0"
             >
-              <BiChevronRight size={15} />
+              <BiChevronRight size={20} />
             </button>
+          </div>
+
+          {/* Dots Navigation */}
+          <div className="flex gap-2 justify-center mt-6 sm:mt-8">
+            {projects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToProject(index)}
+                className={`h-1.5 rounded-full cursor-pointer transition-all ${
+                  index === currentIndex
+                    ? "w-4 bg-[#5A9F68]"
+                    : "w-1.5 bg-gray-300 hover:bg-green-400"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>

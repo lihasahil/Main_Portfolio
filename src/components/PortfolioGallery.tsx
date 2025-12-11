@@ -1,34 +1,38 @@
+import { motion } from "framer-motion";
+
 export default function PortfolioGallery() {
   return (
-    <div className="relative mt-5  p-6 sm:p-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Left: Main Image */}
-        <div className="rounded-xl h-fit shadow-[#328E6E] shadow-sm">
-          <img
-            src="/Sahil.jpg"
-            alt="Main"
-            className="w-full h-auto rounded-xl object-cover aspect-square sm:aspect-3/4 "
-          />
-        </div>
+    <div className="relative mt-5 p-4 sm:p-6 max-w-lg mx-auto">
+      <motion.div
+        className="relative w-54 h-72 rounded-xl shadow-[#328E6E] shadow-sm overflow-hidden cursor-pointer"
+        initial="initial"
+        animate="initial"
+        whileHover="hovered"
+      >
+        {/* Default Image */}
+        <motion.img
+          src="/Sahil.jpg"
+          alt="Main Image"
+          className="w-full h-full object-contain absolute inset-0"
+          variants={{
+            initial: { opacity: 1 },
+            hovered: { opacity: 0 },
+          }}
+          transition={{ duration: 0.35 }}
+        />
 
-        {/* Right: Two stacked images */}
-        <div className="flex flex-col gap-6">
-          <div className="rounded-xl overflow-hidden shadow-[#328E6E] shadow-sm">
-            <img
-              src="/main.jpg"
-              alt="Secondary 1"
-              className="w-full h-auto object-cover aspect-video sm:aspect-square "
-            />
-          </div>
-          <div className="rounded-xl overflow-hidden shadow-[#328E6E] shadow-sm">
-            <img
-              src="/sahil-photo.jpg"
-              alt="Secondary 2"
-              className="w-full h-auto object-cover aspect-video sm:aspect-square"
-            />
-          </div>
-        </div>
-      </div>
+        {/* Hover Image */}
+        <motion.img
+          src="/main.jpg"
+          alt="Hover Image"
+          className="w-full h-full object-contain absolute inset-0"
+          variants={{
+            initial: { opacity: 0 },
+            hovered: { opacity: 1 },
+          }}
+          transition={{ duration: 0.35 }}
+        />
+      </motion.div>
     </div>
   );
 }

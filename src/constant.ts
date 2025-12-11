@@ -1,12 +1,12 @@
-import htmlLogo from "./assets/tech_logo/html.png";
-import cssLogo from "./assets/tech_logo/css.png";
+// import htmlLogo from "./assets/tech_logo/html.png";
+// import cssLogo from "./assets/tech_logo/css.png";
 import javascriptLogo from "./assets/tech_logo/javascript.png";
 import reactjsLogo from "./assets/tech_logo/reactjs.png";
 import reduxLogo from "./assets/tech_logo/redux.png";
 import nextjsLogo from "./assets/tech_logo/nextjs.png";
 import tailwindcssLogo from "./assets/tech_logo/tailwindcss.png";
 import gsapLogo from "./assets/tech_logo/gsap.png";
-import bootstrapLogo from "./assets/tech_logo/bootstrap.png";
+// import bootstrapLogo from "./assets/tech_logo/bootstrap.png";
 import nodejsLogo from "./assets/tech_logo/nodejs.png";
 import expressjsLogo from "./assets/tech_logo/express.png";
 
@@ -37,8 +37,8 @@ export const SkillsInfo: SkillCategory[] = [
     title: "Development",
     skills: [
       // Frontend
-      { name: "HTML", logo: htmlLogo },
-      { name: "CSS", logo: cssLogo },
+      // { name: "HTML", logo: htmlLogo },
+      // { name: "CSS", logo: cssLogo },
       { name: "JavaScript", logo: javascriptLogo },
       { name: "ReactJS", logo: reactjsLogo },
       { name: "Redux", logo: reduxLogo },
@@ -46,7 +46,7 @@ export const SkillsInfo: SkillCategory[] = [
       { name: "Tailwind", logo: tailwindcssLogo },
       { name: "GSAP", logo: gsapLogo },
       { name: "ShadcnUI", logo: shadcnui },
-      { name: "Bootstrap", logo: bootstrapLogo },
+      // { name: "Bootstrap", logo: bootstrapLogo },
 
       // Backend
       { name: "NodeJS", logo: nodejsLogo },
@@ -63,7 +63,7 @@ export const SkillsInfo: SkillCategory[] = [
     skills: [
       { name: "Git", logo: gitLogo },
       { name: "GitHub", logo: githubLogo },
-      { name: "VS Code", logo: vscodeLogo },
+      { name: "VSCode", logo: vscodeLogo },
       { name: "Postman", logo: postmanLogo },
       { name: "Compass", logo: mcLogo },
       { name: "Vercel", logo: vercelLogo },

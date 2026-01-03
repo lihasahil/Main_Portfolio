@@ -3,6 +3,11 @@ import ReactLogo from "../assets/tech_logo/reactjs.png";
 import ExpressLogo from "../assets/tech_logo/express.png";
 import NodeLogo from "../assets/tech_logo/nodejs.png";
 import MongoLogo from "../assets/tech_logo/mongodb.png";
+import NextLogo from "../assets/tech_logo/nextjs.png";
+import PostgresLogo from "../assets/tech_logo/postgre.png";
+import DockerLogo from "../assets/tech_logo/docker.png";
+import TsLogo from "../assets/tech_logo/typescript.png";
+
 const Experience = () => {
   return (
     <section
@@ -12,46 +17,87 @@ const Experience = () => {
       <h1 className="text-center text-2xl font-bold my-8 text-design">
         EXPERIENCE
       </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <Card
+          icons="/icons/logo.png"
+          title="NextWaveAi"
+          subtitle={["Full Stack Developer Intern"]}
+          date="2025,December - Present"
+          description="Worked as a Full Stack Developer Intern, contributing to the design and development of scalable web applications using Next.js, TypeScript, PostgreSQL, and Prisma."
+          // projects={[
+          //   {
+          //     name: "Diagnostic Protal",
+          //     link: "https://diagnostic.upchaarnepal.com/",
+          //   },
+          //   {
+          //     name: "Clinic Protal",
+          //     link: "https://clinic.upchaarnepal.com/",
+          //   },
+          //   {
+          //     name: "Pharmacy Protal",
+          //     link: "https://pharmacy.upchaarnepal.com/",
+          //   },
+          // ]}
+          skills={[
+            { name: "NextJs", icon: NextLogo, link: "https://nextjs.org/" },
+            {
+              name: "Typescript",
+              icon: TsLogo,
+              link: "https://www.typescriptlang.org/",
+            },
+            {
+              name: "PostgresSql",
+              icon: PostgresLogo,
+              link: "https://www.postgresql.org/",
+            },
+            {
+              name: "Docker",
+              icon: DockerLogo,
+              link: "https://www.docker.com/",
+            },
+          ]}
+        />
 
-      <Card
-        icons="/icons/logo.svg"
-        title="Upchaar Nepal"
-        subtitle={["Software Developer Intern"]}
-        date="2025,June - Present"
-        description="Collaborated on building healthcare web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js).Gained hands-on experience in full stack development, API integration, and RESTful service creation.Contributed to front-end UI components and back-end server logic under senior developer guidance.Strengthened skills in Git, responsive design, and debugging within an agile team environment."
-        projects={[
-          {
-            name: "Diagnostic Protal",
-            link: "https://diagnostic.upchaarnepal.com/",
-          },
-          {
-            name: "Clinic Protal",
-            link: "https://clinic.upchaarnepal.com/",
-          },
-          {
-            name: "Pharmacy Protal",
-            link: "https://pharmacy.upchaarnepal.com/",
-          },
-        ]}
-        skills={[
-          { name: "React", icon: ReactLogo, link: "https://react.dev/" },
-          {
-            name: "Express",
-            icon: ExpressLogo,
-            link: "https://expressjs.com/",
-          },
-          {
-            name: "NodeJs",
-            icon: NodeLogo,
-            link: "https://nodejs.org/en/download",
-          },
-          {
-            name: "MongoDB",
-            icon: MongoLogo,
-            link: "https://www.mongodb.com/?msockid=0bbd28e608f06d592dba3bce09026ca9",
-          },
-        ]}
-      />
+        <Card
+          icons="/icons/logo.svg"
+          title="Upchaar Nepal"
+          subtitle={["Software Developer Intern"]}
+          date="2025,June - 2025,December"
+          description="Collaborated on building healthcare web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js).Gained hands-on experience in full stack development, API integration, and RESTful service creation.Contributed to front-end UI components and back-end server logic under senior developer guidance.Strengthened skills in Git, responsive design, and debugging within an agile team environment."
+          projects={[
+            {
+              name: "Diagnostic Protal",
+              link: "https://diagnostic.upchaarnepal.com/",
+            },
+            {
+              name: "Clinic Protal",
+              link: "https://clinic.upchaarnepal.com/",
+            },
+            {
+              name: "Pharmacy Protal",
+              link: "https://pharmacy.upchaarnepal.com/",
+            },
+          ]}
+          skills={[
+            { name: "React", icon: ReactLogo, link: "https://react.dev/" },
+            {
+              name: "Express",
+              icon: ExpressLogo,
+              link: "https://expressjs.com/",
+            },
+            {
+              name: "NodeJs",
+              icon: NodeLogo,
+              link: "https://nodejs.org/en/download",
+            },
+            {
+              name: "MongoDB",
+              icon: MongoLogo,
+              link: "https://www.mongodb.com/?msockid=0bbd28e608f06d592dba3bce09026ca9",
+            },
+          ]}
+        />
+      </div>
     </section>
   );
 };

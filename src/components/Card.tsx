@@ -39,31 +39,14 @@ const Card: React.FC<CardProps> = ({
   return (
     <div className="mx-3 text-text p-6 rounded-md border-dotted border-2 border-green-600 ">
       {/* Header: Icon + Title */}
-      <div className="flex items-start gap-2 mb-4">
-        <div className="flex flex-col justify-center">
-          {title === "Upchaar Nepal" ? (
-            <div className="flex gap-2 -ml-10 justify-center items-center">
-              <div className="rounded-full text-base text-[#93DA97] w-10 h-10 flex items-center justify-center">
-                <img
-                  src={icons}
-                  alt=""
-                  className="rounded-full object-contain"
-                />
-              </div>
-              <h3 className="text-xl font-semibold">{title}</h3>
+      <div className="flex items-start gap-2 mb-4 w-full">
+        <div className="flex flex-col justify-center w-full">
+          <div className="flex gap-2 items-center">
+            <div className="rounded-full text-base text-[#93DA97] w-10 h-10 flex items-center justify-center shrink-0">
+              <img src={icons} alt="" className="rounded-full object-contain" />
             </div>
-          ) : (
-            <div className="flex gap-2 justify-center items-center">
-              <div className="rounded-full text-base text-[#93DA97] w-10 h-10 flex items-center justify-center">
-                <img
-                  src={icons}
-                  alt=""
-                  className="rounded-full object-contain"
-                />
-              </div>
-              <h3 className="text-xl font-semibold">{title}</h3>
-            </div>
-          )}
+            <h3 className="text-xl font-semibold">{title}</h3>
+          </div>
 
           {subtitle && (
             <p className="text-sm">

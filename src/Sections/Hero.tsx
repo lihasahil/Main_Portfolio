@@ -3,6 +3,9 @@ import { IoDocumentText } from "react-icons/io5";
 import { motion } from "framer-motion";
 import PortfolioGallery from "../components/PortfolioGallery";
 import TypewriterSkills from "../components/TypeWriter";
+import { useRef, useState } from "react";
+import { FaVolumeUp } from "react-icons/fa";
+import ContactFormPopup from "../components/ContactPop";
 
 const Hero = () => {
   const skills = [
@@ -12,6 +15,10 @@ const Hero = () => {
     "Database Management",
     "Deployment and Maintainance",
   ];
+
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
     <section
@@ -30,8 +37,18 @@ const Hero = () => {
           transition={{ duration: 0.7 }}
           className="w-full md:w-1/2 flex flex-col items-center md:items-start"
         >
-          <h1 className="text-design text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center md:text-left leading-tight">
+          <h1 className="text-design text-3xl sm:text-4xl flex gap-4 md:text-5xl lg:text-5xl font-extrabold text-center md:text-left leading-tight">
             SAHIL SHRESTHA
+            <button
+              onClick={() => audioRef.current?.play()}
+              aria-label="Play name pronunciation"
+              className="text-green-500 hover:text-green-400 transition text-xl md:text-2xl"
+            >
+              <FaVolumeUp />
+            </button>
+            <audio ref={audioRef}>
+              <source src="/voice/name.m4a" type="audio/mp4" />
+            </audio>
           </h1>
 
           <motion.div
@@ -61,13 +78,22 @@ const Hero = () => {
             transition={{ delay: 0.8 }}
             className="mt-6 sm:mt-7 md:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto justify-center md:justify-start"
           >
-            <a className="px-6 sm:px-8 py-2.5 sm:py-3 bg-green-600 text-white rounded-lg font-medium text-sm sm:text-base shadow-md hover:bg-green-700 transition text-center">
+            <button
+              onClick={() => {
+                const element = document.querySelector("#projects");
+                element?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="px-6 sm:px-8 py-2.5 sm:py-3 cursor-pointer bg-green-600 text-white rounded-lg font-medium text-sm sm:text-base shadow-md hover:bg-green-700 transition text-center"
+            >
               View Projects
-            </a>
+            </button>
 
-            <a className="px-6 sm:px-8 py-2.5 sm:py-3 border border-green-600 text-green-600 rounded-lg font-medium text-sm sm:text-base hover:bg-green-600 hover:text-white transition text-center">
+            <button
+              onClick={() => setIsContactOpen(true)}
+              className="px-6 sm:px-8 py-2.5 cursor-pointer sm:py-3 border border-green-600 text-green-600 rounded-lg font-medium text-sm sm:text-base hover:text-white transition text-center"
+            >
               Contact Me
-            </a>
+            </button>
           </motion.div>
 
           {/* Social Icons */}
@@ -121,6 +147,11 @@ const Hero = () => {
           <PortfolioGallery />
         </motion.div>
       </div>
+
+      <ContactFormPopup
+        isOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+      />
     </section>
   );
 };

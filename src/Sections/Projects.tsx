@@ -78,11 +78,11 @@ const projects: Project[] = [
       "A real-time web application built with the MERN stack and Socket.io to enable instant, bidirectional communication between users.",
   },
   {
-    name: "FindMe",
+    name: "Formaker",
     image: project4,
-    github: "https://github.com/lihasahil/Final_Year_Project",
-    live: "https://yourportfolio.com",
-    skills: ["React", "TailwindCSS", "Framer Motion", "MongoDB", "ExpressJS"],
+    github: "https://github.com/lihasahil/formaker",
+    live: "https://formaker-beta.vercel.app/",
+    skills: ["NextJs", "TailwindCSS", "Framer Motion", "GeminiAPi", "Clerk"],
     description:
       "An academic project that identifies missing persons using gait and facial recognition, supported by a secure React-based web interface.",
   },
@@ -204,7 +204,7 @@ export default function ProjectSection() {
                           </p>
                           <div className="flex flex-wrap gap-1.5">
                             {currentProject.skills
-                              .slice(0, 4)
+                              .slice(0, 8)
                               .map((skill, i) => (
                                 <div
                                   key={i}

@@ -1,5 +1,7 @@
 import { useState, ChangeEvent, FormEvent, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { useContext } from "react";
+import { ThemeContext } from "../context/theme-context";
 
 interface FormData {
   name: string;
@@ -24,8 +26,10 @@ export default function ContactFormPopup({
   const [loading, setLoading] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
+  const { theme } = useContext(ThemeContext);
+
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -41,9 +45,11 @@ export default function ContactFormPopup({
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY,
       );
-      alert(`Thanks for contacting us, ${formData.name}! We'll get back to you soon.`);
+      alert(
+        `Thanks for contacting us, ${formData.name}! We'll get back to you soon.`,
+      );
       setFormData({ name: "", email: "", message: "" });
       onClose();
     } catch (error) {
@@ -58,28 +64,27 @@ export default function ContactFormPopup({
 
   return (
     <div
-      style={{
-        position: "fixed",
-        zIndex: 1000,
-        left: 0,
-        top: 0,
-        width: "100vw",
-        height: "100vh",
-        backgroundColor: "rgba(0,0,0,0.5)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+      className={`fixed inset-0 z-1000 flex items-center justify-center ${
+        theme === "dark" ? "bg-black/70" : "bg-black/50"
+      }`}
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-md mx-4 bg-white rounded-lg shadow-xl overflow-hidden border-t-4 border-emerald-500"
+        className={`relative w-full max-w-md mx-4 rounded-lg shadow-xl overflow-hidden border-t-4 border-emerald-500 ${
+          theme === "dark"
+            ? "bg-gray-900 text-gray-100"
+            : "bg-white text-gray-900"
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+          className={`absolute top-4 right-4 transition-colors ${
+            theme === "dark"
+              ? "text-gray-400 hover:text-white"
+              : "text-gray-400 hover:text-gray-600"
+          }`}
           aria-label="Close form"
         >
           <svg
@@ -99,11 +104,17 @@ export default function ContactFormPopup({
         </button>
 
         {/* Header */}
-        <div className="p-6 bg-linear-to-r from-emerald-50 to-green-50">
-          <h2 className="text-2xl font-bold text-emerald-700 text-center">
+        <div
+          className={`p-6 ${
+            theme === "dark"
+              ? "bg-linear-to-r from-gray-800 to-gray-900"
+              : "bg-linear-to-r from-emerald-50 to-green-50"
+          }`}
+        >
+          <h2 className="text-2xl font-bold text-center text-emerald-500">
             Get In Touch
           </h2>
-          <p className="text-center text-emerald-600 mt-1">
+          <p className="text-center text-sm mt-1 text-emerald-400">
             We'd love to hear from you!
           </p>
         </div>
@@ -125,7 +136,11 @@ export default function ContactFormPopup({
               onChange={handleChange}
               placeholder="Your name"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+              className={`w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 transition ${
+                theme === "dark"
+                  ? "bg-gray-800 border border-gray-700 text-white placeholder-gray-400"
+                  : "bg-white border border-gray-300 text-gray-900"
+              }`}
               disabled={loading}
             />
           </div>
@@ -145,7 +160,11 @@ export default function ContactFormPopup({
               onChange={handleChange}
               placeholder="your.email@example.com"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+              className={`w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 transition ${
+                theme === "dark"
+                  ? "bg-gray-800 border border-gray-700 text-white placeholder-gray-400"
+                  : "bg-white border border-gray-300 text-gray-900"
+              }`}
               disabled={loading}
             />
           </div>
@@ -165,7 +184,11 @@ export default function ContactFormPopup({
               placeholder="How can we help you?"
               rows={5}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+              className={`w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 transition ${
+                theme === "dark"
+                  ? "bg-gray-800 border border-gray-700 text-white placeholder-gray-400"
+                  : "bg-white border border-gray-300 text-gray-900"
+              }`}
               disabled={loading}
             />
           </div>
@@ -173,7 +196,7 @@ export default function ContactFormPopup({
           <button
             type="submit"
             disabled={loading}
-            className={`w-full bg-emerald-600 text-white font-medium py-2 px-4 rounded-md transition duration-300 transform focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 ${
+            className={`w-full bg-emerald-600 cursor-pointer text-white font-medium py-2 px-4 rounded-md transition duration-300 transform focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 ${
               loading
                 ? "opacity-50 cursor-not-allowed"
                 : "hover:bg-emerald-700 hover:scale-[1.01]"

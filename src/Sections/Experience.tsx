@@ -17,27 +17,27 @@ const Experience = () => {
       <h1 className="text-center text-2xl font-bold my-8 text-design">
         EXPERIENCE
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0">
         <Card
           icons="/icons/logo.png"
           title="NextWaveAi"
-          subtitle={["Full Stack Developer Intern"]}
+          subtitle={["Full Stack Developer"]}
           date="2025,December - Present"
-          description="Worked as a Full Stack Developer Intern, contributing to the design and development of scalable web applications using Next.js, TypeScript, PostgreSQL, and Prisma."
-          // projects={[
-          //   {
-          //     name: "Diagnostic Protal",
-          //     link: "https://diagnostic.upchaarnepal.com/",
-          //   },
-          //   {
-          //     name: "Clinic Protal",
-          //     link: "https://clinic.upchaarnepal.com/",
-          //   },
-          //   {
-          //     name: "Pharmacy Protal",
-          //     link: "https://pharmacy.upchaarnepal.com/",
-          //   },
-          // ]}
+          description="Worked as a Full Stack Developer, in SASS projects handling multiple client projects with team collaboration."
+          progression={{
+            initial: {
+              designation: "Full Stack Developer Intern",
+              date: "2025, December",
+              note: "Worked as a Full Stack Developer Intern, contributing to the design and development of scalable web applications.",
+            },
+            promotions: [
+              {
+                designation: "Junior Full Stack Developer",
+                date: "2026, March",
+                note: "Promoted to full-time role, taking ownership of feature development and system architecture.",
+              },
+            ],
+          }}
           skills={[
             { name: "NextJs", icon: NextLogo, link: "https://nextjs.org/" },
             {
@@ -63,7 +63,13 @@ const Experience = () => {
           title="Upchaar Nepal"
           subtitle={["Software Developer Intern"]}
           date="2025,June - 2025,December"
-          description="Collaborated on building healthcare web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js).Gained hands-on experience in full stack development, API integration, and RESTful service creation.Contributed to front-end UI components and back-end server logic under senior developer guidance.Strengthened skills in Git, responsive design, and debugging within an agile team environment."
+          description="Collaborated on building healthcare web applications.Gained hands-on experience in full stack development, API integration, and RESTful service creation.Contributed to front-end UI components and back-end server logic under senior developer guidance.Strengthened skills in Git, responsive design, and debugging within an agile team environment."
+          progression={{
+            initial: {
+              designation: "Software Developer Intern",
+              date: "2025, June",
+            },
+          }}
           projects={[
             {
               name: "Diagnostic Protal",

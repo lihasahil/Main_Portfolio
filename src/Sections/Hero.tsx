@@ -83,14 +83,14 @@ const Hero = () => {
                 const element = document.querySelector("#projects");
                 element?.scrollIntoView({ behavior: "smooth" });
               }}
-              className="px-6 sm:px-8 py-2.5 sm:py-3 cursor-pointer bg-green-600 text-white rounded-lg font-medium text-sm sm:text-base shadow-md hover:bg-green-700 transition text-center"
+              className="px-6 sm:px-8 py-2.5 sm:py-3 cursor-pointer bg-[#5E936C] hover:bg-[#93DA97] text-white rounded-lg font-medium text-sm sm:text-base shadow-md  transition text-center"
             >
               View Projects
             </button>
 
             <button
               onClick={() => setIsContactOpen(true)}
-              className="px-6 sm:px-8 py-2.5 cursor-pointer sm:py-3 border border-green-600 text-green-600 rounded-lg font-medium text-sm sm:text-base hover:text-white transition text-center"
+              className="px-6 sm:px-8 py-2.5 cursor-pointer sm:py-3 border border-[[#5E936C]]0 text-[#5E936C] rounded-lg font-medium text-sm sm:text-base hover:text-white transition text-center"
             >
               Contact Me
             </button>

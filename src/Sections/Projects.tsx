@@ -131,7 +131,7 @@ export default function ProjectSection() {
             {/* Left Button */}
             <button
               onClick={prevProject}
-              className="p-2 sm:p-3 rounded-full bg-[#5A9F68] cursor-pointer text-white hover:bg-green-700 transition-colors shrink-0"
+              className="p-2 sm:p-3 rounded-full bg-[#5A9F68] cursor-pointer text-white hover:bg-[#93DA97] transition-colors shrink-0"
             >
               <BiChevronLeft size={20} />
             </button>
@@ -144,7 +144,7 @@ export default function ProjectSection() {
                   layoutId="left"
                   className="w-full sm:w-60 md:w-72 shrink-0 opacity-50 scale-90 transition-all duration-300"
                 >
-                  <div className=" border-2 border-green-600 border-dotted rounded-lg overflow-hidden shadow-md">
+                  <div className=" border-2 border-[#5E936C] border-dotted rounded-lg overflow-hidden shadow-md">
                     <div className="relative overflow-hidden h-32 sm:h-40">
                       <img
                         src={prevProject3.image}
@@ -174,7 +174,7 @@ export default function ProjectSection() {
                     transition={{ duration: 0.3 }}
                     className="w-full sm:w-72 md:w-80 shrink-0 scale-100"
                   >
-                    <div className=" border-2 border-green-600 border-dotted rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                    <div className=" border-2 border-[#5E936C] border-dotted rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                       {/* Image */}
                       <div className="relative overflow-hidden h-40 sm:h-48">
                         <img
@@ -189,7 +189,7 @@ export default function ProjectSection() {
                       <div className="p-4 sm:p-5 space-y-3 sm:space-y-4">
                         {/* Title */}
                         <div>
-                          <h3 className="text-lg sm:text-xl font-bold text-green-600 mb-1">
+                          <h3 className="text-lg sm:text-xl font-bold text-[#5E936C] mb-1">
                             {currentProject.name}
                           </h3>
                           <p className="text-xs sm:text-sm text-gray-600">
@@ -241,7 +241,7 @@ export default function ProjectSection() {
                             onClick={() =>
                               window.open(currentProject.live, "_blank")
                             }
-                            className=" flex-1 flex items-center justify-center gap-1.5 px-2 py-2 text-xs sm:text-sm rounded cursor-pointer font-medium text-green-400 border border-green-400 relative"
+                            className=" flex-1 flex items-center justify-center gap-1.5 px-2 py-2 text-xs sm:text-sm rounded cursor-pointer font-medium text-[#5E936C] border border-[#5E936C] relative"
                           >
                             <FaGlobe size={14} />
                             <span className="hidden sm:inline">Live</span>
@@ -257,7 +257,7 @@ export default function ProjectSection() {
                   layoutId="right"
                   className="w-full sm:w-60 md:w-72 shrink-0 opacity-50 scale-90 transition-all duration-300"
                 >
-                  <div className=" border-2 border-green-600 border-dotted rounded-lg overflow-hidden shadow-md">
+                  <div className=" border-2 border-[#5E936C] border-dotted rounded-lg overflow-hidden shadow-md">
                     <div className="relative overflow-hidden h-32 sm:h-40">
                       <img
                         src={nextProject3.image}
@@ -281,7 +281,7 @@ export default function ProjectSection() {
             {/* Right Button */}
             <button
               onClick={nextProject}
-              className="p-2 sm:p-3 rounded-full bg-[#5A9F68] text-white cursor-pointer hover:bg-green-700 transition-colors shrink-0"
+              className="p-2 sm:p-3 rounded-full bg-[#5A9F68] text-white cursor-pointer hover:bg-[#93DA97] transition-colors shrink-0"
             >
               <BiChevronRight size={20} />
             </button>
@@ -296,7 +296,7 @@ export default function ProjectSection() {
                 className={`h-1.5 rounded-full cursor-pointer transition-all ${
                   index === currentIndex
                     ? "w-4 bg-[#5A9F68]"
-                    : "w-1.5 bg-gray-300 hover:bg-green-400"
+                    : "w-1.5 bg-gray-300 hover:bg-[#93DA97]"
                 }`}
               />
             ))}

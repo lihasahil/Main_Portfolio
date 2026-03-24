@@ -70,7 +70,7 @@ export default function ContactFormPopup({
       onClick={onClose}
     >
       <div
-        className={`relative w-full max-w-md mx-4 rounded-lg shadow-xl overflow-hidden border-t-4 border-emerald-500 ${
+        className={`relative w-full max-w-md mx-4 rounded-lg shadow-xl overflow-hidden border-t-4 border-[#5E936C] ${
           theme === "dark"
             ? "bg-gray-900 text-gray-100"
             : "bg-white text-gray-900"
@@ -111,10 +111,10 @@ export default function ContactFormPopup({
               : "bg-linear-to-r from-emerald-50 to-green-50"
           }`}
         >
-          <h2 className="text-2xl font-bold text-center text-emerald-500">
+          <h2 className="text-2xl font-bold text-center text-[#5E936C]">
             Get In Touch
           </h2>
-          <p className="text-center text-sm mt-1 text-emerald-400">
+          <p className="text-center text-sm mt-1 text-[#5E936C]">
             We'd love to hear from you!
           </p>
         </div>
@@ -136,7 +136,7 @@ export default function ContactFormPopup({
               onChange={handleChange}
               placeholder="Your name"
               required
-              className={`w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 transition ${
+              className={`w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#5E936C] transition ${
                 theme === "dark"
                   ? "bg-gray-800 border border-gray-700 text-white placeholder-gray-400"
                   : "bg-white border border-gray-300 text-gray-900"
@@ -160,7 +160,7 @@ export default function ContactFormPopup({
               onChange={handleChange}
               placeholder="your.email@example.com"
               required
-              className={`w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 transition ${
+              className={`w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#5E936C] transition ${
                 theme === "dark"
                   ? "bg-gray-800 border border-gray-700 text-white placeholder-gray-400"
                   : "bg-white border border-gray-300 text-gray-900"
@@ -184,7 +184,7 @@ export default function ContactFormPopup({
               placeholder="How can we help you?"
               rows={5}
               required
-              className={`w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 transition ${
+              className={`w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#5E936C] transition ${
                 theme === "dark"
                   ? "bg-gray-800 border border-gray-700 text-white placeholder-gray-400"
                   : "bg-white border border-gray-300 text-gray-900"
@@ -196,10 +196,10 @@ export default function ContactFormPopup({
           <button
             type="submit"
             disabled={loading}
-            className={`w-full bg-emerald-600 cursor-pointer text-white font-medium py-2 px-4 rounded-md transition duration-300 transform focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 ${
+            className={`w-full bg-[#5E936C] cursor-pointer text-white font-medium py-2 px-4 rounded-md transition duration-300 transform focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 ${
               loading
                 ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-emerald-700 hover:scale-[1.01]"
+                : "hover:bg-[#93DA97] hover:scale-[1.01]"
             }`}
           >
             {loading ? "Sending..." : "Send Message"}

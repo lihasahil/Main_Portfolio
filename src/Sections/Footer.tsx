@@ -4,9 +4,7 @@ export default function Footer() {
   return (
     <section className="border-2 border-dotted border-green-600 text-gray-400 text-sm py-6 border-t-0">
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p>
-          &copy; {new Date().getFullYear()} Sahil Shrestha. All rights reserved.
-        </p>
+        <p>&copy; {new Date().getFullYear()} Sahil Shrestha. Built with ❤️.</p>
         <div className="flex gap-4">
           <a
             href="https://github.com/lihasahil"

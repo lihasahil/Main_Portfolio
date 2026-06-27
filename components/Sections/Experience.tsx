@@ -1,4 +1,4 @@
-import Card from "../components/Card";
+import Card from "../Card";
 
 const ReactLogo = "/tech_logo/reactjs.png";
 const ExpressLogo = "/tech_logo/express.png";

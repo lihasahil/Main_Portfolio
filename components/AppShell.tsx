@@ -1,0 +1,53 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { FaFolderOpen, FaHome } from "react-icons/fa";
+import { FaPenClip } from "react-icons/fa6";
+import type { ReactNode } from "react";
+import NavBar from "@/components/NavBar";
+import ContactFormPopup from "@/components/ContactPop";
+import OnekoCat from "@/components/OnekoCat";
+import Loader from "@/components/Loader/Loader";
+
+export default function AppShell({ children }: { children: ReactNode }) {
+  const navLinks = [
+    { link: "#home", name: "Home", icon: <FaHome /> },
+    { link: "#projects", name: "Projects", icon: <FaFolderOpen /> },
+    { link: "/blog", name: "Blog", icon: <FaPenClip /> },
+  ];
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("hasLoaded")) {
+      setIsLoading(false);
+      return;
+    }
+    const timer = setTimeout(() => {
+      sessionStorage.setItem("hasLoaded", "true");
+      setIsLoading(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <>
+      {/* Splash overlay — covers everything until loader finishes.
+          Stays in the HTML on the server so there is no content flash. */}
+      {isLoading && (
+        <div className="fixed inset-0 z-9999 bg-(--bg)">
+          <Loader />
+        </div>
+      )}
+
+      <OnekoCat />
+      <NavBar navLinks={navLinks} onContactClick={() => setShowPopup(true)} />
+      <ContactFormPopup
+        isOpen={showPopup}
+        onClose={() => setShowPopup(false)}
+      />
+      {children}
+    </>
+  );
+}

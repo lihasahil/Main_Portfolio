@@ -2,7 +2,7 @@
 
 import React from "react";
 import Tilt from "react-parallax-tilt";
-import { SkillsInfo } from "../constant";
+import { SkillsInfo } from "@/constant";
 
 type Skill = {
   name: string;

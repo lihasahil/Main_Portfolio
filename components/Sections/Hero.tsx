@@ -3,11 +3,11 @@
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { IoDocumentText } from "react-icons/io5";
 import { motion } from "framer-motion";
-import PortfolioGallery from "../components/PortfolioGallery";
-import TypewriterSkills from "../components/TypeWriter";
+import PortfolioGallery from "../PortfolioGallery";
+import TypewriterSkills from "../TypeWriter";
 import { useRef, useState } from "react";
 import { FaVolumeUp } from "react-icons/fa";
-import ContactFormPopup from "../components/ContactPop";
+import ContactFormPopup from "../ContactPop";
 
 const Hero = () => {
   const skills = [

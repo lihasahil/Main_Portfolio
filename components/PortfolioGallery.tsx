@@ -6,7 +6,7 @@ export default function PortfolioGallery() {
   return (
     <div className="relative mt-5 p-4 sm:p-6 max-w-lg mx-auto">
       <motion.div
-        className="relative w-54 h-72 rounded-xl shadow-[#328E6E] shadow-sm overflow-hidden cursor-pointer"
+        className="relative w-54 h-72 rounded-xl shadow-[#52525b] shadow-sm overflow-hidden cursor-pointer"
         initial="initial"
         animate="initial"
         whileHover="hovered"

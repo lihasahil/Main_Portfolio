@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
-import TypewriterSkills from "./TypeWriter";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 interface Skill {
   name: string;
@@ -32,10 +33,8 @@ interface CardProps {
   projects?: { name: string; link: string }[];
   progression?: CareerProgression;
   website?: string;
-  button?: {
-    label: string;
-    onClick: () => void;
-  };
+  button?: { label: string; onClick: () => void };
+  expandable?: boolean;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -51,108 +50,75 @@ const Card: React.FC<CardProps> = ({
   progression,
   website,
   button,
+  expandable = false,
 }) => {
-  return (
-    <div className="mx-3 text-text p-6 rounded-md border-dotted border-2 border-green-600 ">
-      {/* Header: Icon + Title */}
-      <div className="flex items-start gap-2 mb-4 w-full">
-        <div className="flex flex-col justify-center w-full">
-          <div className="flex gap-2 items-center">
-            <div className="rounded-full text-base text-[#93DA97] w-10 h-10 flex items-center justify-center shrink-0">
-              {icon ? icon : icons && <img src={icons} alt="" className="rounded-full object-contain" />}
-            </div>
-            <h3 className="text-xl font-semibold">{title}</h3>
+  const [hovered, setHovered] = useState(false);
+  const [locked, setLocked] = useState(false);
+  const isOpen = hovered || locked;
+
+  const header = (
+    <div className="flex items-start justify-between gap-4">
+      <div className="flex items-center gap-3 min-w-0">
+        {(icon || icons) && (
+          <div className="w-9 h-9 rounded-md border border-border bg-bg-card flex items-center justify-center shrink-0 overflow-hidden p-1">
+            {icon ? (
+              <span className="text-secondary">{icon}</span>
+            ) : (
+              <img src={icons} alt="" className="w-full h-full object-contain" />
+            )}
           </div>
-
-          {subtitle && (
-            <div className="text-sm">
-              <TypewriterSkills skills={subtitle} className="text-sm" />
-            </div>
+        )}
+        <div className="min-w-0">
+          <h3 className="text-sm font-semibold text-text truncate">{title}</h3>
+          {subtitle && subtitle[0] && (
+            <p className="text-xs text-secondary mt-0.5">{subtitle[0]}</p>
           )}
-
-          <p className="text-[#D2D0A0] text-xs">
-            {date}{" "}
-            {score && <span className="text-[#D2D0A0] text-xs">({score})</span>}
-          </p>
         </div>
       </div>
 
-      {/* Description */}
-      <p className="text-sm text-text mb-4 leading-relaxed">{description}</p>
+      <div className="flex items-center gap-2 shrink-0">
+        <div className="text-right">
+          <p className="text-xs text-secondary tabular-nums whitespace-nowrap">{date}</p>
+          {score && <p className="text-xs text-secondary mt-0.5">{score}</p>}
+        </div>
+        {expandable && (
+          <motion.span
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+            className="text-secondary"
+          >
+            <ChevronDown size={14} />
+          </motion.span>
+        )}
+      </div>
+    </div>
+  );
 
-      {/* Career Progression (optional) */}
+  const details = (
+    <>
+      <p className="text-sm text-secondary leading-relaxed mb-4 pl-12">{description}</p>
+
       {progression && (
-        <div className="mb-4">
-          <h4 className="text-xs font-semibold text-[#93DA97] uppercase tracking-widest mb-3">
-            Career Progression
-          </h4>
-          <div className="relative pl-4">
-            {/* Vertical line */}
-            <div className="absolute left-0 top-1 bottom-1 w-px bg-green-700 opacity-50" />
-
-            {/* Initial role */}
-            <div className="relative mb-3 pl-4">
-              <span className="absolute -left-[5px] top-[5px] w-2.5 h-2.5 rounded-full border border-green-700 bg-[#1a1a1a]" />
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1 text-xs bg-[#1a2e1a] border border-dashed border-green-800 text-green-600 py-0.5 px-2 rounded-md">
-                  {/* Briefcase icon */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-3 h-3"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <rect x="2" y="7" width="20" height="14" rx="2" />
-                    <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-                  </svg>
-                  Joined
-                </span>
-                <span className="text-sm font-semibold text-text">
-                  {progression.initial.designation}
-                </span>
-                <span className="text-[#D2D0A0] text-xs">
-                  {progression.initial.date}
-                </span>
-              </div>
+        <div className="pl-12 mb-4">
+          <div className="border-l-2 border-border pl-3 space-y-2">
+            <div>
+              <span className="text-xs font-medium text-text">
+                {progression.initial.designation}
+              </span>
+              <span className="text-xs text-secondary ml-2">{progression.initial.date}</span>
               {progression.initial.note && (
-                <p className="text-xs text-text/60 mt-1 leading-relaxed">
+                <p className="text-xs text-secondary mt-0.5 leading-relaxed">
                   {progression.initial.note}
                 </p>
               )}
             </div>
-
-            {/* Promotion steps */}
             {progression.promotions?.map((promo, i) => (
-              <div key={i} className="relative mb-3 last:mb-0 pl-4">
-                <span className="absolute -left-[5px] top-[5px] w-2.5 h-2.5 rounded-full border border-green-500 bg-[#93DA97]" />
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center gap-1 text-xs bg-green-900/40 border border-dashed border-green-700 text-[#93DA97] py-0.5 px-2 rounded-md">
-                    {/* Arrow-up icon */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-3 h-3"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M12 19V5M5 12l7-7 7 7" />
-                    </svg>
-                    Promoted
-                  </span>
-                  <span className="text-sm font-semibold text-text">
-                    {promo.designation}
-                  </span>
-                  <span className="text-[#D2D0A0] text-xs">{promo.date}</span>
-                </div>
+              <div key={i}>
+                <span className="text-xs text-secondary mr-1.5">↑</span>
+                <span className="text-xs font-medium text-text">{promo.designation}</span>
+                <span className="text-xs text-secondary ml-2">{promo.date}</span>
                 {promo.note && (
-                  <p className="text-xs text-text/60 mt-1 leading-relaxed">
+                  <p className="text-xs text-secondary mt-0.5 leading-relaxed">
                     {promo.note}
                   </p>
                 )}
@@ -162,75 +128,110 @@ const Card: React.FC<CardProps> = ({
         </div>
       )}
 
-      {/* Projects (optional) */}
       {projects && projects.length > 0 && (
-        <div className="mb-4 text-sm mx-10">
-          <h4 className="font-semibold mb-1">Projects I worked on:</h4>
-          <ul className="list-disc flex flex-col sm:flex-row gap-4 list-inside text-text space-y-1">
-            {projects.map((proj, i) => (
-              <li key={i}>
-                <a href={proj.link} target="_blank" className="hover:underline">
-                  {proj.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+        <div className="pl-12 mb-4 flex flex-wrap gap-3">
+          {projects.map((proj, i) => (
+            <a
+              key={i}
+              href={proj.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-secondary hover:text-text underline underline-offset-2 decoration-border transition-colors"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {proj.name} ↗
+            </a>
+          ))}
         </div>
       )}
 
-      {/* Skills */}
       {skills && skills.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill, index) =>
+        <div className="pl-12 flex flex-wrap gap-1.5">
+          {skills.map((skill, i) =>
             skill.link ? (
               <a
-                key={index}
+                key={i}
                 href={skill.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs bg-skill-bg cursor-pointer border border-dashed border-skill-border py-1 px-2 rounded-md skill-inner-shadow self-end text-text"
+                className="inline-flex items-center gap-1.5 text-xs bg-bg-card border border-border px-2 py-1 rounded text-secondary hover:text-text hover:border-text/20 transition-colors"
+                onClick={(e) => e.stopPropagation()}
               >
-                {skill.icon && (
-                  <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
-                )}
-                <span>{skill.name}</span>
+                {skill.icon && <img src={skill.icon} alt="" className="w-3.5 h-3.5" />}
+                {skill.name}
               </a>
             ) : (
-              <div
-                key={index}
-                className="inline-flex items-center gap-2 text-xs bg-skill-bg cursor-pointer border border-dashed  border-skill-border py-1 px-2 rounded-md skill-inner-shadow self-end text-text"
+              <span
+                key={i}
+                className="inline-flex items-center gap-1.5 text-xs bg-bg-card border border-border px-2 py-1 rounded text-secondary"
               >
-                {skill.icon && (
-                  <img src={skill.icon} alt={skill.name} className="w-4 h-4" />
-                )}
-                <span>{skill.name}</span>
-              </div>
-            ),
+                {skill.icon && <img src={skill.icon} alt="" className="w-3.5 h-3.5" />}
+                {skill.name}
+              </span>
+            )
           )}
         </div>
       )}
 
-      {/* Website Link */}
       {website && (
-        <a
-          href={website}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block mt-4 text-blue-400 hover:underline text-sm"
-        >
-          Visit Website
-        </a>
+        <div className="pl-12 mt-3">
+          <a
+            href={website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-secondary hover:text-text underline underline-offset-2 transition-colors"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {website} ↗
+          </a>
+        </div>
       )}
 
-      {/* Button (optional) */}
       {button && (
-        <button
-          onClick={button.onClick}
-          className="mt-4 px-5 py-2.5 text-sm font-semibold cursor-pointer text-white bg-[#5E936C] rounded-full shadow-md hover:bg-[#93DA97] hover:shadow-lg transition-all duration-200 active:scale-95"
-        >
-          {button.label}
-        </button>
+        <div className="pl-12 mt-4">
+          <button
+            onClick={(e) => { e.stopPropagation(); button.onClick(); }}
+            className="btn-ghost h-8 px-3 text-xs"
+          >
+            {button.label}
+          </button>
+        </div>
       )}
+    </>
+  );
+
+  if (!expandable) {
+    return (
+      <div className="py-8 border-t border-border">
+        {header}
+        <div className="mt-3">{details}</div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="py-6 border-t border-border cursor-pointer select-none"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={() => setLocked((v) => !v)}
+    >
+      {header}
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="details"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.22, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <div className="mt-3">{details}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

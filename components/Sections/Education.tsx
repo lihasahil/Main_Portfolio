@@ -2,50 +2,48 @@ import Card from "../Card";
 
 const Education = () => {
   return (
-    <section
-      id="education"
-      className="border-2 border-dotted border-green-600 border-b-0 p-2"
-    >
-      <h1 className="text-center text-2xl font-bold my-8 text-design">
-        EDUCATION
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-0 pb-4">
-        {/* First card */}
+    <section id="education" className="border-t border-border px-6 sm:px-10 py-10">
+      <p className="text-xs font-medium text-secondary uppercase tracking-widest mb-1">
+        Academic Background
+      </p>
+      <h2 className="text-xl font-semibold text-text">Education</h2>
+
+      <div className="mt-2">
         <Card
+          expandable
           icons="/icons/hcoe.png"
           title="Himalaya College of Engineering"
-          subtitle={["Bachelors of Computer Engineering"]}
-          date="April 2021 - April 2025"
-          description="Focused on software development, networking, and embedded systems; completed practical projects in C/C++ and web development."
+          subtitle={["Bachelor of Computer Engineering"]}
+          date="Apr 2021 – Apr 2025"
+          score="72%"
+          description="Focused on software development, networking, and embedded systems. Completed practical projects in C/C++, data structures, and web development."
           skills={[
             { name: "C" },
             { name: "C++" },
             { name: "Data Structures & Algorithms" },
             { name: "Web Development" },
           ]}
-          score="Percentage: 72%"
         />
 
-        {/* Second and third cards */}
-        <div className="flex flex-col gap-4 md:col-span-1 lg:col-span-2">
-          <Card
-            icons="/icons/unnamed.png"
-            title="V.S. Niketan Secondary School"
-            subtitle={["Higher Secondary Education (10+2)"]}
-            date="June 2018 - June 2020"
-            description="Focused on Mathematics, Physics, and Computer Science; strengthened problem-solving and analytical skills."
-            score="GPA: 3.27"
-          />
+        <Card
+          expandable
+          icons="/icons/unnamed.png"
+          title="V.S. Niketan Secondary School"
+          subtitle={["Higher Secondary (10+2)"]}
+          date="Jun 2018 – Jun 2020"
+          score="GPA 3.27"
+          description="Focused on Mathematics, Physics, and Computer Science. Strengthened problem-solving and analytical skills."
+        />
 
-          <Card
-            icons="/icons/unnamed.png"
-            title="V.S. Niketan Secondary School"
-            subtitle={["Secondary Education Examination"]}
-            date="April 2017 - April 2018"
-            description="Completed Secondary Education with a solid academic foundation."
-            score="GPA: 3.65"
-          />
-        </div>
+        <Card
+          expandable
+          icons="/icons/unnamed.png"
+          title="V.S. Niketan Secondary School"
+          subtitle={["Secondary Education Examination"]}
+          date="Apr 2017 – Apr 2018"
+          score="GPA 3.65"
+          description="Completed secondary education with a solid academic foundation."
+        />
       </div>
     </section>
   );

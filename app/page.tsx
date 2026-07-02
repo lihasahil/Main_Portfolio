@@ -7,13 +7,15 @@ import Skills from "@/components/Sections/Skills";
 
 export default function Home() {
   return (
-    <div className="max-w-7xl mx-auto px-4">
-      <Hero />
-      <Experience />
-      <Education />
-      <ProjectSection />
-      <Skills />
-      <Footer />
+    <div className="max-w-[1400px] mx-auto">
+      <div className="mx-4 sm:mx-6 lg:mx-20 xl:mx-20 border-x border-border">
+        <Hero />
+        <Experience />
+        <Education />
+        <ProjectSection />
+        <Skills />
+        <Footer />
+      </div>
     </div>
   );
 }

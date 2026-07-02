@@ -1,25 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { FaGithub, FaGlobe } from "react-icons/fa";
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import { Globe } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { GithubIcon } from "../icons/BrandIcons";
 
 const skillIcons: Record<string, string> = {
-  React: "/icons/reactjs.png",
-  TailwindCSS: "/icons/tailwindcss.png",
+  React: "/tech_logo/reactjs.png",
+  TailwindCSS: "/tech_logo/tailwindcss.png",
   "Framer Motion": "/icons/framer.svg",
-  NextJs: "/icons/nextjs.png",
+  NextJs: "/tech_logo/nextjs.png",
   Clerk: "/icons/clerk.png",
   ShadcnUI: "/icons/shadcn.png",
-  PostgreSQL: "/icons/postgre.png",
-  MongoDB: "/icons/mongodb.png",
-  ExpressJS: "/icons/express.png",
+  PostgreSQL: "/tech_logo/postgre.png",
+  MongoDB: "/tech_logo/mongodb.png",
+  ExpressJS: "/tech_logo/express.png",
   Stripe: "/icons/stripe.png",
   Liveblocks: "/icons/liveblocks.png",
   Convex: "/icons/convex.png",
   "Socket.io": "/icons/socket.png",
-  NodeJs: "/icons/nodejs.png",
+  NodeJs: "/tech_logo/nodejs.png",
 };
 
 interface Project {
@@ -53,7 +53,7 @@ const projects: Project[] = [
   {
     name: "IdeaDoodle",
     image: "/assets/project5.png",
-    github: "httpsgithub.com/lihasahil/Idea-doodle",
+    github: "https://github.com/lihasahil/Idea-doodle",
     live: "https://idea-doodle.vercel.app/",
     skills: ["NextJs", "Liveblocks", "Convex", "Clerk"],
     description:
@@ -64,219 +64,178 @@ const projects: Project[] = [
     image: "/assets/guffgaff.png",
     github: "https://github.com/lihasahil/GuffGaff",
     live: "https://guff-gaff-umber.vercel.app",
-    skills: ["React", "MongoDB", "NodeJS", "ExpressJS", "Socket.io"],
+    skills: ["React", "MongoDB", "NodeJs", "ExpressJS", "Socket.io"],
     description:
-      "A real-time web application built with the MERN stack and Socket.io to enable instant, bidirectional communication between users.",
+      "A real-time chat app built with the MERN stack and Socket.io for instant bidirectional communication.",
   },
   {
     name: "Formaker",
     image: "/assets/project4.png",
     github: "https://github.com/lihasahil/formaker",
     live: "https://formaker-beta.vercel.app/",
-    skills: ["NextJs", "TailwindCSS", "Framer Motion", "GeminiAPi", "Clerk"],
+    skills: ["NextJs", "TailwindCSS", "Framer Motion", "Clerk"],
     description:
-      "An academic project that identifies missing persons using gait and facial recognition, supported by a secure React-based web interface.",
+      "An AI-powered form builder with Next.js and Framer Motion, enabling users to create and share forms with ease.",
   },
 ];
 
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <div className="border border-border rounded-xl overflow-hidden bg-bg-card">
+      <div className="h-40 overflow-hidden border-b border-border">
+        <img
+          src={project.image}
+          alt={project.name}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="p-4 space-y-3">
+        <div>
+          <h3 className="text-sm font-semibold text-text">{project.name}</h3>
+          <p className="text-xs text-secondary mt-1 leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {project.skills.map((skill) => (
+            <span
+              key={skill}
+              className="inline-flex items-center gap-1 text-xs bg-bg border border-border px-2 py-0.5 rounded text-secondary"
+            >
+              {skillIcons[skill] && (
+                <img
+                  src={skillIcons[skill]}
+                  alt=""
+                  className="w-3 h-3 object-contain"
+                />
+              )}
+              {skill}
+            </span>
+          ))}
+        </div>
+        <div className="flex gap-2">
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost h-7 px-3 text-xs flex-1 justify-center"
+          >
+            <GithubIcon size={12} /> GitHub
+          </a>
+          <a
+            href={project.live}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost h-7 px-3 text-xs flex-1 justify-center"
+          >
+            <Globe size={12} /> Live
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ProjectSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
-  const nextProject = () => {
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
-  };
-
-  const prevProject = () => {
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
-
-  const goToProject = (index: number) => {
-    setCurrentIndex(index);
-  };
-
-  const getPrevIndex = (idx: number) =>
-    (idx - 1 + projects.length) % projects.length;
-  const getNextIndex = (idx: number) => (idx + 1) % projects.length;
-
-  const prevProject3 = projects[getPrevIndex(currentIndex)];
-  const currentProject = projects[currentIndex];
-  const nextProject3 = projects[getNextIndex(currentIndex)];
+  const previewProject = hoveredIndex !== null ? projects[hoveredIndex] : null;
 
   return (
     <section
       id="projects"
-      className="py-12 sm:py-14 px-4 sm:px-6  mx-auto border-2 border-dotted border-green-600 border-b-0"
+      className="border-t border-border px-6 sm:px-10 py-10"
     >
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-center text-2xl  font-bold mb-8 text-design">
-          PROJECTS
-        </h1>
+      <p className="text-xs font-medium text-secondary uppercase tracking-widest mb-1">
+        Selected Work
+      </p>
+      <h2 className="text-xl font-semibold text-text mb-8">Projects</h2>
 
-        <div className="relative">
-          <div className="flex items-center justify-center gap-3 sm:gap-4">
-            <button
-              onClick={prevProject}
-              className="p-2 sm:p-3 rounded-full bg-[#5A9F68] cursor-pointer text-white hover:bg-[#93DA97] transition-colors shrink-0"
-            >
-              <BiChevronLeft size={20} />
-            </button>
-
-            <div className="overflow-hidden flex-1">
-              <div className="flex gap-4 sm:gap-6 justify-center">
-                {/* Left Project (Dimmed) */}
-                <motion.div
-                  layoutId="left"
-                  className="w-full sm:w-60 md:w-72 shrink-0 opacity-50 scale-90 transition-all duration-300"
-                >
-                  <div className=" border-2 border-[#5E936C] border-dotted rounded-lg overflow-hidden shadow-md">
-                    <div className="relative overflow-hidden h-32 sm:h-40">
-                      <img
-                        src={prevProject3.image}
-                        alt={prevProject3.name}
-                        className="w-full h-full object-cover p-1"
-                      />
-                    </div>
-                    <div className="p-3 sm:p-4">
-                      <h3 className="text-sm sm:text-base font-bold text-gray-800 truncate">
-                        {prevProject3.name}
-                      </h3>
-                      <p className="text-xs text-gray-600 mt-1">
-                        {prevProject3.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Center Project */}
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={currentIndex}
-                    layoutId="center"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full sm:w-72 md:w-80 shrink-0 scale-100"
-                  >
-                    <div className=" border-2 border-[#5E936C] border-dotted rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                      <div className="relative overflow-hidden h-40 sm:h-48">
-                        <img
-                          src={currentProject.image}
-                          alt={currentProject.name}
-                          className="w-full h-full object-cover p-1"
-                        />
-                        <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent" />
-                      </div>
-
-                      <div className="p-4 sm:p-5 space-y-3 sm:space-y-4">
-                        <div>
-                          <h3 className="text-lg sm:text-xl font-bold text-[#5E936C] mb-1">
-                            {currentProject.name}
-                          </h3>
-                          <p className="text-xs sm:text-sm text-gray-600">
-                            {currentProject.description}
-                          </p>
-                        </div>
-
-                        <div>
-                          <p className="text-xs font-semibold text-gray-700 mb-2">
-                            Technologies:
-                          </p>
-                          <div className="flex flex-wrap gap-1.5">
-                            {currentProject.skills
-                              .slice(0, 8)
-                              .map((skill, i) => (
-                                <div
-                                  key={i}
-                                  className="inline-flex items-center gap-2 text-xs bg-skill-bg cursor-pointer border border-dashed border-skill-border py-1 px-2 rounded-md skill-inner-shadow self-end text-text"
-                                >
-                                  {skillIcons[skill] && (
-                                    <img
-                                      src={skillIcons[skill]}
-                                      alt={`${skill} logo`}
-                                      className="w-3 h-3 object-contain"
-                                    />
-                                  )}
-                                  <span className="hidden sm:inline">
-                                    {skill}
-                                  </span>
-                                </div>
-                              ))}
-                          </div>
-                        </div>
-
-                        <div className="flex gap-2 pt-2">
-                          <button
-                            onClick={() =>
-                              window.open(currentProject.github, "_blank")
-                            }
-                            className=" flex-1 flex items-center justify-center gap-1.5 px-2 py-2 text-xs sm:text-sm rounded cursor-pointer font-medium text-text border border-text relative"
-                          >
-                            <FaGithub size={14} />
-                            <span className="hidden sm:inline">GitHub</span>
-                          </button>
-
-                          <button
-                            onClick={() =>
-                              window.open(currentProject.live, "_blank")
-                            }
-                            className=" flex-1 flex items-center justify-center gap-1.5 px-2 py-2 text-xs sm:text-sm rounded cursor-pointer font-medium text-[#5E936C] border border-[#5E936C] relative"
-                          >
-                            <FaGlobe size={14} />
-                            <span className="hidden sm:inline">Live</span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-
-                {/* Right Project (Dimmed) */}
-                <motion.div
-                  layoutId="right"
-                  className="w-full sm:w-60 md:w-72 shrink-0 opacity-50 scale-90 transition-all duration-300"
-                >
-                  <div className=" border-2 border-[#5E936C] border-dotted rounded-lg overflow-hidden shadow-md">
-                    <div className="relative overflow-hidden h-32 sm:h-40">
-                      <img
-                        src={nextProject3.image}
-                        alt={nextProject3.name}
-                        className="w-full h-full object-cover p-1"
-                      />
-                    </div>
-                    <div className="p-3 sm:p-4">
-                      <h3 className="text-sm sm:text-base font-bold text-gray-800 truncate">
-                        {nextProject3.name}
-                      </h3>
-                      <p className="text-xs text-gray-600 mt-1">
-                        {nextProject3.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-
-            <button
-              onClick={nextProject}
-              className="p-2 sm:p-3 rounded-full bg-[#5A9F68] text-white cursor-pointer hover:bg-[#93DA97] transition-colors shrink-0"
-            >
-              <BiChevronRight size={20} />
-            </button>
-          </div>
-
-          <div className="flex gap-2 justify-center mt-6 sm:mt-8">
-            {projects.map((_, index) => (
+      <div className="flex gap-10" onMouseLeave={() => setHoveredIndex(null)}>
+        {/* ── Project name list ── */}
+        <div className="flex-1 min-w-0">
+          {projects.map((project, i) => (
+            <div key={project.name}>
               <button
-                key={index}
-                onClick={() => goToProject(index)}
-                className={`h-1.5 rounded-full cursor-pointer transition-all ${
-                  index === currentIndex
-                    ? "w-4 bg-[#5A9F68]"
-                    : "w-1.5 bg-gray-300 hover:bg-[#93DA97]"
-                }`}
-              />
-            ))}
+                onMouseEnter={() => setHoveredIndex(i)}
+                onClick={() => setExpandedIndex(expandedIndex === i ? null : i)}
+                className="w-full flex items-center justify-between py-4 border-t border-border group text-left cursor-pointer"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-xs text-secondary tabular-nums w-5 shrink-0">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className={`text-sm font-medium transition-colors duration-150 ${
+                      hoveredIndex === i ? "text-text" : "text-secondary"
+                    }`}
+                  >
+                    {project.name}
+                  </span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs text-secondary hidden sm:block">
+                    {project.skills.slice(0, 2).join(" · ")}
+                  </span>
+                  <span
+                    className={`text-xs transition-transform duration-150 ${
+                      hoveredIndex === i
+                        ? "translate-x-0.5 text-text"
+                        : "text-secondary"
+                    }`}
+                  >
+                    →
+                  </span>
+                </div>
+              </button>
+
+              {/* Mobile inline expand */}
+              <AnimatePresence>
+                {expandedIndex === i && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden lg:hidden pb-4"
+                  >
+                    <ProjectCard project={project} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+          {/* closing border */}
+          <div className="border-t border-border" />
+        </div>
+
+        {/* ── Desktop sticky preview ── */}
+        <div className="hidden lg:block w-72 shrink-0">
+          <div className="sticky top-24">
+            <AnimatePresence mode="wait">
+              {previewProject ? (
+                <motion.div
+                  key={previewProject.name}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 6 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  <ProjectCard project={previewProject} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="empty"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="h-64 border border-border rounded-xl flex items-center justify-center"
+                >
+                  <p className="text-xs text-secondary">Hover a project</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>

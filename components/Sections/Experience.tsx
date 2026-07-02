@@ -11,97 +11,65 @@ const TsLogo = "/tech_logo/typescript.png";
 
 const Experience = () => {
   return (
-    <section
-      id="experience"
-      className="border-2 border-dotted border-green-600 border-t-0 border-b-0 p-2 pb-5"
-    >
-      <h1 className="text-center text-2xl font-bold my-8 text-design">
-        EXPERIENCE
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0">
+    <section id="experience" className="px-6 sm:px-10 py-10">
+      <p className="text-xs font-medium text-secondary uppercase tracking-widest mb-1">
+        Work History
+      </p>
+      <h2 className="text-xl font-semibold text-text">Experience</h2>
+
+      <div className="mt-2">
         <Card
+          expandable
           icons="/icons/logo.png"
           title="NextWaveAi"
           subtitle={["Full Stack Developer"]}
-          date="2025,December - Present"
-          description="Worked as a Full Stack Developer, in SASS projects handling multiple client projects with team collaboration."
+          date="Dec 2025 – Present"
+          description="Working on SaaS projects handling multiple client engagements with team collaboration, focusing on scalable architecture and feature ownership."
           progression={{
             initial: {
               designation: "Full Stack Developer Intern",
-              date: "2025, December",
-              note: "Worked as a Full Stack Developer Intern, contributing to the design and development of scalable web applications.",
+              date: "Dec 2025",
+              note: "Contributing to design and development of scalable web applications.",
             },
             promotions: [
               {
                 designation: "Junior Full Stack Developer",
-                date: "2026, March",
-                note: "Promoted to full-time role, taking ownership of feature development and system architecture.",
+                date: "Mar 2026",
+                note: "Promoted to full-time role with ownership of feature development and system architecture.",
               },
             ],
           }}
           skills={[
-            { name: "NextJs", icon: NextLogo, link: "https://nextjs.org/" },
-            {
-              name: "Typescript",
-              icon: TsLogo,
-              link: "https://www.typescriptlang.org/",
-            },
-            {
-              name: "PostgresSql",
-              icon: PostgresLogo,
-              link: "https://www.postgresql.org/",
-            },
-            {
-              name: "Docker",
-              icon: DockerLogo,
-              link: "https://www.docker.com/",
-            },
+            { name: "Next.js", icon: NextLogo, link: "https://nextjs.org/" },
+            { name: "TypeScript", icon: TsLogo, link: "https://www.typescriptlang.org/" },
+            { name: "PostgreSQL", icon: PostgresLogo, link: "https://www.postgresql.org/" },
+            { name: "Docker", icon: DockerLogo, link: "https://www.docker.com/" },
           ]}
         />
 
         <Card
+          expandable
           icons="/icons/logo.svg"
           title="Upchaar Nepal"
           subtitle={["Software Developer Intern"]}
-          date="2025,June - 2025,December"
-          description="Collaborated on building healthcare web applications.Gained hands-on experience in full stack development, API integration, and RESTful service creation.Contributed to front-end UI components and back-end server logic under senior developer guidance.Strengthened skills in Git, responsive design, and debugging within an agile team environment."
+          date="Jun 2025 – Dec 2025"
+          description="Built healthcare web applications across frontend and backend. Integrated REST APIs, contributed UI components, and worked in an agile team environment."
           progression={{
             initial: {
               designation: "Software Developer Intern",
-              date: "2025, June",
+              date: "Jun 2025",
             },
           }}
           projects={[
-            {
-              name: "Diagnostic Protal",
-              link: "https://diagnostic.upchaarnepal.com/",
-            },
-            {
-              name: "Clinic Protal",
-              link: "https://clinic.upchaarnepal.com/",
-            },
-            {
-              name: "Pharmacy Protal",
-              link: "https://pharmacy.upchaarnepal.com/",
-            },
+            { name: "Diagnostic Portal", link: "https://diagnostic.upchaarnepal.com/" },
+            { name: "Clinic Portal", link: "https://clinic.upchaarnepal.com/" },
+            { name: "Pharmacy Portal", link: "https://pharmacy.upchaarnepal.com/" },
           ]}
           skills={[
             { name: "React", icon: ReactLogo, link: "https://react.dev/" },
-            {
-              name: "Express",
-              icon: ExpressLogo,
-              link: "https://expressjs.com/",
-            },
-            {
-              name: "NodeJs",
-              icon: NodeLogo,
-              link: "https://nodejs.org/en/download",
-            },
-            {
-              name: "MongoDB",
-              icon: MongoLogo,
-              link: "https://www.mongodb.com/?msockid=0bbd28e608f06d592dba3bce09026ca9",
-            },
+            { name: "Express", icon: ExpressLogo, link: "https://expressjs.com/" },
+            { name: "Node.js", icon: NodeLogo, link: "https://nodejs.org/" },
+            { name: "MongoDB", icon: MongoLogo, link: "https://www.mongodb.com/" },
           ]}
         />
       </div>

@@ -63,7 +63,7 @@ const TypewriterSkills: React.FC<TypewriterSkillsProps> = ({
 
   return (
     <div
-      className={`text-[#93DA97] font-medium md:text-left mt-4 font-mono ${
+      className={`text-[#a1a1aa] font-medium md:text-left mt-4 font-mono ${
         className ?? "text-lg text-center"
       }`}
       style={{

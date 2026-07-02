@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { FaFolderOpen, FaHome } from "react-icons/fa";
-import { FaPenClip } from "react-icons/fa6";
+import { Home, FolderOpen, PenLine } from "lucide-react";
 import type { ReactNode } from "react";
 import NavBar from "@/components/NavBar";
 import ContactFormPopup from "@/components/ContactPop";
@@ -11,9 +10,9 @@ import Loader from "@/components/Loader/Loader";
 
 export default function AppShell({ children }: { children: ReactNode }) {
   const navLinks = [
-    { link: "#home", name: "Home", icon: <FaHome /> },
-    { link: "#projects", name: "Projects", icon: <FaFolderOpen /> },
-    { link: "/blog", name: "Blog", icon: <FaPenClip /> },
+    { link: "#home", name: "Home", icon: <Home size={16} /> },
+    { link: "#projects", name: "Projects", icon: <FolderOpen size={16} /> },
+    { link: "/blog", name: "Blog", icon: <PenLine size={16} /> },
   ];
 
   const [showPopup, setShowPopup] = useState(false);

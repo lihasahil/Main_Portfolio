@@ -20,16 +20,25 @@ interface ContactFormPopupProps {
 const inputClass =
   "w-full px-3 h-9 text-sm rounded-md border border-border bg-bg-card text-text placeholder:text-secondary focus:outline-none focus:ring-2 focus:ring-border transition-all disabled:opacity-50";
 
-export default function ContactFormPopup({ isOpen, onClose }: ContactFormPopupProps) {
-  const [formData, setFormData] = useState<FormData>({ name: "", email: "", message: "" });
+export default function ContactFormPopup({
+  isOpen,
+  onClose,
+}: ContactFormPopupProps) {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
     if (error) setError("");
   };
 
@@ -56,7 +65,10 @@ export default function ContactFormPopup({ isOpen, onClose }: ContactFormPopupPr
 
   const handleClose = () => {
     onClose();
-    setTimeout(() => { setSent(false); setError(""); }, 300);
+    setTimeout(() => {
+      setSent(false);
+      setError("");
+    }, 300);
   };
 
   if (!isOpen) return null;
@@ -73,7 +85,7 @@ export default function ContactFormPopup({ isOpen, onClose }: ContactFormPopupPr
         exit={{ opacity: 0, scale: 0.97, y: 10 }}
         transition={{ duration: 0.18, ease: "easeOut" }}
         className="relative w-full max-w-[460px] rounded-2xl border border-border bg-bg shadow-2xl overflow-hidden"
-        onClick={e => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={handleClose}
@@ -94,15 +106,29 @@ export default function ContactFormPopup({ isOpen, onClose }: ContactFormPopupPr
               className="flex flex-col items-center justify-center text-center py-16 px-8 gap-3"
             >
               <div className="w-11 h-11 rounded-full border border-border bg-bg-card flex items-center justify-center mb-1">
-                <svg className="w-5 h-5 text-text" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-5 h-5 text-text"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
               <h3 className="text-sm font-semibold text-text">Message sent</h3>
               <p className="text-xs text-secondary leading-relaxed max-w-60">
-                Thanks for reaching out! I'll get back to you within 24 hours.
+                Thanks for reaching out! I&apos;ll get back to you within 24
+                hours.
               </p>
-              <button onClick={handleClose} className="btn-ghost mt-3 h-8 px-4 text-xs">
+              <button
+                onClick={handleClose}
+                className="btn-ghost mt-3 h-8 px-4 text-xs"
+              >
                 Close
               </button>
             </motion.div>
@@ -120,19 +146,27 @@ export default function ContactFormPopup({ isOpen, onClose }: ContactFormPopupPr
                   Contact
                 </p>
                 <h2 className="text-lg font-semibold tracking-tight text-text">
-                  Let's work together
+                  Let&apos;s work together
                 </h2>
                 <p className="text-xs text-secondary mt-1 leading-relaxed">
-                  Fill out the form below or reach out directly — I respond within 24 hours.
+                  Fill out the form below or reach out directly — I respond
+                  within 24 hours.
                 </p>
               </div>
 
               {/* Form */}
-              <form ref={formRef} onSubmit={handleSubmit} className="p-6 space-y-4">
+              <form
+                ref={formRef}
+                onSubmit={handleSubmit}
+                className="p-6 space-y-4"
+              >
                 {/* Name + Email side by side */}
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label htmlFor="name" className="block text-xs font-medium text-secondary mb-1.5">
+                    <label
+                      htmlFor="name"
+                      className="block text-xs font-medium text-secondary mb-1.5"
+                    >
                       Name
                     </label>
                     <input
@@ -148,7 +182,10 @@ export default function ContactFormPopup({ isOpen, onClose }: ContactFormPopupPr
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-xs font-medium text-secondary mb-1.5">
+                    <label
+                      htmlFor="email"
+                      className="block text-xs font-medium text-secondary mb-1.5"
+                    >
                       Email
                     </label>
                     <input
@@ -167,7 +204,10 @@ export default function ContactFormPopup({ isOpen, onClose }: ContactFormPopupPr
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-xs font-medium text-secondary mb-1.5">
+                  <label
+                    htmlFor="message"
+                    className="block text-xs font-medium text-secondary mb-1.5"
+                  >
                     Message
                   </label>
                   <textarea
@@ -185,7 +225,9 @@ export default function ContactFormPopup({ isOpen, onClose }: ContactFormPopupPr
 
                 {/* Error */}
                 {error && (
-                  <p className="text-xs" style={{ color: "#ef4444" }}>{error}</p>
+                  <p className="text-xs" style={{ color: "#ef4444" }}>
+                    {error}
+                  </p>
                 )}
 
                 {/* Footer row: social icons left, send button right */}
@@ -218,12 +260,31 @@ export default function ContactFormPopup({ isOpen, onClose }: ContactFormPopupPr
                     </a>
                   </div>
 
-                  <button type="submit" disabled={loading} className="btn-primary px-5 gap-2">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="btn-primary px-5 gap-2"
+                  >
                     {loading ? (
                       <>
-                        <svg className="animate-spin h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="none">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                        <svg
+                          className="animate-spin h-3.5 w-3.5 shrink-0"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v8H4z"
+                          />
                         </svg>
                         Sending
                       </>

@@ -20,10 +20,10 @@ interface NavBarProps {
 
 const COLOR_OPTIONS: { id: ColorTheme; hex: string; label: string }[] = [
   { id: "neutral", hex: "#737373", label: "Neutral" },
-  { id: "indigo",  hex: "#6366f1", label: "Indigo"  },
-  { id: "rose",    hex: "#f43f5e", label: "Rose"    },
+  { id: "indigo", hex: "#6366f1", label: "Indigo" },
+  { id: "rose", hex: "#f43f5e", label: "Rose" },
   { id: "emerald", hex: "#10b981", label: "Emerald" },
-  { id: "amber",   hex: "#f59e0b", label: "Amber"   },
+  { id: "amber", hex: "#f59e0b", label: "Amber" },
 ];
 
 function ColorPickerDropdown({
@@ -36,11 +36,19 @@ function ColorPickerDropdown({
   side?: "bottom" | "right";
 }) {
   const [open, setOpen] = useState(false);
-  const leaveTimeout = useRef<ReturnType<typeof setTimeout>>();
-  const active = COLOR_OPTIONS.find(c => c.id === colorTheme)!;
+  const leaveTimeout = useRef<ReturnType<typeof setTimeout>>(
+    setTimeout(() => {}, 0),
+  );
+  clearTimeout(leaveTimeout.current);
+  const active = COLOR_OPTIONS.find((c) => c.id === colorTheme)!;
 
-  const show = () => { clearTimeout(leaveTimeout.current); setOpen(true); };
-  const hide = () => { leaveTimeout.current = setTimeout(() => setOpen(false), 100); };
+  const show = () => {
+    clearTimeout(leaveTimeout.current);
+    setOpen(true);
+  };
+  const hide = () => {
+    leaveTimeout.current = setTimeout(() => setOpen(false), 100);
+  };
 
   return (
     <div className="relative" onMouseEnter={show} onMouseLeave={hide}>
@@ -59,12 +67,19 @@ function ColorPickerDropdown({
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: side === "bottom" ? -4 : 0, x: side === "right" ? -6 : 0 }}
+            initial={{
+              opacity: 0,
+              scale: 0.96,
+              y: side === "bottom" ? -4 : 0,
+              x: side === "right" ? -6 : 0,
+            }}
             animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
             exit={{ opacity: 0, scale: 0.96 }}
             transition={{ duration: 0.12, ease: "easeOut" }}
             className={`absolute z-100 min-w-38 border border-border bg-bg rounded-xl shadow-xl py-1 overflow-hidden ${
-              side === "bottom" ? "top-full mt-2 right-0" : "left-full ml-3 top-0"
+              side === "bottom"
+                ? "top-full mt-2 right-0"
+                : "left-full ml-3 top-0"
             }`}
           >
             <p className="px-3 pt-1.5 pb-1 text-[10px] font-medium text-secondary uppercase tracking-widest">
@@ -73,19 +88,35 @@ function ColorPickerDropdown({
             {COLOR_OPTIONS.map(({ id, hex, label }) => (
               <button
                 key={id}
-                onClick={() => { setColorTheme(id); setOpen(false); }}
+                onClick={() => {
+                  setColorTheme(id);
+                  setOpen(false);
+                }}
                 className="flex items-center gap-2.5 w-full px-3 py-1.5 text-xs hover:bg-bg-card transition-colors cursor-pointer"
               >
                 <span
                   className="w-3 h-3 rounded-full shrink-0"
                   style={{ backgroundColor: hex }}
                 />
-                <span className={`flex-1 text-left ${colorTheme === id ? "text-text font-medium" : "text-secondary"}`}>
+                <span
+                  className={`flex-1 text-left ${colorTheme === id ? "text-text font-medium" : "text-secondary"}`}
+                >
                   {label}
                 </span>
                 {colorTheme === id && (
-                  <svg className="w-3 h-3 shrink-0" style={{ color: hex }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  <svg
+                    className="w-3 h-3 shrink-0"
+                    style={{ color: hex }}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
                 )}
               </button>
@@ -98,7 +129,13 @@ function ColorPickerDropdown({
 }
 
 /* Inline swatches — mobile only (no hover on touch) */
-function ColorSwatches({ colorTheme, setColorTheme }: { colorTheme: ColorTheme; setColorTheme: (c: ColorTheme) => void }) {
+function ColorSwatches({
+  colorTheme,
+  setColorTheme,
+}: {
+  colorTheme: ColorTheme;
+  setColorTheme: (c: ColorTheme) => void;
+}) {
   return (
     <div className="flex items-center gap-2">
       {COLOR_OPTIONS.map(({ id, hex, label }) => (
@@ -110,7 +147,8 @@ function ColorSwatches({ colorTheme, setColorTheme }: { colorTheme: ColorTheme; 
           className="w-5 h-5 rounded-full transition-transform hover:scale-110 cursor-pointer shrink-0"
           style={{
             backgroundColor: hex,
-            outline: colorTheme === id ? `2px solid ${hex}` : "2px solid transparent",
+            outline:
+              colorTheme === id ? `2px solid ${hex}` : "2px solid transparent",
             outlineOffset: "2px",
           }}
         />
@@ -120,7 +158,8 @@ function ColorSwatches({ colorTheme, setColorTheme }: { colorTheme: ColorTheme; 
 }
 
 const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
-  const { theme, setTheme, colorTheme, setColorTheme } = useContext(ThemeContext);
+  const { theme, setTheme, colorTheme, setColorTheme } =
+    useContext(ThemeContext);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const router = useRouter();
@@ -182,9 +221,17 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
 
               <div className="w-px h-4 bg-border mx-2" />
 
-              <ColorPickerDropdown colorTheme={colorTheme} setColorTheme={setColorTheme} side="bottom" />
+              <ColorPickerDropdown
+                colorTheme={colorTheme}
+                setColorTheme={setColorTheme}
+                side="bottom"
+              />
 
-              <button onClick={toggleTheme} aria-label="Toggle theme" className="btn-icon">
+              <button
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                className="btn-icon"
+              >
                 {theme === "light" ? <Moon size={14} /> : <Sun size={14} />}
               </button>
 
@@ -195,7 +242,11 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
 
             {/* Mobile controls */}
             <div className="lg:hidden flex items-center gap-2">
-              <button onClick={toggleTheme} aria-label="Toggle theme" className="btn-icon">
+              <button
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                className="btn-icon"
+              >
                 {theme === "light" ? <Moon size={14} /> : <Sun size={14} />}
               </button>
               <button
@@ -232,14 +283,26 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
               </button>
             ))}
             <div className="w-4 h-px bg-border" />
-            <button onClick={toggleTheme} aria-label="Toggle theme" className="btn-icon">
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className="btn-icon"
+            >
               {theme === "light" ? <Moon size={14} /> : <Sun size={14} />}
             </button>
-            <button onClick={onContactClick} aria-label="Contact" className="btn-icon">
+            <button
+              onClick={onContactClick}
+              aria-label="Contact"
+              className="btn-icon"
+            >
               <Mail size={16} />
             </button>
             <div className="w-4 h-px bg-border" />
-            <ColorPickerDropdown colorTheme={colorTheme} setColorTheme={setColorTheme} side="right" />
+            <ColorPickerDropdown
+              colorTheme={colorTheme}
+              setColorTheme={setColorTheme}
+              side="right"
+            />
           </aside>
 
           {/* Mobile compact bar after scroll */}
@@ -268,7 +331,10 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
           onClick={() => setMobileMenuOpen(false)}
         >
           <div className="h-12 border-b border-border" />
-          <nav className="flex flex-col items-start gap-1 p-4" onClick={(e) => e.stopPropagation()}>
+          <nav
+            className="flex flex-col items-start gap-1 p-4"
+            onClick={(e) => e.stopPropagation()}
+          >
             {navLinks.map(({ link, name }) => (
               <button
                 key={name}
@@ -281,11 +347,17 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
             <div className="w-full h-px bg-border my-2" />
             <div className="px-3 py-2 flex flex-col gap-2.5">
               <span className="text-xs text-secondary">Theme color</span>
-              <ColorSwatches colorTheme={colorTheme} setColorTheme={setColorTheme} />
+              <ColorSwatches
+                colorTheme={colorTheme}
+                setColorTheme={setColorTheme}
+              />
             </div>
             <div className="w-full h-px bg-border my-2" />
             <button
-              onClick={() => { setMobileMenuOpen(false); onContactClick(); }}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onContactClick();
+              }}
               className="btn-primary w-full justify-center"
             >
               Contact

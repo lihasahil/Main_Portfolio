@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -46,9 +46,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.sahilshrestha2003.com.np",
   },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Sahil Shrestha",
+  },
   icons: {
     icon: "/fav.png",
+    apple: "/apple-touch-icon.png",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

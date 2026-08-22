@@ -6,6 +6,7 @@ import { Theme, ColorTheme, ThemeContext } from "../context/theme-context";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import InstallButton from "./install-app";
 
 interface NavLink {
   link: string;
@@ -238,6 +239,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
               <button onClick={onContactClick} className="btn-primary ml-2">
                 Contact
               </button>
+              <InstallButton />
             </nav>
 
             {/* Mobile controls */}
@@ -320,6 +322,8 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
             >
               {mobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
             </button>
+
+            <InstallButton />
           </header>
         </>
       )}

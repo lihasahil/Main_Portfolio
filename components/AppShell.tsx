@@ -7,6 +7,7 @@ import NavBar from "@/components/NavBar";
 import ContactFormPopup from "@/components/ContactPop";
 import OnekoCat from "@/components/OnekoCat";
 import Loader from "@/components/Loader/Loader";
+import PwaInit from "./pwa-init";
 
 export default function AppShell({ children }: { children: ReactNode }) {
   const navLinks = [
@@ -40,6 +41,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
         </div>
       )}
 
+      <PwaInit />
       <OnekoCat />
       <NavBar navLinks={navLinks} onContactClick={() => setShowPopup(true)} />
       <ContactFormPopup

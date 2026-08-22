@@ -31,7 +31,7 @@ const Education = () => {
           title="V.S. Niketan Secondary School"
           subtitle={["Higher Secondary (10+2)"]}
           date="Jun 2018 – Jun 2020"
-          score="GPA 3.27"
+          score="Grade: A"
           description="Focused on Mathematics, Physics, and Computer Science. Strengthened problem-solving and analytical skills."
         />
 
@@ -41,7 +41,7 @@ const Education = () => {
           title="V.S. Niketan Secondary School"
           subtitle={["Secondary Education Examination"]}
           date="Apr 2017 – Apr 2018"
-          score="GPA 3.65"
+          score="Grade: A+"
           description="Completed secondary education with a solid academic foundation."
         />
       </div>

@@ -4,7 +4,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import blogData from "./data/data.json";
 import { BookOpen } from "lucide-react";
-import Card from "../card";
+import Card from "../Card";
 
 const BlogList: React.FC = () => {
   const router = useRouter();

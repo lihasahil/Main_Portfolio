@@ -1,4 +1,4 @@
-import Card from "../Card";
+import Card from "../card";
 
 const ReactLogo = "/tech_logo/reactjs.png";
 const ExpressLogo = "/tech_logo/express.png";
@@ -41,9 +41,21 @@ const Experience = () => {
           }}
           skills={[
             { name: "Next.js", icon: NextLogo, link: "https://nextjs.org/" },
-            { name: "TypeScript", icon: TsLogo, link: "https://www.typescriptlang.org/" },
-            { name: "PostgreSQL", icon: PostgresLogo, link: "https://www.postgresql.org/" },
-            { name: "Docker", icon: DockerLogo, link: "https://www.docker.com/" },
+            {
+              name: "TypeScript",
+              icon: TsLogo,
+              link: "https://www.typescriptlang.org/",
+            },
+            {
+              name: "PostgreSQL",
+              icon: PostgresLogo,
+              link: "https://www.postgresql.org/",
+            },
+            {
+              name: "Docker",
+              icon: DockerLogo,
+              link: "https://www.docker.com/",
+            },
           ]}
         />
 
@@ -61,15 +73,29 @@ const Experience = () => {
             },
           }}
           projects={[
-            { name: "Diagnostic Portal", link: "https://diagnostic.upchaarnepal.com/" },
+            {
+              name: "Diagnostic Portal",
+              link: "https://diagnostic.upchaarnepal.com/",
+            },
             { name: "Clinic Portal", link: "https://clinic.upchaarnepal.com/" },
-            { name: "Pharmacy Portal", link: "https://pharmacy.upchaarnepal.com/" },
+            {
+              name: "Pharmacy Portal",
+              link: "https://pharmacy.upchaarnepal.com/",
+            },
           ]}
           skills={[
             { name: "React", icon: ReactLogo, link: "https://react.dev/" },
-            { name: "Express", icon: ExpressLogo, link: "https://expressjs.com/" },
+            {
+              name: "Express",
+              icon: ExpressLogo,
+              link: "https://expressjs.com/",
+            },
             { name: "Node.js", icon: NodeLogo, link: "https://nodejs.org/" },
-            { name: "MongoDB", icon: MongoLogo, link: "https://www.mongodb.com/" },
+            {
+              name: "MongoDB",
+              icon: MongoLogo,
+              link: "https://www.mongodb.com/",
+            },
           ]}
         />
       </div>

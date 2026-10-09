@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
-import AppShell from "@/components/AppShell";
+import AppShell from "@/components/app-shell";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,7 +13,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sahil Shrestha | Full Stack Developer Portfolio",
+  title: "Sahil Shrestha | Full Stack Developer",
   description:
     "Full-stack developer specializing in React, Node.js & TypeScript. Explore my projects and web development expertise.",
   keywords: [

@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { Home, FolderOpen, PenLine } from "lucide-react";
 import type { ReactNode } from "react";
 import NavBar from "@/components/NavBar";
-import ContactFormPopup from "@/components/ContactPop";
-import OnekoCat from "@/components/OnekoCat";
+import ContactFormPopup from "@/components/contact-pop";
+import OnekoCat from "@/components/oneko-cat";
 import Loader from "@/components/Loader/Loader";
 import PwaInit from "./pwa-init";
 

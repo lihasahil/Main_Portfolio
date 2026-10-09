@@ -1,11 +1,15 @@
 "use client";
 
 import { Volume2, FileText } from "lucide-react";
-import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/icons/BrandIcons";
+import {
+  GithubIcon,
+  LinkedinIcon,
+  InstagramIcon,
+} from "@/components/icons/BrandIcons";
 import { motion } from "framer-motion";
-import TypewriterSkills from "../TypeWriter";
+import TypewriterSkills from "../type-writer";
 import { useRef, useState } from "react";
-import ContactFormPopup from "../ContactPop";
+import ContactFormPopup from "../contact-pop";
 
 const Hero = () => {
   const skills = [
@@ -70,7 +74,9 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row items-center gap-3 mt-2">
           <button
             onClick={() =>
-              document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })
+              document
+                .querySelector("#projects")
+                ?.scrollIntoView({ behavior: "smooth" })
             }
             className="btn-primary h-11 px-7 text-sm"
           >

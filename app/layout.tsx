@@ -5,6 +5,14 @@ import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
 import AppShell from "@/components/app-shell";
+import {
+  AUTHOR,
+  DEFAULT_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  personJsonLd,
+  websiteJsonLd,
+} from "@/lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,39 +21,65 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sahil Shrestha | Full Stack Developer",
-  description:
-    "Full-stack developer specializing in React, Node.js & TypeScript. Explore my projects and web development expertise.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Sahil Shrestha | Full Stack Developer (React, Next.js, Node.js)",
+    template: "%s | Sahil Shrestha",
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
   keywords: [
     "Sahil Shrestha",
     "Portfolio",
-    "React Developer",
-    "Node.js Developer",
     "Full Stack Developer",
-    "Web Developer",
-    "TypeScript",
+    "Full Stack Developer Nepal",
+    "React Developer",
+    "Next.js Developer",
+    "Node.js Developer",
+    "TypeScript Developer",
+    "Freelance Web Developer",
+    "Remote Web Developer",
+    "Hire Web Developer",
   ],
-  authors: [{ name: "Sahil Shrestha" }],
-  robots: "index, follow",
+  authors: [{ name: AUTHOR, url: SITE_URL }],
+  creator: AUTHOR,
+  publisher: AUTHOR,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
-    url: "https://www.sahilshrestha2003.com.np",
+    url: SITE_URL,
     title: "Sahil Shrestha | Full Stack Developer Portfolio",
-    description:
-      "Full-stack developer specializing in React, Node.js & TypeScript. Explore my projects and web development expertise.",
-    images: ["https://www.sahilshrestha2003.com.np/preview.png"],
-    siteName: "Sahil Shrestha Portfolio",
+    description: DEFAULT_DESCRIPTION,
+    images: [
+      {
+        url: "/preview.png",
+        alt: "Sahil Shrestha - Full Stack Developer Portfolio",
+      },
+    ],
+    siteName: SITE_NAME,
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Sahil Shrestha | Full Stack Developer Portfolio",
-    description:
-      "Full-stack developer specializing in React, Node.js & TypeScript. Explore my projects and web development expertise.",
-    images: ["https://www.sahilshrestha2003.com.np/preview.png"],
+    description: DEFAULT_DESCRIPTION,
+    images: ["/preview.png"],
   },
   alternates: {
-    canonical: "https://www.sahilshrestha2003.com.np",
+    canonical: "/",
+    languages: { en: "/", "x-default": "/" },
   },
+  category: "technology",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
@@ -66,6 +100,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
       <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([personJsonLd, websiteJsonLd]).replace(
+              /</g,
+              "\\u003c",
+            ),
+          }}
+        />
         <ThemeProvider>
           <AppShell>{children}</AppShell>
           <Analytics />

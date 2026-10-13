@@ -57,6 +57,17 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Contact mail failed:", err);
-    return NextResponse.json({ error: "Failed to send" }, { status: 500 });
+    const e = err as { code?: string; responseCode?: number; response?: string; message?: string };
+    const body: { error: string; details?: object } = { error: "Failed to send" };
+    // Only expose the underlying cause during development.
+    if (process.env.NODE_ENV !== "production") {
+      body.details = {
+        code: e.code,
+        responseCode: e.responseCode,
+        response: e.response,
+        message: e.message,
+      };
+    }
+    return NextResponse.json(body, { status: 500 });
   }
 }

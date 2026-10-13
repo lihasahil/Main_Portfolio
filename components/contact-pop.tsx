@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, ChangeEvent, FormEvent, useRef } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Mail, Phone, MessageCircle } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/BrandIcons";
@@ -72,7 +73,9 @@ export default function ContactFormPopup({
 
   if (!isOpen) return null;
 
-  return (
+  // Portal to <body> so a transformed/clipped ancestor (e.g. the Hero) can't
+  // become the containing block for `fixed` and shrink the overlay.
+  return createPortal(
     <div
       className="fixed inset-0 z-1000 flex items-center justify-center px-4"
       style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(6px)" }}
@@ -313,6 +316,7 @@ export default function ContactFormPopup({
           )}
         </AnimatePresence>
       </motion.div>
-    </div>
+    </div>,
+    document.body,
   );
 }

@@ -2,7 +2,7 @@
 
 import { useState, ChangeEvent, FormEvent, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Mail } from "lucide-react";
+import { X, Mail, Phone, MessageCircle } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons/BrandIcons";
 
 interface FormData {
@@ -238,6 +238,22 @@ export default function ContactFormPopup({
                       title="Send email directly"
                     >
                       <Mail size={15} />
+                    </a>
+                    <a
+                      href="tel:+9779869376638"
+                      className="btn-icon"
+                      title="Call +977 9869376638"
+                    >
+                      <Phone size={15} />
+                    </a>
+                    <a
+                      href="https://wa.me/9779869376638"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-icon"
+                      title="Chat on WhatsApp"
+                    >
+                      <MessageCircle size={15} />
                     </a>
                     <a
                       href="https://github.com/lihasahil"

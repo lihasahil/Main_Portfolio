@@ -64,7 +64,7 @@ const Hero = () => {
         {/* Bio */}
         <p className="text-secondary text-sm sm:text-base max-w-xl leading-relaxed">
           I build fast, scalable web applications with the MERN stack &amp;
-          Next.js —{" "}
+          Next.js{" "}
           <span className="font-semibold text-text">
             clean architecture, modern design.
           </span>

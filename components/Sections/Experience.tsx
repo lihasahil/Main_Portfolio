@@ -27,7 +27,7 @@ const Experience = () => {
           description="Working on SaaS projects handling multiple client engagements with team collaboration, focusing on scalable architecture and feature ownership."
           progression={{
             initial: {
-              designation: "Full Stack Developer Intern",
+              designation: "Associate Full Stack Developer",
               date: "Dec 2025",
               note: "Contributing to design and development of scalable web applications.",
             },
@@ -35,7 +35,7 @@ const Experience = () => {
               {
                 designation: "Junior Full Stack Developer",
                 date: "Mar 2026",
-                note: "Promoted to full-time role with ownership of feature development and system architecture.",
+                note: "Promoted to junior web dev role with ownership of feature development and system architecture.",
               },
             ],
           }}

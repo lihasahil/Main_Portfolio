@@ -25,9 +25,10 @@ const BlogList: React.FC = () => {
               description={post.description}
               skills={post.tags?.map((tag) => ({ name: tag })) || []}
               button={{
-                label: "Read More â†’",
+                label: "Read More",
                 onClick: () => router.push(`/blog/${post.id}`),
               }}
+              onClick={() => router.push(`/blog/${post.id}`)}
             />
           </div>
         ))}

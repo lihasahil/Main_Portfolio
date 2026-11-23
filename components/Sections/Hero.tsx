@@ -62,11 +62,11 @@ const Hero = () => {
         </div>
 
         {/* Bio */}
-        <p className="text-secondary text-sm sm:text-base max-w-xl leading-relaxed">
-          I build fast, scalable web applications with the MERN stack &amp;
-          Next.js{" "}
+        <p className="text-secondary text-base sm:text-lg md:text-lg max-w-2xl leading-relaxed">
+          I build fast, scalable web applications with Next.js, NestJS, and
+          PostgreSQL.{" "}
           <span className="font-semibold text-text">
-            clean architecture, modern design.
+            Clean architecture, modern design.
           </span>
         </p>
 

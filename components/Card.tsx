@@ -35,6 +35,7 @@ interface CardProps {
   website?: string;
   button?: { label: string; onClick: () => void };
   expandable?: boolean;
+  onClick?: () => void;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -50,6 +51,7 @@ const Card: React.FC<CardProps> = ({
   progression,
   website,
   button,
+  onClick,
   expandable = false,
 }) => {
   const [hovered, setHovered] = useState(false);
@@ -64,7 +66,11 @@ const Card: React.FC<CardProps> = ({
             {icon ? (
               <span className="text-secondary">{icon}</span>
             ) : (
-              <img src={icons} alt="" className="w-full h-full object-contain" />
+              <img
+                src={icons}
+                alt=""
+                className="w-full h-full object-contain"
+              />
             )}
           </div>
         )}
@@ -78,7 +84,9 @@ const Card: React.FC<CardProps> = ({
 
       <div className="flex items-center gap-2 shrink-0">
         <div className="text-right">
-          <p className="text-xs text-secondary tabular-nums whitespace-nowrap">{date}</p>
+          <p className="text-xs text-secondary tabular-nums whitespace-nowrap">
+            {date}
+          </p>
           {score && <p className="text-xs text-secondary mt-0.5">{score}</p>}
         </div>
         {expandable && (
@@ -96,7 +104,9 @@ const Card: React.FC<CardProps> = ({
 
   const details = (
     <>
-      <p className="text-sm text-secondary leading-relaxed mb-4 pl-12">{description}</p>
+      <p className="text-sm text-secondary leading-relaxed mb-4 pl-12">
+        {description}
+      </p>
 
       {progression && (
         <div className="pl-12 mb-4">
@@ -105,7 +115,9 @@ const Card: React.FC<CardProps> = ({
               <span className="text-xs font-medium text-text">
                 {progression.initial.designation}
               </span>
-              <span className="text-xs text-secondary ml-2">{progression.initial.date}</span>
+              <span className="text-xs text-secondary ml-2">
+                {progression.initial.date}
+              </span>
               {progression.initial.note && (
                 <p className="text-xs text-secondary mt-0.5 leading-relaxed">
                   {progression.initial.note}
@@ -115,8 +127,12 @@ const Card: React.FC<CardProps> = ({
             {progression.promotions?.map((promo, i) => (
               <div key={i}>
                 <span className="text-xs text-secondary mr-1.5">↑</span>
-                <span className="text-xs font-medium text-text">{promo.designation}</span>
-                <span className="text-xs text-secondary ml-2">{promo.date}</span>
+                <span className="text-xs font-medium text-text">
+                  {promo.designation}
+                </span>
+                <span className="text-xs text-secondary ml-2">
+                  {promo.date}
+                </span>
                 {promo.note && (
                   <p className="text-xs text-secondary mt-0.5 leading-relaxed">
                     {promo.note}
@@ -157,7 +173,9 @@ const Card: React.FC<CardProps> = ({
                 className="inline-flex items-center gap-1.5 text-xs bg-bg-card border border-border px-2 py-1 rounded text-secondary hover:text-text hover:border-text/20 transition-colors"
                 onClick={(e) => e.stopPropagation()}
               >
-                {skill.icon && <img src={skill.icon} alt="" className="w-3.5 h-3.5" />}
+                {skill.icon && (
+                  <img src={skill.icon} alt="" className="w-3.5 h-3.5" />
+                )}
                 {skill.name}
               </a>
             ) : (
@@ -165,10 +183,12 @@ const Card: React.FC<CardProps> = ({
                 key={i}
                 className="inline-flex items-center gap-1.5 text-xs bg-bg-card border border-border px-2 py-1 rounded text-secondary"
               >
-                {skill.icon && <img src={skill.icon} alt="" className="w-3.5 h-3.5" />}
+                {skill.icon && (
+                  <img src={skill.icon} alt="" className="w-3.5 h-3.5" />
+                )}
                 {skill.name}
               </span>
-            )
+            ),
           )}
         </div>
       )}
@@ -190,7 +210,10 @@ const Card: React.FC<CardProps> = ({
       {button && (
         <div className="pl-12 mt-4">
           <button
-            onClick={(e) => { e.stopPropagation(); button.onClick(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              button.onClick();
+            }}
             className="btn-ghost h-8 px-3 text-xs"
           >
             {button.label}
@@ -202,7 +225,10 @@ const Card: React.FC<CardProps> = ({
 
   if (!expandable) {
     return (
-      <div className="py-8 border-t border-border">
+      <div
+        className={`py-8 border-t border-border ${onClick ? "cursor-pointer" : ""}`}
+        onClick={onClick}
+      >
         {header}
         <div className="mt-3">{details}</div>
       </div>
@@ -214,7 +240,13 @@ const Card: React.FC<CardProps> = ({
       className="py-6 border-t border-border cursor-pointer select-none"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={() => setLocked((v) => !v)}
+      onClick={() => {
+        if (onClick) {
+          onClick();
+        } else {
+          setLocked((v) => !v);
+        }
+      }}
     >
       {header}
 
@@ -237,5 +269,3 @@ const Card: React.FC<CardProps> = ({
 };
 
 export default Card;
-
-// fix

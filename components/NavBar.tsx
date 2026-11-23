@@ -203,7 +203,7 @@ const NavBar: React.FC<NavBarProps> = ({ navLinks, onContactClick }) => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
             <button
               onClick={() => handleNavClick("#home")}
-              className="text-sm font-semibold tracking-tight text-text cursor-pointer"
+              className="text-sm font-bold tracking-tight text-text cursor-pointer"
             >
               Sahil Shrestha
             </button>

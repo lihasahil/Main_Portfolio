@@ -23,12 +23,12 @@ const Experience = () => {
           icons="/icons/logo.png"
           title="NextWaveAi"
           subtitle={["Full Stack Developer"]}
-          date="Dec 2025 – Present"
+          date="Jan 2026 – Oct 20206"
           description="Working on SaaS projects handling multiple client engagements with team collaboration, focusing on scalable architecture and feature ownership."
           progression={{
             initial: {
               designation: "Associate Full Stack Developer",
-              date: "Dec 2025",
+              date: "Jan 2026",
               note: "Contributing to design and development of scalable web applications.",
             },
             promotions: [
